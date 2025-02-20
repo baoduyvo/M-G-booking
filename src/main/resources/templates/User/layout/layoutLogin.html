@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="mainContent(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+    <link th:href="@{/main.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/user/layout.css}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+    <link rel="stylesheet"    th:if="${title == 'SearchFlight' or title == 'Round Trip' or title=='Hotel' or title=='Hotel Flight' or title=='Round Trip Flight'}"   href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.css"/>
+    <script th:if="${title == 'SearchFlight' or title == 'Round Trip' or title=='Hotel' or title=='Hotel Flight' or title=='Round Trip Flight'}"   src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.0/nouislider.min.js"></script>
+    <link rel="stylesheet" th:if="${cssPath != null}" th:href="${cssPath}">
+    <link rel="stylesheet" th:if="${title == 'Payment Flight' or title == 'Payment Hotel'}" th:href="@{/user/Payment/Payment.css}">
+    <link rel="stylesheet" th:if="${title=='ChangeOwner'}" th:href="@{/user/ChangeProfile/Change.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Toastr JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
+    <!-- Bootstrap Select JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+<header class="transition-none relative right-0 left-0 w-full " style="z-index: 1001">
+<div class="shadow-none relative z-1 bg-white pb-0 pt-0">
+    <div class="container-fluid " style="border-color: #ebf0f7 !important;border-bottom: 1px solid #e7eaf3 !important;">
+        <div class="d-flex align-items-center">
+            <ul class=" list-unstyled">
+                <li class="list-inline-item mr-0 mb-0" >
+                    <a class="pl-0 inline-block text-decoration-none bg-transparent" style="color: #3b444f;font-size: 1.2rem;font-weight: 300;padding-left: 1.281rem;padding-top: 0.594rem;padding-bottom: 0.584rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">(000) 999 - 898 -999</a>
+                </li>
+                <li class="list-inline-item mr-0 mb-0" >
+                    <a class="pl-0 inline-block text-decoration-none bg-transparent list-before" style="color: #3b444f;font-size: 1.2rem;font-weight: 300;padding-left: 1.281rem;padding-top: 0.594rem;padding-bottom: 0.584rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">info@mytravel.com</a>
+                </li>
+            </ul>
+            <div class="ml-auto d-flex align-items-center">
+                <ul class="list-inside mb-0 mr-2 pr-1">
+                    <li class="list-inline-item">
+                        <a class="btn btn-xs btn-icon text-center inline-block align-middle btn-pill btn-soft-dark  transition-3d-hover  cursor-pointer border-transparent relative leading-none p-0" style="color: #3b444f;transition: all 0.2s ease-in-out;border-radius: 6.1875rem;font-weight: 400;border: 1px solid transparent">
+                            <i class="fa-brands fa-facebook-f"  ></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa-brands fa-twitter" style="font-size: 14px"></i>
+
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-xs btn-icon text-center inline-block align-middle btn-pill btn-soft-dark  transition-3d-hover  cursor-pointer border-transparent relative leading-none p-0" style="color: #3b444f;transition: all 0.2s ease-in-out;border-radius: 6.1875rem;font-weight: 400;border: 1px solid transparent">
+                            <i class="fa-brands fa-instagram" style="font-size: 14px"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-xs btn-icon text-center inline-block align-middle btn-pill btn-soft-dark  transition-3d-hover  cursor-pointer border-transparent relative leading-none p-0" style="color: #3b444f;transition: all 0.2s ease-in-out;border-radius: 6.1875rem;font-weight: 400;border: 1px solid transparent">
+                            <i class="fa-brands fa-linkedin-in" style="font-size: 14px"></i>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="relative px-3 u-header-Login-Form">
+                    <a onclick="toggleDropdown(event)"  class="d-flex align-items-center text-dark text-decoration-none bg-transparent">
+                        <i class="fa-regular fa-user mr-2 ml-1" style="font-size: 23px"></i>
+
+                    </a>
+                    <div class="dropdown-menu" id="loginDropdownMenu" style="top: 45px;width: 23vh;left: -16vh">
+                        <a class="dropdown-item" style="color: black!important;text-decoration: none" th:href="@{/Profile}" > Account</a>
+                        <a class="dropdown-item" style="color: black!important;text-decoration: none" th:href="@{/account/logout}"> Logout</a>
+                        <a class="dropdown-item" style="color: black!important;text-decoration: none" th:href="@{/HistoryBooking}">Booking</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="logoAndNav" class="container-fluid py-xl-2 " style="border-bottom: 1px solid #ebf0f7">
+        <nav class="navbar-expand-xlx u-header__navbar u-header__navbar--no-space d-grid " style="grid-template-columns: 1fr 1fr 1fr ">
+            <a th:href="@{/}" class="d-flex align-items-center text-decoration-none bg-transparent" style="padding-top: 0.2505rem;padding-bottom: 0.2505rem;margin-right: 1.875rem;font-size: 1.25rem;line-height: inherit;white-space: nowrap;color: #297cbb">
+                <img th:src="@{'http://localhost:8686/images/istockphoto-1461138981-612x612.jpg'}" class="w-auto " style="height: 99px; width: auto; margin-right: 0.5rem; transition: background-color 0.3s, color 0.3s;max-height: 88px">
+                <span class="font-bold" style="font-size: 1.75rem;margin-left: 0.875rem;color: #3b444f">MyTravel</span>
+            </a>
+            <div id="navBar" class="d-flex p-xl-0 pt-4 position-relative navbar-collapse order-xl-0 order-2" style="flex-basis: auto;justify-content: center">
+                <ul class="navbar-nav align-items-center pt-0 pb-0 flex-row">
+                    <li class="nav-item hs-has-sub-menu">
+                        <a th:href="@{/}" class="nav-link position-relative text-decoration-none d-flex bg-transparent u-header__nav-link-toggle" style="padding-top: 1.5rem;margin-right: 21px;padding-bottom: 1.5rem;padding-right: 1rem;color: #3b444f;font-weight: 500;font-size: 19px">
+                            Home
+                        </a>
+                    </li>
+
+
+
+
+
+               <li class="nav-item hs-has-sub-menu">
+                        <a th:href="@{/About}" class="nav-link position-relative text-decoration-none d-flex bg-transparent u-header__nav-link-toggle" style="margin-right: 21px;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-right: 1rem;color: #3b444f;font-weight: 500;font-size: 19px">
+                          About
+                        </a>
+                    </li><li class="nav-item hs-has-sub-menu">
+                        <a th:href="@{/Contact}" class="nav-link position-relative text-decoration-none d-flex bg-transparent u-header__nav-link-toggle" style="margin-right: 21px;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-right: 1rem;color: #3b444f;font-weight: 500;font-size: 19px">
+                          Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+</div>
+
+</header>
+<th:block th:replace="${content} ?: _"></th:block>
+<footer class="footer mt-4 border-gray-33 border-top" >
+    <div class="space-bottom-2 space-top-1" style="margin-bottom: 40px;margin-left: 100px;margin-right: 100px;padding-top: 2rem !important">
+        <div class="container-fluid" >
+            <div class="row justify-content-between">
+                <div class="col-12 col-lg-2  mb-6 mb-md-10 mb-xl-0">
+                    <div class="d-flex d-lg-block">
+                        <div class="mb-5 mr-md-7 mr-lg-0">
+                            <h4 class=""
+                                style="font-weight: 500;margin-bottom: 1.5rem !important;font-size: 1rem;line-height: 1.5;color: #3b444f">
+                                Need My Travel Help?</h4>
+                            <a style="color: #297cbb;text-decoration: none;background-color: transparent">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-4" style="margin-right: 1.5rem !important;width: 22%">
+                                        <img th:src="@{/images/phone-512 (1).png}" style="width: 151%">
+                                    </div>
+                                    <div>
+                                        <div class="mb-2 h6 " style="font-weight: 400;color: #67747c !important">Got
+                                            Questions ? Call us 24/7!
+                                        </div>
+                                        <small class="d-block "
+                                               style="font-size: 1.125rem;color: #297cbb !important;font-weight: 400">
+                                            Call Us:
+                                            <span style="font-size: 1.125rem;color: #297cbb !important;font-weight: 500">
+                                            (888) 1234 56789
+                                        </span>
+                                        </small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="ml-md-6 ml-lg-0" style="margin-left: 0 !important;">
+                            <div class="mb-4">
+                                <h4 class="h6 mb-2" style="font-weight: 500;font-size: 1.063rem">Contact Info</h4>
+                                <address class="pr-4">
+                                    <span class="mb-2 h6 " style="font-weight: 400;color: #67747c !important">
+                                        PO Box CT16122 Collins Street West, Victoria 8007,Australia.
+                                    </span>
+                                </address>
+                            </div>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item mr-2">
+                                    <a class="btn btn-icon btn-social btn-bg-transparent social">
+                                        <i class="fa-brands fa-facebook-f"
+                                           style="color: #67747c ;transform: translate(-28%, -51%)"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item mr-2">
+                                    <a class="btn btn-icon btn-social btn-bg-transparent social">
+                                        <i class="fa-brands fa-twitter"
+                                           style="color: #67747c ;transform: translate(-40%, -51%)"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item mr-2">
+                                    <a class="btn btn-icon btn-social btn-bg-transparent social">
+                                        <i class="fa-brands fa-instagram"
+                                           style="color: #67747c ;transform: translate(-40%, -51%)"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item mr-2">
+                                    <a class="btn btn-icon btn-social btn-bg-transparent social">
+                                        <i class="fa-brands fa-linkedin"
+                                           style="color: #67747c ;transform: translate(-40%, -51%)"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                    <h4 class="h6 mb-2 mb-xl-4" style="margin-bottom: 1.5rem">Company</h4>
+                    <ul class="list-group list-group-flush list-group-borderless mb-0">
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">About us</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Careers</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Terms of
+                                Use</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Privacy
+                                Statement</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Give Us
+                                Feedbacks</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                    <h4 class="h6 mb-2 mb-xl-4" style="margin-bottom: 1.5rem">Company</h4>
+                    <ul class="list-group list-group-flush list-group-borderless mb-0">
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">About us</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Careers</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Terms of
+                                Use</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Privacy
+                                Statement</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Give Us
+                                Feedbacks</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2 col-xl-1dot8 mb-6 mb-md-10 mb-xl-0">
+                    <h4 class="h6 mb-2 mb-xl-4" style="margin-bottom: 1.5rem">Company</h4>
+                    <ul class="list-group list-group-flush list-group-borderless mb-0">
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">About us</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Careers</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Terms of
+                                Use</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Privacy
+                                Statement</a>
+                        </li>
+                        <li>
+                            <a class="text-decoration-none list-group-item-action" style="font-size: 1rem;">Give Us
+                                Feedbacks</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg col-xl-3dot1">
+                    <div class="mb-4 mb-xl-2">
+                        <h4 class="h6 mb-2 mb-xl-4" style="font-weight: 500">Mailing List</h4>
+                        <p class="m-0" style="color: #67747c !important;line-height: 1.7">Sign up for our mailing list to get latest updates and offers.</p>
+                    </div>
+                    <form class="js-validate js-focus-state js-form-message">
+
+                        <div class="input-group">
+                            <input type="email" placeholder="Your Email" class="form-control height-54 font-size-14 border-radius-3 border-width-2 border-color-8" style="border-radius: 3px;border-width: 2px;border-color: #ebf0f7 !important;padding: 1.375rem 1.75rem">
+                            <div class="input-group-append " >
+                                <button class="btn " style="background-color: #1d508d;border-color: #1d508d;position: relative;z-index: 2;cursor:pointer;font-size: 0.875rem;height: 49px;min-width: 7rem;border-radius: 3px !important;color: #ffffff;left: -115px">Subscribes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:src="@{/user/Register.js}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+</script>
+<script type="text/javascript">
+    const navbar=document.getElementById('logoAndNav');
+    function applyNavbarStyles() {
+        if(window.scrollY>50){
+            navbar.style.position='fixed';
+            navbar.style.background='white'
+            navbar.style.top='0';
+        }else{
+            navbar.style.position='relative';
+
+            navbar.style.top='0';
+        }
+    }
+    applyNavbarStyles();
+    window.addEventListener('scroll',function (){
+     applyNavbarStyles();
+    })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleDropdown(event) {
+        event.preventDefault();
+        var dropdownMenu = document.getElementById("loginDropdownMenu");
+
+        // Check if the dropdown is currently hidden
+        if (dropdownMenu.style.display === "block") {
+            dropdownMenu.style.display = "none";
+        } else {
+            dropdownMenu.style.display = "block";
+        }
+    }
+</script>
+
+<div th:insert="~{'/User/Register/RegisterUser' :: customScripts}"></div>
+<div th:if="${title=='Hotel'}" th:insert="~{'/User/Hotel/Hotel':: customScripts}"></div>
+<div th:if="${title=='Detail Hotel'}" th:insert="~{'/User/DetailHotel/DetailHotel':: customScripts}"></div>
+<div  th:if="${title=='SearchFlight'}" th:insert="~{'/User/Flight/Flight' :: customScripts}"></div>
+<div  th:if="${title=='Forget Password'}" th:insert="~{'/User/Forgot/ForgotPassword' :: customScripts}"></div>
+<div th:if="${title=='Profile'}" th:insert="~{'/User/Profile/Profile':: customScripts}"></div>
+<div th:if="${title=='Hotel'}" th:insert="~{'/User/Hotel/Hotel':: customScripts}"></div>
+<div th:if="${title=='Payment'}" th:insert="~{'/User/InformationCustomer/InformationFly':: customScripts}"></div>
+<div th:if="${title=='Round Trip'}" th:insert="~{'/User/Flight/RoundTripFlight':: customScripts}"></div>
+<div th:if="${title=='Payment Hotel'}" th:insert="~{'/User/InformationCustomer/InformationCustomer':: customScripts}"></div>
+<div th:if="${title=='Round Trip Flight'}" th:insert="~{'/User/FlightLogin/RoundTripFlightLogin':: customScripts}"></div>
+
+
+</body>
+</html>

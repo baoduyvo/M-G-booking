@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/User/layout/layout :: mainContent('Register',~{this::.Login-Page})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<section class="Login-Page layout-pt-lg layout-pb-lg bg-blue-2" style="background-color: #e5f0fd; padding-bottom: 120px; padding-top: 120px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+                <div class="bg-white shadow-lg rounded-3" style="padding: 50px;">
+                    <!-- Tab Navigation -->
+                    <ul class="nav nav-tabs" id="registerTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="user-tab" data-bs-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">User</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="owner-tab" data-bs-toggle="tab" href="#owner" role="tab" aria-controls="owner" aria-selected="false">Owner</a>
+                        </li>
+                    </ul>
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="registerTabContent" style="display: block;border: none;padding: 0px">
+                        <!-- User Registration Form -->
+                        <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="user-tab">
+                            <form th:action="@{/registerUser}" method="post" class="row" style="margin-top: 10px;">
+                                <!-- User-specific form fields -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <h1 style="font-size: 22px; font-weight: 500">User Registration</h1>
+                                    <p style="margin-top: 10px;font-size: 19px; color: #697488; font-family: 'Jost', sans-serif;">
+                                        Already have an account?
+                                        <a th:href="@{/Login}" class="text-decoration-none" style="color: #3554d1">Log in</a>
+                                    </p>
+                                </div>
+                                <!-- Country select -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <label  style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px; display: block;">
+                                        Country
+                                    </label>
+                                    <select id="CountryText" class="outline-none w-100 bg-transparent" th:field="${RegisterUser.country_id}" style="border: 1px solid #ddd; border-radius: 4px; padding: 25px 15px 0; min-height: 70px;">
+                                        <option value="0"  selected>Select Country</option>
+                                        <th:block th:each="countryList : ${country}">
+                                            <option th:value="${countryList.id}" th:text="${countryList.name}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <label  style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px; display: block;">
+                                        City
+                                    </label>
+                                    <select id="citySelect" class="outline-none w-100 bg-transparent" th:field="${RegisterUser.cityId}" style="border: 1px solid #ddd; border-radius: 4px; padding: 25px 15px 0; min-height: 70px;">
+
+                                    </select>
+                                </div>
+                                <!-- Other fields for user registration -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input th:field="${RegisterUser.fullName}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Full Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <textarea th:field="${RegisterUser.address}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;"></textarea>
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input th:field="${RegisterUser.email}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input type="password" th:field="${RegisterUser.password}" min="8" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input th:field="${RegisterUser.phone}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Phone</label>
+                                    </div>
+                                </div>
+                                <!-- Password and other necessary fields -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <button type="submit" class="cursor-pointer text-white w-100 button -dark" style="background-color: #3554d1;padding-top: 20px;padding-bottom: 20px">Sign Up
+                                        <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 15px"></i>
+                                    </button>
+                                    <input type="hidden" value="ROLE_USER" th:field="${RegisterUser.accountType}">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Owner Registration Form -->
+                        <div class="tab-pane fade" id="owner" role="tabpanel" aria-labelledby="owner-tab">
+                            <form th:action="@{/registerOwner}" method="post" class="row" style="margin-top: 10px;">
+                                <!-- Owner-specific form fields -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <h1 style="font-size: 22px; font-weight: 500">Owner Registration</h1>
+                                    <p style="margin-top: 10px;font-size: 19px; color: #697488; font-family: 'Jost', sans-serif;">
+                                        Already have an account?
+                                        <a th:href="@{/Login}" class="text-decoration-none" style="color: #3554d1">Log in</a>
+                                    </p>
+                                </div>
+                                <!-- Similar fields for the Owner -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <label  style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px; display: block;">
+                                        Country
+                                    </label>
+                                    <select id="CountrySelect" class="outline-none w-100 bg-transparent" th:field="${RegisterOwner.country_id}" style="border: 1px solid #ddd; border-radius: 4px; padding: 25px 15px 0; min-height: 70px;">
+                                        <option value="0"  selected>Select Country</option>
+                                        <th:block th:each="countryList : ${country}">
+                                            <option th:value="${countryList.id}" th:text="${countryList.name}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <label  style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 5px; display: block;">
+                                        City
+                                    </label>
+                                    <select id="CityOwner" class="outline-none w-100 bg-transparent" th:field="${RegisterOwner.cityId}" style="border: 1px solid #ddd; border-radius: 4px; padding: 25px 15px 0; min-height: 70px;">
+
+                                    </select>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input th:field="${RegisterOwner.fullName}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Full Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <textarea th:field="${RegisterOwner.address}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;"></textarea>
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input th:field="${RegisterUser.email}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input type="password" th:field="${RegisterUser.password}" min="8" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <div class="position-relative d-flex form-input">
+                                        <input th:field="${RegisterUser.phone}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;">
+                                        <label class="lh-1" style="font-size: 14px;color: #697488">Phone</label>
+                                    </div>
+                                </div>
+                                <input type="hidden" th:field="${RegisterOwner.accountType}">
+                                <!-- Other necessary fields for Owner -->
+                                <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                                    <button type="submit" class="cursor-pointer text-white w-100 button -dark" style="background-color: #3554d1;padding-top: 20px;padding-bottom: 20px">Sign Up
+                                        <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 15px"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:fragment="customScripts" th:src="@{/user/Register/RegisterUser.js}"></script>
+</section>
+
+<!-- Bootstrap JavaScript and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script th:src="@{user/Register.js}"></script>
+
+</body>
+</html>

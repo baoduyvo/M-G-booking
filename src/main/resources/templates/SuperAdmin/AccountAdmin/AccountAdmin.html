@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/SuperAdmin/layout :: mainContent('Account Admin',~{this::.content-wrapper})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="card">
+                <div class="card-header justify-content-between">
+                    <h5 class="mb-0">Danh sách Admin</h5>
+                    <a th:href="@{/SuperAdmin/AccountAdmin/add}" class="text-decoration-none btn btn-primary">
+                        <i class="ti ti-plus" style="color:white;"></i>
+                        <span class="ms-1" style="color: white">Thêm</span>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/SuperAdmin/AccountAdmin}" class="d-flex">
+                        <div class="input-group">
+                            <input type="text" name="name" id="searchCountry" class="form-control"
+                                   placeholder="Search for Airline" aria-label="Search" style="border-radius: 25px 0 0 25px;"/>
+                            <button class="btn btn-primary" type="submit" style="border-radius: 0 25px 25px 0;">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive text-nowrap mb-4">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>fullName</th>
+                            <th>Phone</th>
+                            <td>Country</td>
+
+                        </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0" id="AirlineTableBody">
+                        <th:block th:each="airline,start : ${Admin}">
+                            <tr>
+                                <td th:text="${start.index+1}"></td>
+                                <td th:text="${airline.fullName}"></td>
+                                <td th:text="${airline.phone}"></td>
+                                <td th:text="${airline.nameCountry}"></td>
+
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                    <th:block th:if="${totalPages > 0}">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                                    <a class="page-link" th:href="@{'/SuperAdmin/Airline'(page=${currentPage - 1})}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <th:block th:each="page : ${#numbers.sequence(1, totalPages)}">
+                                    <li class="page-item" th:classappend="${currentPage == page} ? 'active'">
+                                        <a class="page-link" th:href="@{'/SuperAdmin/Airline'(page=${page})}" th:text="${page}"></a>
+                                    </li>
+                                </th:block>
+                                <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                                    <a class="page-link" th:href="@{'/SuperAdmin/Airline'(page=${currentPage + 1})}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- / Content -->
+
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+        <div class="container-xxl">
+            <div
+                    class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                <div class="text-body mb-2 mb-md-0">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    , made with <span class="text-danger"><i class="tf-icons ri-heart-fill"></i></span> by
+                    <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
+                </div>
+                <div class="d-none d-lg-inline-block">
+                    <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                    <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                    <a
+                            href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/documentation/"
+                            target="_blank"
+                            class="footer-link me-4"
+                    >Documentation</a
+                    >
+
+                    <a
+                            href="https://github.com/themeselection/materio-bootstrap-html-admin-template-free/issues"
+                            target="_blank"
+                            class="footer-link"
+                    >Support</a
+                    >
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / Footer -->
+
+    <div class="content-backdrop fade"></div>
+</div>
+
+</body>
+</html>

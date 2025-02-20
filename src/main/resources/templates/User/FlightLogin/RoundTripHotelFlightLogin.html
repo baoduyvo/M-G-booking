@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutLogin :: mainContent('Round Trip',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block">
+
+    <div class=" py-1">
+        <div style="position: relative;margin-bottom: 13vh">
+            <div style="padding-bottom: 5px;position: absolute;width: 100%">
+                <div style="background-image: url('https://cdn6.agoda.net/images/PACKAGES-251/default/pkg_headbg_modifysearch@2x.jpg');
+background-size: cover;color: rgb(249, 249, 250);height: 115px;margin: 0;width: 100%;min-width: 980px;box-sizing: border-box;display: flex;align-items: center;flex-wrap: nowrap">
+                    <div style="margin: auto;width: 1100px;box-sizing: border-box;display: flex;align-items: center;flex-wrap: nowrap">
+                        <div style="max-width: calc(100% - 180px);box-sizing: border-box;margin: 0px;display: block;flex-basis: 100%;flex-grow: 0">
+                            <span style="font-size: 20px;font-weight: 500;color: #fff;line-height: 20px"
+                                  th:text="'Trip from '+${DepartAirport.getName()}+' to '+${ArrivalAirport.getName()}">Chuyến đi từ Hồ Chí Minh (SGN) tới Hà Nội (HAN)</span>
+                            <div style="box-sizing: border-box;display: flex;width: 100%;align-items: flex-start;flex-wrap: nowrap">
+                                <div style="box-sizing: border-box;margin: 0px">
+                                    <span style="background-color: rgb(37, 181, 124);border-radius: 2px;display: block;padding: 0px 8px;margin-top: 4px;font-size: 14px;line-height: 32px;font-weight: 400">
+                                        <i class="fa-solid fa-plane-circle-check"></i>
+                                        <span style="font-size: 17px;line-height: 16px;font-weight: 400">Flight</span>
+                                    </span>
+                                    <span style="background-color: rgb(37, 181, 124);border-radius: 2px;display: block;padding: 0px 8px;margin-top: 4px;font-size: 14px;line-height: 32px;font-weight: 400">
+                                        <i class="fa-solid fa-hotel"></i>
+                                        <span style="font-size: 17px;line-height: 16px;font-weight: 400">Hotel</span>
+                                    </span>
+                                </div>
+                                <div style="padding: 0px 8px">
+                                    <span style="display: block;padding: 2px 0px;margin-top: 4px"
+                                          th:text="${DepartureDate}+'   -   '+${ArrivalDate}">t2, 23 tháng 12 2024</span>
+                                    <span style="display: block;padding: 2px 0px;margin-top: 4px"
+                                          th:text="${CheckIn}+'   -   '+${CheckOut}">t2, 23 tháng 12 2024</span>
+                                </div>
+                                <div style="padding-left: 8px;position: relative;box-sizing: border-box;margin: 0px"
+                                     class="kMETju">
+                                    <span style="display: block;padding: 2px 0px;margin-top: 7px;font-size: 17px;line-height: 16px;font-weight: 400;margin-bottom: 1vh"
+                                          th:text="${People}+' People'">2 People</span>
+                                    <span style="display: block;padding: 2px 0px;margin-top: 4px;font-size: 17px;line-height: 16px;font-weight: 400;position: relative;top: 1px"
+                                          th:text="${Room}+' Room'">2 Room</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 180px;box-sizing: border-box;margin: 0px">
+                            <div style="background-color: transparent;box-shadow: none;padding: 0px;border: 0px;float: right;border-radius: 0px">
+                                <button id="SearchBtn"
+                                        style="min-width: 99px;max-width: 180px;position: relative;border: none;user-select: none;padding: 12px;border-radius: 4px;background-color: rgb(83, 146, 249);color: rgb(255, 255, 255);box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;transition: 0.15s ease-in-out">
+                                    <div style="display: flex;align-items: center">
+                                        <div>
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                            <span style="margin-left: 4px;font-size: 16px;line-height: 22px;font-weight: 400">Search</span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row pt-5 pt-xl-8 mb-5 mb-xl-9 pb-xl-1" style="margin-left: 100px;margin-right: 100px">
+            <div class="col-lg-4 col-xl-3 mt-xl-1">
+                <div class="navbar-expand-xl navbar-expand-xl-collapse-block">
+                    <div id="sidebar" class="collapse navbar-collapse">
+                        <div class="mb-6 w-100">
+                            <div class="sidenav border border-color-8 rounded-xs">
+                                <div id="shopCategoryAccordion" class="accordion rounded-0 shadow-none">
+                                    <div class="border-0">
+                                        <div class="card-collapse" id="shopCategoryHeadingOne">
+                                            <h3 class="mb-0">
+                                                <button class="btn btn-link btn-block card-btn py-2 px-5 collapsed"
+                                                        style="line-height: 3">
+                                                   <span class="row align-items-center">
+                                                       <span class="col-2">
+                                                           <span class="text-dark mb-3"
+                                                                 style="font-size: 1.063rem;font-weight: 500">Airport</span>
+                                                       </span>
+                                                       <span class="col-10 text-right">
+                                                           <span class="card-btn-arrow">
+                                                               <i class="fas fa-chevron-down small"></i>
+                                                           </span>
+                                                       </span>
+                                                   </span>
+                                                </button>
+                                            </h3>
+                                        </div>
+                                        <div id="shopCategoryOne" class="collapse show border-bottom">
+
+                                            <div class="card-body pt-0 mt-1 px-5 pb-4">
+                                                <div class="d-flex align-items-center justify-content-between mb-3">
+                                                    <label class="form-check-label" for="selectAllToggle">Select all
+                                                        brands</label>
+                                                    <div class="form-check form-switch ms-3">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               id="selectAllToggle" style="font-size: 24px">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3"
+                                                     style="font-size: 0.875rem;line-height: 1;color: #67747c !important">
+
+                                                    <th:block th:each="item: ${Airline}">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox"
+                                                                   class="form-check-input airline-checkbox flight-select"
+
+                                                                   th:id="'checkbox-' + ${item.id}"
+                                                                   style="font-size: 25px">
+                                                            <label class="cus-control-label mt-2 ml-3"
+                                                                   th:for="'checkbox-'+${item.name}"
+                                                                   th:text="${item.name}">
+
+                                                            </label>
+                                                        </div>
+                                                    </th:block>
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="shopCartAccordion" class="accordion rounded shadow-none border-bottom">
+                                    <div class="border-0">
+                                        <div class="card-collapse" id="shopCardHeadingOne">
+                                            <h3 class="mb-0">
+                                                <button type="button" class="btn btn-link btn-block card-btn "
+                                                        style="line-height: 3">
+                                                <span class="row align-items-center">
+                                                    <span class="col-5">
+                                                        <span class="d-block"
+                                                              style="font-size: 1.063rem;font-weight: 500 !important;color: #3b444f !important">Price Range ($)</span>
+                                                    </span>
+                                                    <span class="col-7 text-right">
+                                                        <span class="card-btn-arrow">
+                                                            <i class="fas fa-chevron-down small"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                </button>
+                                            </h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- Range Slider -->
+                                            <div class="price-range-slider">
+                                                <div class="price-range-display">
+                                                    <span id="price-range-text">£200 - £3456</span>
+                                                </div>
+                                                <div class="slider-container">
+                                                    <div id="price-range" class="slider"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="shopCartAccordion" class="accordion rounded shadow-none border-bottom">
+                                    <div class="border-0">
+                                        <div class="card-collapse" id="shopCardHeadingOne">
+                                            <h3 class="mb-0">
+                                                <button type="button" class="btn btn-link btn-block card-btn "
+                                                        style="line-height: 3">
+                                                <span class="row align-items-center">
+                                                    <span class="col-5">
+                                                        <span class="d-block"
+                                                              style="font-size: 1.063rem;font-weight: 500 !important;color: #3b444f !important">Schedule</span>
+                                                    </span>
+                                                    <span class="col-7 text-right">
+                                                        <span class="card-btn-arrow">
+                                                            <i class="fas fa-chevron-down small"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                </button>
+                                            </h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- Range Slider -->
+                                            <div class="price-range-slider">
+                                                <div class="price-range-display">
+                                                    <span id="ScheduleStart">£200 - £3456</span>
+                                                </div>
+                                                <div class="slider-container">
+                                                    <div id="Schedule-range" class="slider"></div>
+                                                </div>
+                                            </div>
+                                            <div class="price-range-slider pt-5">
+                                                <div class="price-range-display">
+                                                    <span id="ScheduleEnd">£200 - £3456</span>
+                                                </div>
+                                                <div class="slider-container">
+                                                    <div id="Schedule-range-end" class="slider"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="shopCartAccordion" class="accordion rounded shadow-none border-bottom">
+                                    <div class="border-0">
+                                        <div class="card-collapse" id="shopCardHeadingOne">
+                                            <h3 class="mb-0">
+                                                <button type="button" class="btn btn-link btn-block card-btn "
+                                                        style="line-height: 3">
+                                                <span class="row align-items-center">
+                                                    <span class="col-5">
+                                                        <span class="d-block"
+                                                              style="font-size: 1.063rem;font-weight: 500 !important;color: #3b444f !important">Time</span>
+                                                    </span>
+                                                    <span class="col-7 text-right">
+                                                        <span class="card-btn-arrow">
+                                                            <i class="fas fa-chevron-down small"></i>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                </button>
+                                            </h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- Range Slider -->
+                                            <div class="price-range-slider">
+                                                <div class="price-range-display">
+                                                    <span id="TimeRange">£200 - £3456</span>
+                                                </div>
+                                                <div class="slider-container">
+                                                    <div id="Time-range" class="slider"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 mt-xl-1">
+                <div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 pb-1">
+                        <h3 class="mb-4 mb-md-0 text-center"
+                            style="font-size: 1.313rem;font-weight: 500;line-height: 1;text-align: left"
+                            th:text="${flightArrival.size()}+' results found.'">1984 results
+                            found.</h3>
+                        <div class="d-flex align-items-center justify-content-between justify-content-md-start">
+                            <a href="#" onclick="goBack()">Change</a>
+                        </div>
+                    </div>
+                    <div class="tab-content" style="display: block;border: none">
+
+
+                        <div class="row">
+
+                            <div id="flight-item"
+                                 class="hover-bg-gray-1 border rounded-xs py-4 px-4 px-xl-5"
+                                 style="border-radius: 0.188rem" th:data-airline-id="${flight.idFlight}"
+                                 th:data-price="${flight.price}" th:data-TimeDepart="${flight.timeDepart}"
+                                 th:data-timeArrival="${flight.timeArrival}"
+                                 th:data-duration="${flight.durationString}">
+                                <div class="row align-items-center text-center">
+                                    <div class="col-md mb-4 mb-md-0">
+                                        <img class="img-fluid"
+                                             th:src="${'http://localhost:8686/images/flight/'+flight.imageUrl}"/>
+                                    </div>
+                                    <div class="col-md mb-4 mb-md-0">
+                                        <div class="" style="display: flex;align-items: center;justify-content: center">
+                                            <div class="mr-lg-3 mb-1 mb-lg-0">
+                                                <i class="fa-solid fa-plane-departure"
+                                                   style="color: #297cbb !important;font-size: 1.875rem"></i>
+                                            </div>
+                                            <div class="text-left">
+                                                <h6 class="mb-0"
+                                                    style="font-weight: 500;font-size: 1.9rem;color: #18181b !important;line-height: 1.5;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                    th:text="${flight.timeDepart}">
+                                                    18:30
+                                                </h6>
+                                                <span class=""
+                                                      style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                      th:text="${flight.dateDepart}">New Delhi</span>
+                                                <br>
+                                                <span
+                                                    class=""
+                                                    style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                    th:text="${flight.nameAirport}">New Delhi</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md mb-4 mb-md-0">
+                                        <div class="mb-0"
+                                             style="display: flex;align-items: center;justify-content: center;flex-direction: column">
+                                            <h6 th:text="${flight.durationString}"
+                                                style="font-weight: 500 !important;font-size: 1.2rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                                02 hrs 45 mins
+                                            </h6>
+
+                                            <div class="border-top my-1"
+                                                 style="width: 3.75rem;border-width: 2px !important;border-color: #297cbb !important;margin-top: -2vh"></div>
+                                            <h6 style="font-weight: 500 !important;font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                                Non Stop
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md mb-4 mb-md-0">
+                                        <div class="" style="display: flex;align-items: center;justify-content: center">
+                                            <div class="mr-lg-3 mb-1 mb-lg-0">
+                                                <i class="fa-solid fa-plane-arrival"
+                                                   style="color: #297cbb !important;font-size: 1.875rem"></i>
+
+                                            </div>
+                                            <div class="text-left">
+                                                <h6 class="mb-0"
+                                                    style="font-weight: 500;font-size: 1.9rem;color: #18181b !important;line-height: 1.5;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                    th:text="${flight.timeArrival}">
+                                                    18:30
+                                                </h6>
+                                                <span class=""
+                                                      style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                      th:text="${flight.dateArrival}">New Delhi</span>
+                                                <br>
+                                                <span
+                                                    class=""
+                                                    style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                    th:text="${flight.nameArrivalAirport}">New Delhi</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2gdot8">
+                                        <div class="border-xl-left">
+                                            <div class="ml-xl-5">
+                                                <div class="mb-2">
+                                                    <div class="mb-2 text-lh-1dot4">
+                                                                    <span th:text="'$'+${flight.price}"
+                                                                          class="font-weight-bold font-size-22"
+                                                                          style="font-weight: 500 !important;font-size: 1.375rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                                                        £4,177
+                                                                    </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 pb-1">
+                        <h3 class="mb-4 mb-md-0 text-center"
+                            style="font-size: 1.313rem;font-weight: 500;line-height: 1;text-align: left"
+                            th:text="'Select return flight '+${NameArrivalAirport}">Chọn chuyến bay trở về Hà Nội</h3>
+
+                    </div>
+                    <p>Additional price per passenger. Price includes taxes and fees.</p>
+                    <div class="tab-content" style="display: block;border: none;background-color: transparent">
+
+                        <th:block th:each="flightarrivals,index : ${flightArrival}">
+                            <div class="row">
+
+                                <div id="flight-itemArrival"
+                                     class="hover-bg-gray-1 border rounded-xs py-4 px-4 px-xl-5 mb-4"
+                                     style="border-radius: 0.188rem" th:data-airline-id="${flightarrivals.idFlight}"
+                                     th:data-price="${flightarrivals.price}"
+                                     th:data-TimeDepart="${flightarrivals.timeDepart}"
+                                     th:data-timeArrival="${flightarrivals.timeArrival}"
+                                     th:data-duration="${flightarrivals.durationString}">
+                                    <div class="row align-items-center text-center">
+                                        <div class="col-md mb-4 mb-md-0">
+                                            <img class="img-fluid"
+                                                 th:src="${'http://localhost:8686/images/flight/'+flightarrivals.imageUrl}"/>
+                                        </div>
+                                        <div class="col-md mb-4 mb-md-0">
+                                            <div class=""
+                                                 style="display: flex;align-items: center;justify-content: center">
+                                                <div class="mr-lg-3 mb-1 mb-lg-0">
+                                                    <i class="fa-solid fa-plane-departure"
+                                                       style="color: #297cbb !important;font-size: 1.875rem"></i>
+                                                </div>
+                                                <div class="text-left">
+                                                    <h6 class="mb-0"
+                                                        style="font-weight: 500;font-size: 1.9rem;color: #18181b !important;line-height: 1.5;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                        th:text="${flightarrivals.timeDepart}">
+                                                        18:30
+                                                    </h6>
+                                                    <span class=""
+                                                          style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                          th:text="${flightarrivals.dateDepart}">New Delhi</span>
+                                                    <br>
+                                                    <span class=""
+                                                          style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                          th:text="${flightarrivals.nameAirport}">New Delhi</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md mb-4 mb-md-0">
+                                            <div class="mb-0"
+                                                 style="display: flex;align-items: center;justify-content: center;flex-direction: column">
+                                                <h6 th:text="${flightarrivals.durationString}"
+                                                    style="font-weight: 500 !important;font-size: 1.2rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                                    02 hrs 45 mins
+                                                </h6>
+
+                                                <div class="border-top my-1"
+                                                     style="width: 3.75rem;border-width: 2px !important;border-color: #297cbb !important;margin-top: -2vh"></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md mb-4 mb-md-0">
+                                            <div class=""
+                                                 style="display: flex;align-items: center;justify-content: center">
+                                                <div class="mr-lg-3 mb-1 mb-lg-0">
+                                                    <i class="fa-solid fa-plane-arrival"
+                                                       style="color: #297cbb !important;font-size: 1.875rem"></i>
+
+                                                </div>
+                                                <div class="text-left">
+                                                    <h6 class="mb-0"
+                                                        style="font-weight: 500;font-size: 1.9rem;color: #18181b !important;line-height: 1.5;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                        th:text="${flightarrivals.timeArrival}">
+                                                        18:30
+                                                    </h6>
+                                                    <span class=""
+                                                          style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                          th:text="${flightarrivals.dateArrival}">New Delhi</span>
+                                                    <br>
+                                                    <span class=""
+                                                          style="font-size: 1rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                                          th:text="${flightarrivals.nameArrivalAirport}">New Delhi</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2gdot8">
+                                            <div class="border-xl-left">
+                                                <div class="ml-xl-5">
+                                                    <div class="mb-2">
+                                                        <div class="mb-2 text-lh-1dot4">
+                                                                    <span th:text="'$'+${flightarrivals.price}"
+                                                                          class="font-weight-bold font-size-22"
+                                                                          style="font-weight: 500 !important;font-size: 1.375rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                                                        £4,177
+                                                                    </span>
+                                                        </div>
+                                                        <a th:if="${searchFlightDTO.selectedHotel==false}"
+                                                           th:href="'/InformationFly/'+${flightarrivals.id}"
+                                                           class="btn btn-outline-primary border-radius-3 d-flex align-items-center justify-content-center min-height-50 font-weight-bold border-width-2 py-2 w-100"
+                                                           style="min-height: 3.125rem">Book Now</a>
+                                                        <a th:if="${searchFlightDTO.selectedHotel==true}"
+                                                           th:href="'/InformationFlightHotel/'+${flightarrivals.id}"
+                                                           class="btn btn-outline-primary border-radius-3 d-flex align-items-center justify-content-center min-height-50 font-weight-bold border-width-2 py-2 w-100"
+                                                           style="min-height: 3.125rem">Book Now</a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </th:block>
+
+
+                        <input type="hidden" id="minPrice" th:value="${MinPrice}">
+                        <input type="hidden" id="maxPrice" th:value="${MaxPrice}">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    <div id="flight-details-popup" class="custombox-overlay custombox-fadein custombox-open"
+         style="background-color: rgb(0, 0, 0);display: none;">
+
+    </div>
+    <div id="flight-details-content"
+         class="custombox-content custombox-x-center custombox-y-center custombox-fadein custombox-open"
+         style="animation-duration: 300ms; animation-delay: 150ms;display: none">
+        <div class="js-modal-window u-modal-window " style="display: block;width: 153vh">
+            <div class="card mx-4 mx-xl-0 mb-4 mb-md-0" style="width: 103%">
+                <button id="close-popup" type="button" class="border-0 mr-n4 mt-n4"
+                        style="width: 3.125rem;height: 3.125rem;cursor: pointer;display: flex;align-items: center;justify-content: center;position:absolute;border-radius: 50%;background-color: #297cbb !important;top: 0;right: 0">
+                    <i class="fa-solid fa-xmark" style="color: #fff !important;font-size: 0.875rem"></i>
+                </button>
+                <header class="card-header py-4 px-4" style="background-color: #f8f9fa !important">
+                    <div class="row align-items-center text-center">
+                        <div class="col-md-auto mb-4 ">
+                            <div class="d-block d-lg-flex flex-horizontal-center">
+                                <img style="max-width: 8%" id="img-popup" class="img-fluid mr-3 mb-3 mb-lg-0"
+                                     src="https://transvelo.github.io/mytravel-html/assets/img/90x90/img1.png">
+                                <div id="nameAirline" class=""
+                                     style="font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">Spicejet
+                                    SG 143 | Boeing 737-700
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-auto mb-4 mb-md-0">
+                            <div class="mx-2 mx-xl-3 "
+                                 style="display: flex;align-items: flex-start;justify-content: center">
+                                <div class="mr-lg-3 mb-1 mb-lg-0">
+                                    <i class="fa-solid fa-plane-departure"
+                                       style="font-size: 1.875rem;color: #297cbb !important"></i>
+                                </div>
+                                <div style="text-align: left">
+                                    <h6 class="mb-0"
+                                        style="font-weight: 500 !important;font-size: 1.313rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        18:30</h6>
+                                    <div id="dateDepart" class=""
+                                         style="font-size: 0.875rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Sat, 21 Sep 19
+                                    </div>
+                                    <span class=""
+                                          style="font-size: 0.875rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">New Delhi, India</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-auto mb-4 mb-md-0">
+                            <div class="mx-2 mx-xl-3"
+                                 style="display: flex;align-items: center;justify-content: center;flex-direction: column">
+                                <h6 id="durationString"
+                                    style="font-weight: 500!important;font-size: 0.975rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                    02 hrs 45 mins</h6>
+                                <div class="border-top my-1"
+                                     style="width: 3.75rem;border-color: #297cbb !important;border-width: 2px !important"></div>
+                                <div style="font-size: 0.875rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-auto mb-4 mb-md-0">
+                            <div class="mx-2 mx-xl-3 "
+                                 style="display: flex;align-items: flex-start;justify-content: center">
+                                <div class="mr-lg-3 mb-1 mb-lg-0">
+                                    <i class="fa-solid fa-plane-arrival"
+                                       style="font-size: 1.875rem;color: #297cbb !important"></i>
+
+                                </div>
+                                <div style="text-align: left">
+                                    <h6 id="TimeArrival" class="mb-0"
+                                        style="font-weight: 500 !important;font-size: 1.313rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        18:30</h6>
+                                    <div id="dateArrival" class=""
+                                         style="font-size: 0.875rem;color: #18181b !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Sat, 21 Sep 19
+                                    </div>
+                                    <span class=""
+                                          style="font-size: 0.875rem;color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">New Delhi, India</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!--                <div class="card-body py-4 p-md-5">-->
+                <!--                    <div class="row">-->
+                <!--                        <div class="col">-->
+                <!--                            <ul class="d-block d-md-flex list-group list-group-borderless list-group-horizontal list-group-flush no-gutters">-->
+                <!--                                <li class="mr-md-8 mr-lg-10 mb-5 list-group-item py-0">-->
+                <!--                                    <div class="" style="font-weight: 500 !important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Baggage</div>-->
+                <!--                                    <span class="" style="color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Adult</span>-->
+                <!--                                </li>-->
+                <!--                                <li class="mr-md-8 mr-lg-10 mb-5 list-group-item py-0">-->
+                <!--                                    <div class="" style="font-weight: 500 !important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Baggage</div>-->
+                <!--                                    <span class="" style="color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Adult</span>-->
+                <!--                                </li>-->
+                <!--                                <li class="mr-md-8 mr-lg-10 mb-5 list-group-item py-0">-->
+                <!--                                    <div class="" style="font-weight: 500 !important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Baggage</div>-->
+                <!--                                    <span class="" style="color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Adult</span>-->
+                <!--                                </li>-->
+                <!--                            </ul>-->
+                <!--                        </div>-->
+                <!--                        <div class="col-auto">-->
+                <!--                            <div class="" style="min-width: 15.625rem">-->
+                <!--                                <h5 style="font-size: 1.063rem;font-weight: 500 !important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Fare breakup</h5>-->
+                <!--                                <ul class="list-unstyled mb-0" style="font-size: 1rem">-->
+                <!--                                    <li class="d-flex py-2"  style="justify-content: space-between">-->
+                <!--                                        <span class="" style="font-weight: 500!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">-->
+                <!--                                            Base Fare-->
+                <!--                                        </span>-->
+                <!--                                        <span class="" style="font-weight: 400!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #77838f !important">-->
+                <!--                                         €580,00-->
+                <!--                                        </span>-->
+                <!--                                    </li>-->
+                <!--                                    <li class="d-flex py-2"  style="justify-content: space-between">-->
+                <!--                                        <span class="" style="font-weight: 500!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">-->
+                <!--                                            Surcharges-->
+                <!--                                        </span>-->
+                <!--                                        <span class="" style="font-weight: 400!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #77838f !important">-->
+                <!--                                         €00,00-->
+                <!--                                        </span>-->
+                <!--                                    </li>-->
+                <!--                                    <li class="d-flex py-2"  style="justify-content: space-between">-->
+                <!--                                        <span class="" style="font-weight: 500!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">-->
+                <!--                                           Pay Amount-->
+                <!--                                        </span>-->
+                <!--                                        <span class="" style="font-weight: 400!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #77838f !important">-->
+                <!--                                         €00,00-->
+                <!--                                        </span>-->
+                <!--                                    </li>-->
+                <!--                                </ul>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="Modalstyled__Dialog-sc-1gd4uo9-0 dbxnYa" style="display: none" id="ModalContainer">
+        <div class="Modalstyled__TransparentBackdrop-sc-1gd4uo9-1 hfzrUP" id="ModalHeader" style="opacity: 0"></div>
+        <div class="Modalstyled__Backdrop-sc-1gd4uo9-2 jQOnFh">
+            <div class="Modalstyled__ContentContainer-sc-1gd4uo9-3 eVMow">
+                <form th:action="@{/SearchFlight}" method="get">
+                    <div class="Box-sc-kv6pi1-0 cJiLOx sc-httYMd ikgtwJ" id="ModalBody" style="opacity: 0;">
+                        <div class="edit-container">
+                            <div class="edit-section">
+                                <i class="fa-solid fa-pen-fancy" style="font-size: 24px"></i>
+                                <span class="edit-text">Edit</span>
+                            </div>
+                            <button type="button" class="close-btn" id="closeBtn">Close</button>
+                        </div>
+                        <div class="row d-block nav-select d-lg-flex mb-lg-3 px-2 px-lg-3 align-items-end">
+                            <div class="col-sm-5 ">
+                                            <span class="d-block text-gray mb-0"
+                                                  style="color: #67747c !important;font-weight: 400;text-align: left;font-size: 1.2rem">City or airport name</span>
+                                <div class="search-container">
+                                    <div class="search-item" id="search-from">
+                                        <i class="fa-solid fa-plane-departure"></i>
+                                        <input
+                                                type="text"
+                                                placeholder="Bay từ"
+                                                id="from-input"
+                                                autocomplete="off"
+                                        />
+                                        <input type="hidden" id="from-input-id"
+                                               th:field="${searchFlightDTO.departureAirport}"/>
+                                    </div>
+                                    <div class="search-dropdown" id="from-dropdown" style="width: 99%">
+                                        <ul id="airport-list-from"></ul>
+                                    </div>
+                                    <button type="button" class="swap-button">
+                                        <i class="fa-solid fa-right-left"></i>
+                                    </button>
+                                    <div class="search-item" id="search-to">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <input
+                                                type="text"
+                                                placeholder="Bay đến"
+                                                id="to-input"
+                                                autocomplete="off"
+                                        />
+                                        <input type="hidden" id="to-input-id"
+                                               th:field="${searchFlightDTO.arrivalAirport}"/>
+                                    </div>
+                                    <div class="search-dropdown" id="to-dropdown">
+
+                                        <ul id="airport-list"></ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="search-container">
+                                    <div class="date-picker-container">
+                                        <div>
+                                            <label for="datePickerInputFrom" class="label">Departure date</label>
+                                            <div class="date-picker">
+                                                <i class="fa-solid fa-calendar"></i>
+                                                <input type="date" id="datePickerInput"
+                                                       th:field="${searchFlightDTO.departureTime}"
+                                                       class="js-range-datepicker font-size-16 shadow-none font-weight-medium form-control hero-form bg-transparent border-0 flatpickr-input"
+                                                       style="font-weight: 500;font-size: 1rem;box-shadow: none;width: 156px;height: 20px"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div id="ArrivalDate">
+                                            <label for="datePickerInputTo" class="label">Return date</label>
+                                            <div class="date-picker">
+                                                <i class="fa-solid fa-calendar"></i>
+                                                <input type="date" id="datePickerOutput"
+                                                       th:field="${searchFlightDTO.arrivalTime}"
+                                                       class="js-range-datepicker font-size-16 shadow-none font-weight-medium form-control hero-form bg-transparent border-0 flatpickr-input"
+                                                       style="font-weight: 500;font-size: 1rem;box-shadow: none;width: 156px;height: 20px"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="row d-block nav-select d-lg-flex mb-lg-3 px-2 px-lg-3 align-items-end">
+                            <div class="col-sm-5 " id="AtHotel" style="display: none">
+                                            <span class="text-left d-block"
+                                                  style="color: #67747c !important;font-weight: 400;font-size: 1.2rem;text-align: left;margin-left: 1vh">At</span>
+                                <div class="search-container">
+                                    <div class="search-item" id="search-At">
+                                        <i class="fa-solid fa-plane-departure"></i>
+                                        <input
+                                                type="text"
+                                                placeholder="Bay từ"
+                                                id="At-input"
+                                                autocomplete="off"
+                                        />
+
+                                        <div class="search-dropdown" style="width: 81%;top: 89%;left: 3%"
+                                             id="At-dropdown">
+                                            <ul id="At-List"></ul>
+                                        </div>
+                                        <input type="hidden" id="idCity" th:field="${searchFlightDTO.idCity}">
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="col-sm-5" id="TimeHotel" style="display:none;">
+
+                                <div class="search-container">
+                                    <div class="date-picker-container">
+                                        <div>
+                                            <label class="label">Check In</label>
+                                            <div class="date-picker">
+                                                <i class="fa-solid fa-calendar"></i>
+                                                <input type="date" id="CheckInDate"
+                                                       th:field="${searchFlightDTO.checkInTime}"/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="label">Check Out</label>
+                                            <div class="date-picker">
+                                                <i class="fa-solid fa-calendar"></i>
+                                                <input type="date" id="CheckOut"
+                                                       th:field="${searchFlightDTO.checkOutTime}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5" id="RoomNumber" style="display: none">
+  <span class="d-block text-gray mb-2"
+        style="color: #67747c !important;font-weight: 400;text-align: left;font-size: 1.2rem">Room Number</span>
+                                <div class="dropdown-container">
+
+                                    <div class="dropdown">
+                                        <select id="classSelect" th:field="${searchFlightDTO.quantityRoom}"
+                                                class="form-select "
+                                                style="margin-top: 2vh">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="5">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">7</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+  <span class="d-block text-gray mb-2"
+        style="color: #67747c !important;font-weight: 400;text-align: left;font-size: 1.2rem">People Fly</span>
+                                <div class="dropdown-container">
+
+                                    <div class="dropdown">
+                                        <select id="classSelect" th:field="${searchFlightDTO.numberPeopleRight}"
+                                                class="form-select " style="margin-top: 2vh">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="5">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 ">
+                                            <span class="text-left d-block"
+                                                  style="color: #67747c !important;font-weight: 400;font-size: 1.2rem;text-align: left">tYPE sEAT</span>
+                                <div class="dropdown-container">
+
+                                    <div class="dropdown">
+                                        <select id="classSelect" th:field="${searchFlightDTO.typeFlight}"
+                                                class="form-select "
+                                                style="margin-top: 2vh">
+
+                                            <option value="First Class">First Class</option>
+                                            <option value="Business Class">Business Class</option>
+                                            <option value="Economy Class">Economy Class</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="basicDropdownClick"
+                                     class="dropdown-menu  dropdown-unfold col-11 m-0 u-unfold--css-animation slideInUp "
+                                     style="max-width: 22%">
+                                    <div class="w-100 py-2 px-3 mb-3">
+                                        <div class="js-quantity mx-3 d-grid align-items-center justify-content-between"
+                                             style="grid-template-columns: 1fr 1fr">
+                                                        <span class="block"
+                                                              style="font-weight: 500;color: #77838f !important;font-size: 1rem;">Rooms</span>
+                                            <div class="d-flex">
+                                                <a class="js-minus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                   style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                    <i class="fa-solid fa-minus" style="color: black"></i>
+                                                </a>
+                                                <input class="js-result form-control h-auto border-0 rounded p-0 max-width-6 text-center"
+                                                       value="1" style="color: #3b444f">
+                                                <a class="js-plus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                   style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                    <i class="fa-solid fa-plus" style="color: black"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100 py-2 px-3 mb-3">
+                                        <div class="js-quantity mx-3 d-grid align-items-center justify-content-between"
+                                             style="grid-template-columns: 1fr 1fr">
+                                                        <span class="block"
+                                                              style="font-weight: 500;color: #77838f !important;font-size: 1rem;">Adults</span>
+                                            <div class="d-flex">
+                                                <a class="js-minus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                   style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                    <i class="fa-solid fa-minus" style="color: black"></i>
+                                                </a>
+                                                <input class="js-result form-control h-auto border-0 rounded p-0 max-width-6 text-center"
+                                                       value="1" style="color: #3b444f">
+                                                <a class="js-plus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                   style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                    <i class="fa-solid fa-plus" style="color: black"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100 py-2 px-3 mb-3">
+                                        <div class="js-quantity mx-3 d-grid align-items-center justify-content-between"
+                                             style="grid-template-columns: 1fr 1fr">
+                                                        <span class="block"
+                                                              style="font-weight: 500;color: #77838f !important;font-size: 1rem;">Child</span>
+                                            <div class="d-flex">
+                                                <a class="js-minus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                   style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                    <i class="fa-solid fa-minus" style="color: black"></i>
+                                                </a>
+                                                <input class="js-result form-control h-auto border-0 rounded p-0 max-width-6 text-center"
+                                                       value="1" style="color: #3b444f">
+                                                <a class="js-plus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                   style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                    <i class="fa-solid fa-plus" style="color: black"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-5 " id="btn-Submit"
+                                 style="position: absolute;right: 41vh;top: 28vh">
+                                <button type="submit"
+                                        class="btn btn-primary w-50 mb-xl-0 mb-lg-1 transition-3d-hover"
+                                        style="border-radius: 3px;transition: all 0.2s ease-in-out;background-color: #297cbb;border-color: #297cbb;
+                                        position:absolute;left: 22vh;width: calc(96% - 12px) !important;">
+                                    <i class="fa-solid fa-magnifying-glass mr-2"
+                                       style="font-size: 1.25rem;"></i>
+                                    Search
+                                </button>
+                            </div>
+
+
+                        </div>
+                        <div class="row d-block nav-select d-lg-flex mg-lg-3 px-2 px-lg-3 align-items-end">
+                            <div class="col-sm-5 d-flex align-items-center justify-content-center"
+                                 style="position: relative;left: -20vh;top: -1vh;margin-top: 2vh">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" th:field="${searchFlightDTO.selectedHotel}"
+                                           type="checkbox"
+                                           id="flexSwitchCheckDefault" style="font-size: 21px">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault"
+                                           style="position: absolute;top: 3px;width: 26vh">Find Hotel
+                                       </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script th:fragment="customScripts" th:src="@{/user/SearchFlight/RoundTrip.js}">
+
+    </script>
+
+</main>
+
+
+</body>
+</html>

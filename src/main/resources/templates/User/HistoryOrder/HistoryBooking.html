@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutLogin :: mainContent('History Order',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block" style="padding-top: 4rem">
+ <div class="container my-5">
+     <h1 class="text-center mb-4">Booking List</h1>
+
+     <div class="tab-content active" id="hotel">
+         <h3>Hotel Booking Details</h3>
+         <form th:action="@{/HistoryBooking}" method="get">
+             <div class="form-row">
+                 <div class="col">
+                     <input type="text" name="BookingCode" th:value="${BookingCode}" class="form-control" placeholder="Hotel Name">
+                 </div>
+
+
+
+             </div>
+             <div class="col mb-3 mt-3">
+                 <button type="submit" class="btn btn-primary">Search</button>
+             </div>
+         </form>
+         <table>
+             <thead>
+             <tr>
+                 <th>Booking Code</th>
+                 <th>Date</th>
+                 <th>TotalPrice</th>
+                <th>Detail</th>
+             </tr>
+             </thead>
+             <tbody>
+                <th:block th:each="hotel,index:${Booking}">
+                    <tr>
+                        <td th:text="${hotel.bookingCode}"></td>
+                        <td th:text="${hotel.createAt}"></td>
+                        <td th:text="${hotel.totalPrice}"></td>
+                        <td>
+                            <div class="detail-buttons">
+                                <a  th:href="@{'/HistoryOrderFlight/'+${hotel.idFlight}}">Flight</a>
+                                <a th:href="@{'/HistoryOrderHotel/'+${hotel.idHotel}}" th:disabled="${hotel.idHotel==0}" th:style="${hotel.idHotel==0}?'opacity:0.2; pointer-events: none; cursor: default;':'color:white'" >Hotel</a>
+                            </div>
+                        </td>
+                    </tr>
+                </th:block>
+             </tbody>
+         </table>
+         <div class="pagination">
+             <!-- Nút "Previous" -->
+             <a th:href="@{/HistoryBooking(flightPage=${current - 1}, BookingCode=${BookingCode})}"
+                th:classappend="${current > 0 ? '' : 'disabled'}"
+                class="btn btn-primary"
+                th:disabled="${current == 0}">
+                 Previous
+             </a>
+
+             <!-- Hiển thị số trang hiện tại -->
+             <span>Page <strong th:text="${current + 1}"></strong> of <strong th:text="${totalPages}"></strong></span>
+
+             <!-- Nút "Next" -->
+             <a th:href="@{/HistoryBooking(flightPage=${current + 1}, BookingCode=${BookingCode})}"
+                th:classappend="${current + 1 < totalPages ? '' : 'disabled'}"
+                class="btn btn-primary"
+                th:disabled="${current + 1 >= totalPages}">
+                 Next
+             </a>
+
+         </div>
+
+
+     </div>
+
+ </div>
+    <script th:fragment="customScripts" th:src="@{/user/HistoryOrder/HistoryOrder.js}"></script>
+
+        </main>
+
+</body>
+</html>

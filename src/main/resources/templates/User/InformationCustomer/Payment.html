@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layout :: mainContent('Detail Hotel',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block" style="background-color: #ebf0f7 !important;padding-top: 4rem">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-xl-9">
+                <div class="mb-5 shadow-soft"
+                     style="background-color: white;border-radius: 0.25rem!important;box-shadow: 0 3px 6px 0 rgba(140, 152, 164, 0.25) !important">
+                    <div class="py-3 px-4 px-xl-12 border-bottom">
+                        <ul class="list-group flex-nowrap  list-group-horizontal list-group-borderless flex-center-between pt-1">
+                            <li class="list-group-item text-center flex-shrink-0 flex-xl-shrink-1">
+                                <div class="mr-auto ml-auto border mb-2"
+                                     style="display: flex;align-items: center;justify-content: center;border-width: 2px;color: #3b444f;border-color: #297cbb !important;border-radius: 50% !important;width: 2.5rem;height: 2.5rem;border: 1px solid #e7eaf3 !important">
+                                    1
+                                </div>
+                                <div style="color: #297cbb !important;font-size: 1rem;font-weight: 400;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5">
+                                    Customer information
+                                </div>
+                            </li>
+                            <li class="list-group-item text-center flex-shrink-0 flex-xl-shrink-1">
+                                <div class="mr-auto ml-auto border mb-2"
+                                     style="display: flex;align-items: center;justify-content: center;border-width: 2px;color: white;border-color: #297cbb !important;border-radius: 50% !important;width: 2.5rem;height: 2.5rem;border: 1px solid #e7eaf3 !important;background-color: #297cbb !important">
+                                    2
+                                </div>
+                                <div style="color: #297cbb !important;font-size: 1rem;font-weight: 400;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5">
+                                    Payment information
+                                </div>
+                            </li>
+                            <li class="list-group-item text-center flex-shrink-0 flex-xl-shrink-1">
+                                <div class="mr-auto ml-auto border mb-2"
+                                     style="display: flex;align-items: center;justify-content: center;border-width: 2px;color: #3b444f;border-color: #297cbb !important;border-radius: 50% !important;width: 2.5rem;height: 2.5rem;border: 1px solid #e7eaf3 !important;">
+                                    2
+                                </div>
+                                <div style="color: #297cbb !important;font-size: 1rem;font-weight: 400;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5">
+                                    Payment information
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 pb-5 px-5">
+                        <h5 id="scroll-description" class="text-dark mb-4"
+                            style="font-size: 1.313rem;font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;text-align: left">
+                            Your Card Information
+                        </h5>
+                      <ul class="nav nav-classic nav-choose border-0 nav-justified border mx-n3">
+                          <li class="nav-item mx-3 mb-4 mb-md-0">
+                              <a class="rounded py-5 border-width-2 border nav-link active" style="font-weight: 500 !important">
+                                  <div class="ml-2 mt-2" style="height: 1.563rem;width: 1.563rem;opacity: 1;top: 0;left: 0;display: flex;align-items: center;justify-content: center;position: absolute;background-color: #297cbb !important;border-radius: 50% !important">
+                                      <i class="fa-solid fa-check" style="color: white;font-size: 0.938rem"></i>
+                                  </div>
+                                  <div class="d-md-flex justify-content-md-center align-items-md-center flex-wrap">
+                                      <img class="img-fluid mb-3" src="https://transvelo.github.io/mytravel-html/assets/img/199x35/img1.jpg"/>
+                                      <div class="w-100 text-dark" style="color: #212529 !important">Payment with credit card</div>
+                                  </div>
+                              </a>
+                          </li>
+                      </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade pt-8 active show">
+                                <form class="js-validate mt-2">
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-4">
+                                            <div class="js-form-message">
+                                                <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">Card Holder Name</label>
+                                                <input type="text" class="form-control" style="border-radius: 0.3125rem;font-size: 0.875rem;height: calc(1.5em + 1.8rem + 4px);padding: 0.9rem 1rem">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 mb-4">
+                                            <div class="js-form-message">
+                                                <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">Card Holder Name</label>
+                                                <input type="text" class="form-control" style="border-radius: 0.3125rem;font-size: 0.875rem;height: calc(1.5em + 1.8rem + 4px);padding: 0.9rem 1rem">
+                                            </div>
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col-sm-6 mb-4">
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-4 mb-md-0">
+                                                    <div class="js-form-message">
+                                                        <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">Expiry Month</label>
+                                                        <input type="text" class="form-control" style="border-radius: 0.3125rem;font-size: 0.875rem;height: calc(1.5em + 1.8rem + 4px);padding: 0.9rem 1rem">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="js-form-message">
+                                                        <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">Expiry Year</label>
+                                                        <input type="text" class="form-control" style="border-radius: 0.3125rem;font-size: 0.875rem;height: calc(1.5em + 1.8rem + 4px);padding: 0.9rem 1rem">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 mb-4">
+                                            <div class="js-form-message">
+                                                <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">CCV</label>
+                                                <input type="text" class="form-control" style="border-radius: 0.3125rem;font-size: 0.875rem;height: calc(1.5em + 1.8rem + 4px);padding: 0.9rem 1rem">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary w-100 rounded-sm transition-3d-hover" style="font-size: 1rem;font-weight: 500 !important;padding-top: 1rem;padding-bottom: 1rem;background-color: #297cbb;border-color: #297cbb">CONFIRM BOOKING</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xl-3">
+                <div class="shadow-soft bg-white"
+                     style="background-color: #fff !important;border-radius: 0.25rem !important;box-shadow: 0 3px 6px 0 rgba(140, 152, 164, 0.25) !important;width: 140%;margin-bottom: 12vh">
+                    <div class="pt-5 pb-3 border-bottom" style="padding-left: 2rem;padding-right: 2rem">
+                        <a class="d-block mb-3">
+                            <img class="img-fluid rounded-xs"
+                                 src="https://transvelo.github.io/mytravel-html/assets/img/240x160/img3.jpg"
+                                 style="border-radius: 0.188rem;width: 100%">
+                        </a>
+                        <a class="pr-xl-1"
+                           style="color: #3b444f !important;font-weight: 500!important;text-decoration: none;font-size: 1.2rem">
+                            Park Avenue Baker Street London
+                        </a>
+                        <div class="my-1 flex-horizontal-center" style="color: #67747c !important">
+                            <i class="fa-solid fa-location-dot mr-2" style="font-size: 0.938rem"></i>
+                            United Kingdom
+                        </div>
+                    </div>
+                    <div id="basicsAccordion">
+                        <div class="card rounded-0 border-top-0 " style="border-left: 0;border-right: 0">
+                            <div class="card-header card-collapse border-0" style="background-color: transparent">
+                                <h5 class="mb-0">
+                                    <button type="button"
+                                            class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-2"
+                                            style="font-size: 1.063rem;font-weight: 500!important;color: #3b444f !important;
+font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Booking Detail
+                                        <span class="card-btn-arrow"
+                                              style="font-size: 0.875rem;color: #3b444f !important">
+                                            <i class="fa-solid fa-arrow-down-long"></i>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseOne" class="collapse show">
+                                <div class="card-body px-4 pt-0">
+                                    <ul class="list-unstyled mb-0" style="font-size: 1rem">
+                                        <li class="d-flex justify-content-between py-2">
+                                            <span class="" style="font-weight: 500!important;">
+                                                22 Sep 2019 - 23 Sep 2019
+                                                <br>
+                                                <span style="color: #67747c !important;font-weight: 400 !important;">1 x Comfort Room</span>
+                                            </span>
+                                            <span class="text-secondary">
+                                                <a style="text-decoration: underline;color: #297cbb;background-color: transparent;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5">
+                                                    Edit
+                                                </a>
+                                            </span>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-2" style="font-size: 1rem">
+                                            <span class=""
+                                                  style="font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">
+                                                Stay
+                                            </span>
+                                            <span style="font-weight: 400 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #77838f !important">7 Night</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-2" style="font-size: 1rem">
+                                            <span class=""
+                                                  style="font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">
+                                                Room
+                                            </span>
+                                            <span style="font-weight: 400 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #77838f !important">2 Room</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card rounded-0 border-top-0 " style="border-left: 0;border-right: 0">
+                            <div class="card-header card-collapse border-0" style="background-color: transparent">
+                                <h5 class="mb-0">
+                                    <button type="button"
+                                            class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-2"
+                                            style="font-size: 1.063rem;font-weight: 500!important;color: #3b444f !important;
+font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Extra
+                                        <span class="card-btn-arrow"
+                                              style="font-size: 0.875rem;color: #3b444f !important">
+                                            <i class="fa-solid fa-arrow-down-long"></i>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseTwo" class="collapse show">
+                                <div class="card-body px-4 pt-0" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card rounded-0 border-top-0 " style="border-left: 0;border-right: 0">
+                            <div class="card-header card-collapse border-0" style="background-color: transparent">
+                                <h5 class="mb-0">
+                                    <button type="button"
+                                            class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-2"
+                                            style="font-size: 1.063rem;font-weight: 500!important;color: #3b444f !important;
+font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Coupon Code
+                                        <span class="card-btn-arrow"
+                                              style="font-size: 0.875rem;color: #3b444f !important">
+                                            <i class="fa-solid fa-arrow-down-long"></i>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseTwo" class="collapse show">
+                                <div class="card-body px-4 pt-0" style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #3b444f">
+                                    <form class="js-focus-state">
+                                        <label class="sr-only">Coupon Code</label>
+                                        <div class="input-group custom__input-group">
+                                            <input type="number" class="form-control"/>
+                                            <div class="input-group-append ml-3">
+                                                <button type="button" class="btn btn-primary py-2" style="border-top-left-radius:5px;background-color: #297cbb;border-color: #297cbb">Apply</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card rounded-0 border-top-0 " style="border-left: 0;border-right: 0">
+                            <div class="card-header card-collapse border-0" style="background-color: transparent">
+                                <h5 class="mb-0">
+                                    <button type="button"
+                                            class="btn btn-link border-0 btn-block d-flex justify-content-between card-btn py-3 px-2"
+                                            style="font-size: 1.063rem;font-weight: 500!important;color: #3b444f !important;
+font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Payment
+                                        <span class="card-btn-arrow"
+                                              style="font-size: 0.875rem;color: #3b444f !important">
+                                            <i class="fa-solid fa-arrow-down-long"></i>
+                                        </span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="basicsCollapseTwo" class="collapse show">
+                                <div class="card-body px-4 pt-0">
+                                    <ul class="list-unstyled mb-0" style="font-size: 1rem">
+                                        <li class="d-flex justify-content-between py-2">
+                                            <span style="font-weight: 500 !important;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">Subtotal</span>
+                                            <span style="color: #77838f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5">€580,00</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-2">
+                                            <span style="font-weight: 500 !important;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">Extra Price</span>
+                                            <span style="color: #77838f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5">€0,00</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-2">
+                                            <span style="font-weight: 500 !important;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">Tax</span>
+                                            <span style="color: #77838f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5">0%</span>
+                                        </li>
+                                        <li class="d-flex justify-content-between py-2">
+                                            <span style="font-weight: 500 !important;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;line-height: 1.5;color: #3b444f">Pay Amount</span>
+                                            <span style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 500;line-height: 1.5">€580,00</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

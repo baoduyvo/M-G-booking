@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/SuperAdmin/layout :: mainContent('Add Admin',~{this::.content-wrapper})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <form th:action="@{/SuperAdmin/AccountAdmin/add}"  method="post" >
+        <div class="row ">
+            <!-- Form controls -->
+
+
+            <!-- Input Sizing -->
+            <div class="col-12 col-md-9">
+
+                    <div class="card">
+                        <div class="card-header justify-content-center" style="border-bottom: 1px solid #e6e7e9">
+                            <h3 class="mb-0">Admin</h3>
+                        </div>
+                        <div class="card-body mt-4">
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Email</label>
+                                <input id="email"  th:field="${Admin.email}"  class="form-control form-control-lg" type="text" placeholder="Name"/>
+                            </div>
+
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Full Name</label>
+                                <input id="largeInput" th:field="${Admin.fullName}"  class="form-control form-control-lg" type="text" placeholder="Name"/>
+                            </div>
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Phone</label>
+                                <input id="phone" th:field="${Admin.phone}"  class="form-control form-control-lg" type="text" placeholder="Name"/>
+                            </div>
+
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Address</label>
+                               <textarea th:field="${Admin.address}" class="form-control"></textarea>
+                            </div>
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Country</label>
+                                <select class="form-control" th:field="${Admin.countryId}">
+                                    <option th:each="Countries : ${Country}" th:value="${Countries.id}" th:text="${Countries.name}"></option>
+                                </select>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="card mb-3">
+                    <div class="card-header" style="border-bottom: 1px solid #e6e7e9">Post</div>
+                    <div class="card-body p-2">
+                        <div class="w-100 d-flex align-items-center h-100 gap-2">
+                            <button type="submit" class="btn btn-primary flex-column-gap-1 text-wrap p-2 flex-grow-1">Save</button>
+                            <a th:href="@{/SuperAdmin/AccountAdmin}" class="btn p-2 text-wrap w-50" style="border: 1px solid #e6e7e9">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Default Checkboxes and radios & Default checkboxes and radios -->
+
+        </div>
+        </form>
+    </div>
+
+
+    <!-- / Content -->
+
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+        <div class="container-xxl">
+            <div
+                    class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                <div class="text-body mb-2 mb-md-0">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    , made with <span class="text-danger"><i class="tf-icons ri-heart-fill"></i></span> by
+                    <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
+                </div>
+                <div class="d-none d-lg-inline-block">
+                    <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                    <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                    <a
+                            href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/documentation/"
+                            target="_blank"
+                            class="footer-link me-4"
+                    >Documentation</a
+                    >
+
+                    <a
+                            href="https://github.com/themeselection/materio-bootstrap-html-admin-template-free/issues"
+                            target="_blank"
+                            class="footer-link"
+                    >Support</a
+                    >
+                </div>
+            </div>
+        </div>
+        <script th:fragment="customScripts" th:src="@{/SuperAdmin/Airline/Airline.js}"></script>
+    </footer>
+    <!-- / Footer -->
+
+    <div class="content-backdrop fade"></div>
+</div>
+
+</body>
+</html>

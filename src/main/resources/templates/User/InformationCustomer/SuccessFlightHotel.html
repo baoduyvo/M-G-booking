@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutLogin :: mainContent('Detail Hotel',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block" style="background-color: #ebf0f7 !important;padding-top: 4rem">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-xl-12">
+                <div class="mb-5 shadow-soft"
+                     style="background-color: white;border-radius: 0.25rem!important;box-shadow: 0 3px 6px 0 rgba(140, 152, 164, 0.25) !important">
+                    <div class="py-6 px-5 border-bottom">
+                        <div class="flex-horizontal-center">
+                            <div class="flex-shrink-0 "
+                                 style="width: 3.125rem;height: 3.125rem;display: flex;align-items: center;justify-content: center;background-color: #297cbb !important;border-radius: 50%!important;">
+                                <i class="fa-solid fa-check" style="color: white;font-size: 1.5rem"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="mb-0"
+                                    style="font-size: 1.125rem;font-weight: 500!important;color: #3b444f !important;line-height: 1.2">
+                                    Thank You. Your Booking Order is Confirmed Now.
+                                </h3>
+                                <p class="mb-0"
+                                   style="color: #77838f;line-height: 1.7;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400">
+                                    A confirmation email has been sent to your provided email address.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 pb-5 px-5 border-bottom">
+                        <h5 class="mb-2"
+                            style="font-size: 1.313rem;font-weight: 500 !important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                            Traveler Information
+                        </h5>
+                        <ul class="list-unstyled mb-0" style="font-size: 1rem">
+                            <li class="d-flex justify-content-between py-2">
+                                <span style="font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;color: #3b444f;line-height: 1.5">Booking number</span>
+                                <span class="text-right" th:text="${Booking.bookingCode}"
+                                      style="color: #77838f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5">5784-BD245</span>
+                            </li>
+                            <li class="d-flex justify-content-between py-2">
+                                <span style="font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;color: #3b444f;line-height: 1.5">Total Price</span>
+                                <span class="text-right" th:text="'$ '+${Booking.totalPrice}"
+                                      style="color: #77838f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5">5784-BD245</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 pb-5 px-5 border-bottom">
+                        <h5 class="mb-2"
+                            style="font-size: 1.313rem;font-weight: 500 !important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                            Payment
+                        </h5>
+                        <p style="color: #77838f;line-height: 1.7;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1rem;font-weight: 400;text-align: left"></p>
+                        <a class="text-underline" style="color: #297cbb !important;text-decoration: underline !important;">Payment is made by Credit Card Via Paypal.</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

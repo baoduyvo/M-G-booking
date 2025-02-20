@@ -1,0 +1,206 @@
+<!doctype html>
+
+<html
+        lang="en"
+        class="light-style layout-wide customizer-hide"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+        data-style="light">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Login Basic - Pages | Materio - Bootstrap Material Design Admin Template</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon"  th:href="@{SuperAdmin/assets/img/favicon/favicon.ico}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3.7.0/notyf.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3.7.0/notyf.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
+            rel="stylesheet" />
+
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/vendor/fonts/remixicon/remixicon.css}" />
+
+    <!-- Menu waves for no-customizer fix -->
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/vendor/libs/node-waves/node-waves.css}" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/vendor/css/core.css}" class="template-customizer-core-css" />
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/vendor/css/theme-default.css}" class="template-customizer-theme-css" />
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/css/demo.css}" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css}" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" th:href="@{/SuperAdmin/assets/vendor/css/pages/page-auth.css}" />
+
+    <!-- Helpers -->
+    <script th:src="@{/SuperAdmin/assets/vendor/js/helpers.js}"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script th:src="@{/SuperAdmin/assets/js/config.js}"></script>
+</head>
+
+<body>
+<!-- Content -->
+
+<div class="position-relative">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-6 mx-4">
+            <!-- Login -->
+            <div class="card p-7">
+                <!-- Logo -->
+                <div class="app-brand justify-content-center mt-5">
+
+                </div>
+                <!-- /Logo -->
+
+                <div class="card-body mt-1">
+                    <h4 class="mb-1">Welcome Back 👋🏻</h4>
+                    <p class="mb-5">Please sign-in to your account and start the adventure</p>
+
+                    <form th:action="@{/account/process-login}" id="formAuthentication" class="mb-5"  method="POST">
+                        <div class="form-floating form-floating-outline mb-5">
+                            <input
+
+                                    type="text"
+                                    class="form-control"
+                                    id="email"
+                                  name="email"
+                                    placeholder="Enter your email or username"
+                                    autofocus />
+                            <label for="email">Email or Username</label>
+                        </div>
+                        <div class="mb-5">
+                            <div class="form-password-toggle">
+                                <div class="input-group input-group-merge">
+                                    <div class="form-floating form-floating-outline">
+                                        <input
+
+                                                type="password"
+                                                id="password"
+                                                class="form-control"
+                                                name="password"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                                aria-describedby="password" />
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <span class="input-group-text cursor-pointer"><i class="ri-eye-off-line ri-20px"></i></span>
+                                </div>
+                            </div>x`
+                        </div>
+                        <div class="mb-5 pb-2 d-flex justify-content-between pt-2 align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="remember-me" />
+                                <label class="form-check-label" for="remember-me"> Remember Me </label>
+                            </div>
+                            <a th:href="@{/ForgotAdminPassword}" class="float-end mb-1">
+                                <span>Forgot Password?</span>
+                            </a>
+                        </div>
+                        <div class="mb-5">
+                            <button class="btn btn-primary d-grid w-100" type="submit">login</button>
+                        </div>
+                    </form>
+
+                    <p class="text-center mb-5">
+                        <span>New on our platform?</span>
+                        <a href="auth-register-basic.html">
+                            <span>Create an account</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!-- /Login -->
+            <img
+                    th:src="@{/SuperAdmin/assets/img/illustrations/tree-3.png}"
+                    alt="auth-tree"
+                    class="authentication-image-object-left d-none d-lg-block" />
+            <img
+                    th:src="@{/SuperAdmin/assets/img/illustrations/auth-basic-mask-light.png}"
+                    class="authentication-image d-none d-lg-block"
+                    height="172"
+                    alt="triangle-bg"
+                    data-app-light-img="illustrations/auth-basic-mask-light.png"
+                    data-app-dark-img="illustrations/auth-basic-mask-dark.png" />
+            <img
+                    src="../assets/img/illustrations/tree.png"
+                    alt="auth-tree"
+                    class="authentication-image-object-right d-none d-lg-block" />
+        </div>
+    </div>
+</div>
+
+<!-- / Content -->
+
+<div class="buy-now">
+    <a
+            href="https://themeselection.com/item/materio-bootstrap-html-admin-template/"
+            target="_blank"
+            class="btn btn-danger btn-buy-now"
+    >Upgrade to Pro</a
+    >
+</div>
+<div th:if="${message}" th:attr="data-message=${message}, data-type=${messageType}"></div>
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script>
+    var messageElement = document.querySelector('div[data-message]');
+    if (messageElement) {
+        var message = messageElement.getAttribute('data-message');
+        var messageType = messageElement.getAttribute('data-type');
+
+        // Initialize Notyf
+        const notyf = new Notyf({
+            duration: 3000,
+            position: {
+                x: 'right',
+                y: 'top'
+            }
+        });
+
+        if (message) {
+            if (messageType === 'success') {
+                notyf.success(message); // Show success notification
+            } else if (messageType === 'error') {
+                notyf.error(message); // Show error notification
+            }
+        }
+    }
+
+</script>
+<script th:src="@{/SuperAdmin/assets/vendor/libs/jquery/jquery.js}"></script>
+<script th:src="@{/SuperAdmin/assets/vendor/libs/popper/popper.js}"></script>
+<script th:src="@{/SuperAdmin/assets/vendor/js/bootstrap.js}"></script>
+<script th:src="@{/SuperAdmin/assets/vendor/libs/node-waves/node-waves.js}"></script>
+<script th:src="@{/SuperAdmin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js}"></script>
+<script th:src="@{/SuperAdmin/assets/vendor/js/menu.js}"></script>
+
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+
+<!-- Main JS -->
+<script th:src="@{/SuperAdmin/assets/js/main.js}"></script>
+
+<!-- Page JS -->
+
+<!-- Place this tag before closing body tag for github widget button. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

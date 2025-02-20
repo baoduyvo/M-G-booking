@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutLogin :: mainContent('History Order',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block" style="padding-top: 4rem">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Booking Room List</h1>
+
+        <div class="tab-content active" id="hotel">
+         <div class="flex justify-content-between mb-4" style="display: flex" >
+             <h3>Hotel Booking Details</h3>
+             <a th:href="@{/HistoryBooking}"  class="btn btn-primary">Back</a>
+         </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Hotel Name</th>
+                    <th>Type Room</th>
+                    <th>Check-in Date</th>
+                    <th>Check-out Date</th>
+
+                    <th>Guests</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="hotel,index:${Hotel}">
+                    <tr>
+                        <td th:text="${hotel.hotelName}"></td>
+                        <td th:text="${hotel.typeRoom}"></td>
+                        <td th:text="${hotel.checkInDate}"></td>
+                        <td th:text="${hotel.checkOutDate}"></td>
+                        <td th:text="${hotel.totalRoom}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+    </div>
+    <script th:fragment="customScripts" th:src="@{/user/HistoryOrder/HistoryOrder.js}"></script>
+
+</main>
+
+</body>
+</html>

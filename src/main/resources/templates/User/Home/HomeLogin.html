@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutHomeLogin :: mainContent('Home',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content"   class="relative block">
+    <div class="bg-img-hero-bottom text-center relative gradient-overlay-half-black-gradient"
+         style="z-index: 2; background-image: url('https://transvelo.github.io/mytravel-html/assets/img/1920x800/img1.jpg');">
+        <div class="container space-2 space-top-xl-9" style="padding-top: 19rem">
+            <div class="row justify-content-center " style="padding-bottom: 3.5rem">
+                <div class="py-8 pb-5" style="padding-bottom: 4.5rem">
+                    <h1 class="text-white font-bold" style="font-size: 3.75rem">Let's The World Together!</h1>
+                    <p class="text-white" style="font-size: 1.5rem;font-weight: 400;line-height: 1.7">Find awesome
+                        hotel, tour, car and activities in London</p>
+                </div>
+            </div>
+            <div style="margin-bottom: -8rem !important">
+
+                <div class="tab-content hero-tab-pane">
+                    <div class="tab-pane fade active show">
+                        <div class="card border-0 tab-shadow">
+                            <div class="card-body">
+                                <form th:action="@{/SearchFlight}" method="get">
+                                    <div class="row d-block nav-select d-lg-flex mb-lg-3 px-2 px-lg-3 align-items-end">
+                                        <div class="col-sm-1 mr-2">
+                                            <button type="button"  th:style="'min-height: 36px; font-family: inherit; padding-bottom: 4px; padding-top: 4px; padding-left: 16px; padding-right: 16px; fill: #2067da; background-color: '
+              + (${Search.roundTrip==false} ? '#e5efff' : 'rgb(255, 255, 255)') + '; border-style: solid; border-radius: 999px; border-width: 2px; white-space: nowrap; border-color: '
+              + (${Search.roundTrip==false} ? '#2067da' : 'rgba(94, 107, 130, 0.32)')+
+                ';color: '+(${Search.roundTrip==false}?'#2067da':'rgb(36, 38, 44)')" id="OneWay"  value="false">One way</button>
+                                            <input type="hidden" th:field="${Search.roundTrip}" id="TripTypeValue">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <button type="button"    th:style="'min-height: 36px; font-family: inherit; padding-bottom: 4px; padding-top: 4px; padding-left: 16px; padding-right: 16px; fill: #2067da; background-color: '
+              + (${Search.roundTrip==true} ? '#e5efff' : 'rgb(255, 255, 255)') + '; border-style: solid; border-radius: 999px; border-width: 2px; white-space: nowrap; border-color: '
+              + (${Search.roundTrip} ? '#2067da' : 'rgba(94, 107, 130, 0.32)')+
+                ';color: '+(${Search.roundTrip==true}?'#2067da':'rgb(36, 38, 44)')"  id="RoundTrip" th:field="${Search.roundTrip}" value="True">Round-trip</button>
+                                        </div>
+                                    </div>
+                                    <div class="row d-block nav-select d-lg-flex mb-lg-3 px-2 px-lg-3 align-items-end">
+                                        <div class="col-sm-5 ">
+                                            <span class="d-block text-gray mb-0"
+                                                  style="color: #67747c !important;font-weight: 400;text-align: left;font-size: 1.2rem">City or airport name</span>
+                                            <div class="search-container">
+                                                <div class="search-item" id="search-from">
+                                                    <i class="fa-solid fa-plane-departure"></i>
+                                                    <input
+                                                            type="text"
+                                                            placeholder="Fly From"
+                                                            id="from-input"
+                                                            autocomplete="off"
+                                                    />
+                                                    <input type="hidden" id="from-input-id"
+                                                           th:field="${Search.departureAirport}"/>
+                                                </div>
+                                                <div class="search-dropdown" id="from-dropdown" style="top: 15vh">
+                                                    <ul id="airport-list-from"></ul>
+                                                </div>
+                                                <button type="button" class="swap-button">
+                                                    <i class="fa-solid fa-right-left"></i>
+                                                </button>
+                                                <div class="search-item" id="search-to">
+                                                    <i class="fa-solid fa-location-dot"></i>
+                                                    <input
+                                                            type="text"
+                                                            placeholder="Fly To"
+                                                            id="to-input"
+                                                            autocomplete="off"
+                                                    />
+                                                    <input type="hidden" id="to-input-id"
+                                                           th:field="${Search.arrivalAirport}"/>
+                                                </div>
+                                                <div class="search-dropdown" id="to-dropdown" style="width: 40%;left: 31vh;top: 15vh">
+
+                                                    <ul id="airport-list"></ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="search-container">
+                                                <div class="date-picker-container">
+                                                    <div>
+                                                        <label for="datePickerInputFrom" class="label">Departure date</label>
+                                                        <div class="date-picker">
+                                                            <i class="fa-solid fa-calendar"></i>
+                                                            <input type="date" id="departtime"
+                                                                   th:field="${Search.departureTime}"
+                                                                   class="js-range-datepicker font-size-16 shadow-none font-weight-medium form-control hero-form bg-transparent border-0 flatpickr-input"
+                                                                   style="font-weight: 500;font-size: 1rem;box-shadow: none;width: 156px;height: 20px"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div id="ArrivalDate" style="display: none">
+                                                        <label for="datePickerInputTo" class="label">Return date</label>
+                                                        <div class="date-picker">
+                                                            <i class="fa-solid fa-calendar"></i>
+                                                            <input type="date" id="arrivalTime"
+                                                                   th:field="${Search.arrivalTime}"
+                                                                   class="js-range-datepicker font-size-16 shadow-none font-weight-medium form-control hero-form bg-transparent border-0 flatpickr-input"
+                                                                   style="font-weight: 500;font-size: 1rem;box-shadow: none;width: 156px;height: 20px"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row d-block nav-select d-lg-flex mb-lg-3 px-2 px-lg-3 align-items-end">
+                                        <div class="col-sm-5 " id="AtHotel" style="display:none;">
+                                            <span class="text-left d-block"
+                                                  style="color: #67747c !important;font-weight: 400;font-size: 1.2rem;text-align: left;margin-left: 1vh">At</span>
+                                            <div class="search-container">
+                                                <div class="search-item" id="search-At">
+                                                    <i class="fa-solid fa-plane-departure"></i>
+                                                    <input
+                                                            type="text"
+                                                            placeholder="At"
+                                                            id="At-input"
+                                                            autocomplete="off"
+                                                    />
+
+                                                    <div class="search-dropdown" style="width: 28%;top: 54%"
+                                                         id="At-dropdown">
+                                                        <ul id="At-List"></ul>
+                                                    </div>
+                                                    <input type="hidden" id="idCity" th:field="${Search.idCity}">
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-5" id="TimeHotel" style="display: none">
+
+                                            <div class="search-container">
+                                                <div class="date-picker-container">
+                                                    <div>
+                                                        <label for="datePickerInputFrom" class="label">Check In</label>
+                                                        <div class="date-picker">
+                                                            <i class="fa-solid fa-calendar"></i>
+                                                            <input type="date" id="datePickerInputFrom"
+                                                                   th:field="${Search.checkInTime}"/>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label for="datePickerInputTo" class="label">Check Out</label>
+                                                        <div class="date-picker">
+                                                            <i class="fa-solid fa-calendar"></i>
+                                                            <input type="date" id="datePickerInputTo"
+                                                                   th:field="${Search.checkOutTime}"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5" id="RoomNumber" style="display:none;">
+  <span class="d-block text-gray mb-2"
+        style="color: #67747c !important;font-weight: 400;text-align: left;font-size: 1.2rem">Room Number</span>
+                                            <div class="dropdown-container">
+
+                                                <div class="dropdown">
+                                                    <select id="classSelect" th:field="${Search.quantityRoom}"
+                                                            class="form-select " style="margin-top: 2vh">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="5">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">7</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+  <span class="d-block text-gray mb-2"
+        style="color: #67747c !important;font-weight: 400;text-align: left;font-size: 1.2rem">People Fly</span>
+                                            <div class="dropdown-container">
+
+                                                <div class="dropdown">
+                                                    <select id="classSelect" th:field="${Search.numberPeopleRight}"
+                                                            class="form-select " style="margin-top: 2vh">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="5">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 ">
+                                            <span class="text-left d-block"
+                                                  style="color: #67747c !important;font-weight: 400;font-size: 1.2rem;text-align: left">Rooms and Guests</span>
+                                            <div class="dropdown-container">
+
+                                                <div class="dropdown">
+                                                    <select id="classSelect" th:field="${Search.typeFlight}"
+                                                            class="form-select " style="margin-top: 2vh">
+                                                        <option value="First Class">First Class</option>
+                                                        <option value="Business Class">Business Class</option>
+                                                        <option value="Merchant">Merchant</option>
+                                                        <option value="Economy Class">Economy Class</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div id="basicDropdownClick"
+                                                 class="dropdown-menu  dropdown-unfold col-11 m-0 u-unfold--css-animation slideInUp "
+                                                 style="max-width: 22%">
+                                                <div class="w-100 py-2 px-3 mb-3">
+                                                    <div class="js-quantity mx-3 d-grid align-items-center justify-content-between"
+                                                         style="grid-template-columns: 1fr 1fr">
+                                                        <span class="block"
+                                                              style="font-weight: 500;color: #77838f !important;font-size: 1rem;">Rooms</span>
+                                                        <div class="d-flex">
+                                                            <a class="js-minus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                               style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                                <i class="fa-solid fa-minus" style="color: black"></i>
+                                                            </a>
+                                                            <input class="js-result form-control h-auto border-0 rounded p-0 max-width-6 text-center"
+                                                                   value="1" style="color: #3b444f">
+                                                            <a class="js-plus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                               style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                                <i class="fa-solid fa-plus" style="color: black"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100 py-2 px-3 mb-3">
+                                                    <div class="js-quantity mx-3 d-grid align-items-center justify-content-between"
+                                                         style="grid-template-columns: 1fr 1fr">
+                                                        <span class="block"
+                                                              style="font-weight: 500;color: #77838f !important;font-size: 1rem;">Adults</span>
+                                                        <div class="d-flex">
+                                                            <a class="js-minus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                               style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                                <i class="fa-solid fa-minus" style="color: black"></i>
+                                                            </a>
+                                                            <input class="js-result form-control h-auto border-0 rounded p-0 max-width-6 text-center"
+                                                                   value="1" style="color: #3b444f">
+                                                            <a class="js-plus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                               style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                                <i class="fa-solid fa-plus" style="color: black"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100 py-2 px-3 mb-3">
+                                                    <div class="js-quantity mx-3 d-grid align-items-center justify-content-between"
+                                                         style="grid-template-columns: 1fr 1fr">
+                                                        <span class="block"
+                                                              style="font-weight: 500;color: #77838f !important;font-size: 1rem;">Child</span>
+                                                        <div class="d-flex">
+                                                            <a class="js-minus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                               style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                                <i class="fa-solid fa-minus" style="color: black"></i>
+                                                            </a>
+                                                            <input class="js-result form-control h-auto border-0 rounded p-0 max-width-6 text-center"
+                                                                   value="1" style="color: #3b444f">
+                                                            <a class="js-plus btn btn-icon btn-medium btn-outline-secondary rounded-circle"
+                                                               style="color: #77838f;padding: 0.5rem 0.8rem">
+                                                                <i class="fa-solid fa-plus" style="color: black"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5 d-flex align-items-center justify-content-center"
+                                             style="position: relative;left: -20vh;top: -1vh;margin-top: 2vh">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" th:field="${Search.selectedHotel}"
+                                                       type="checkbox" id="flexSwitchCheckDefault"
+                                                       style="font-size: 21px">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault"
+                                                       style="position: absolute;top: 3px">Find Hotel
+                                                    input</label>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <button type="submit"
+                                            class="btn btn-primary w-50 mb-xl-0 mb-lg-1 transition-3d-hover"
+                                            style="border-radius: 3px;transition: all 0.2s ease-in-out;background-color: #297cbb;border-color: #297cbb;
+                                        position:absolute;left: 30vh">
+                                        <i class="fa-solid fa-magnifying-glass mr-2"
+                                           style="font-size: 1.25rem;"></i>
+                                        Search
+                                    </button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="" style="border-color: #ebf0f7 !important;border-bottom: 1px solid #e7eaf3 !important;margin-top: 6vh">
+        <div class="container-fluid space-bottom-1 space-top-lg-3">
+            <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mt-4">
+                <h2 class="section-title mb-0" style="font-size: 1.875rem;color: #3b444f;font-weight: 500">
+                    Top Destination
+                </h2>
+            </div>
+            <div class="row mb-1" style="margin-left: 100px;margin-right: 100px">
+                <th:block th:each="Cities,index:${City}">
+                    <div th:if="${index.index<=2}" th:class="${index.index<=2}?'col-md-6 mb-3 mb-md-4':'col-md-6 col-xl-3 mb-3 mb-md-4'">
+                        <div class="min-height-350 bg-img-hero rounded-border p-5 gradient-overlay-half-bg-gradient transition-3d-hover shadow-hover-2 border-0 dropdown"
+                             style="background-image: url('https://transvelo.github.io/mytravel-html/assets/img/630x350/img1.jpg')">
+                            <div class="w-100 d-flex justify-content-between mb-2">
+                                <div class="relative">
+                                    <a class="destination text-decoration-none pb-3 mb-3 d-block"
+                                       style="line-height: 1;font-weight: 500;font-size: 1.313rem;position:relative;color: white" th:text="${Cities.name}">
+                                        United Kingdom
+                                    </a>
+                                    <div class="destination-dropdown v1">
+                                        <a class="dropdown-item text-decoration-none" style="font-size: 18px">30 Hotel</a>
+                                        <a class="dropdown-item text-decoration-none" style="font-size: 18px">48 Tour</a>
+                                        <a class="dropdown-item text-decoration-none" style="font-size: 18px">46
+                                            Activity</a>
+                                        <a class="dropdown-item text-decoration-none" style="font-size: 18px">32 Yacht</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </th:block>
+            </div>
+        </div>
+    </div>
+<!--    <div class="tabs-block tab-v1">-->
+<!--        <div class="container-fluid space-1">-->
+<!--            <div class="w-md-80 w-lg-50 text-center mx-md-auto my-3">-->
+<!--                <h2 class="section-title text-black mb-0" style="font-size: 1.875rem;font-weight: 500;">Trending</h2>-->
+<!--            </div>-->
+<!--            <ul class="nav tab-nav-pill flex-nowrap pb-4 pb-lg-5 tab-nav justify-content-center">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Tour</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item cursor-pointer">-->
+<!--                    <a class="nav-link" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Hotel</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item cursor-pointer">-->
+<!--                    <a class="nav-link" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Activity</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item cursor-pointer">-->
+<!--                    <a class="nav-link" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Rental</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item cursor-pointer">-->
+<!--                    <a class="nav-link" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Car</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item cursor-pointer">-->
+<!--                    <a class="nav-link" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Yatch</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item cursor-pointer">-->
+<!--                    <a class="nav-link" style="font-weight: 500">-->
+<!--                        <div class="d-flex flex-column flex-md-row position-relative align-items-center"-->
+<!--                             style="color: #3b444f !important">-->
+<!--                            <span class="tabtext " style="font-weight: 500">Flights</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <div class="tab-content" style="margin-right: 100px;margin-left: 100px">-->
+<!--                <div class="tab-pane fade active show">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-4 pb-1">-->
+<!--                            <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">-->
+<!--                                <div class="position-relative mb-2">-->
+<!--                                    <a class="d-block gradient-overlay-half-bg-gradient-v5"-->
+<!--                                       style="z-index: 0;color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <img src="https://transvelo.github.io/mytravel-html/assets/img/300x230/img1.jpg"-->
+<!--                                             class="card-img">-->
+<!--                                    </a>-->
+<!--                                    <div class="position-absolute top-0 left-0 pt-5 pl-3">-->
+<!--                                        <span class="badge badge-pill bg-white px-4 py-2"-->
+<!--                                              style="color: #297cbb !important;font-size: 0.875rem;font-weight: 400;border-radius: 10rem">Featured</span>-->
+<!--                                        <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal"-->
+<!--                                              style="color: #de4437 !important;font-weight: 400;border-radius: 10rem;margin-left: 15px">%25</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute top-0 right-0 pt-5 pr-3">-->
+<!--                                        <button type="button" class="btn btn-sm btn-icon text-white rounded-circle">-->
+<!--                                            <i class="fa-regular fa-heart" style="font-size: 20px"></i>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute bottom-0 left-0 right-0">-->
+<!--                                        <div class="px-3 pb-2">-->
+<!--                                            <h2 class="h5 text-white mb-0 "-->
+<!--                                                style="font-weight: 500;font-size: 1.25rem;line-height: 1.5">-->
+<!--                                                <small class="mr-2">From</small>-->
+<!--                                                £350.00-->
+<!--                                            </h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="card-body px-4 py-2">-->
+<!--                                    <a class="d-block"-->
+<!--                                       style="color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <div class="mb-1 d-flex align-items-center"-->
+<!--                                             style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                            <i class="fa-solid fa-location-dot mr-2"-->
+<!--                                               style="font-size: 0.938rem;color: #67747c !important"></i>-->
+<!--                                            Greater London, United Kingdom-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                    <a class="card-title mb-0"-->
+<!--                                       style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important;text-decoration: none">-->
+<!--                                        Stonehenge, Windsor Castle,-->
+<!--                                        <br>-->
+<!--                                        and Bath from London-->
+<!--                                    </a>-->
+<!--                                    <div class="my-2">-->
+<!--                                        <div class="d-inline-flex align-items-center mb-0"-->
+<!--                                             style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important">-->
+<!--                                            <div class="mr-2" style="color: #b0d12b">-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                            </div>-->
+<!--                                            <span class="text-secondary mt-1"-->
+<!--                                                  style="font-size: 0.875rem">48 Reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-1 d-flex align-items-center"-->
+<!--                                         style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                        <i class="fa-solid fa-clock mr-2"-->
+<!--                                           style="font-size: 0.875rem;color: #67747c !important">-->
+
+<!--                                        </i>-->
+<!--                                        3 hours 45 minutes-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-4 pb-1">-->
+<!--                            <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">-->
+<!--                                <div class="position-relative mb-2">-->
+<!--                                    <a class="d-block gradient-overlay-half-bg-gradient-v5"-->
+<!--                                       style="z-index: 0;color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <img src="https://transvelo.github.io/mytravel-html/assets/img/300x230/img1.jpg"-->
+<!--                                             class="card-img">-->
+<!--                                    </a>-->
+<!--                                    <div class="position-absolute top-0 left-0 pt-5 pl-3">-->
+<!--                                        <span class="badge badge-pill bg-white px-4 py-2"-->
+<!--                                              style="color: #297cbb !important;font-size: 0.875rem;font-weight: 400;border-radius: 10rem">Featured</span>-->
+<!--                                        <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal"-->
+<!--                                              style="color: #de4437 !important;font-weight: 400;border-radius: 10rem;margin-left: 15px">%25</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute top-0 right-0 pt-5 pr-3">-->
+<!--                                        <button type="button" class="btn btn-sm btn-icon text-white rounded-circle">-->
+<!--                                            <i class="fa-regular fa-heart" style="font-size: 20px"></i>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute bottom-0 left-0 right-0">-->
+<!--                                        <div class="px-3 pb-2">-->
+<!--                                            <h2 class="h5 text-white mb-0 "-->
+<!--                                                style="font-weight: 500;font-size: 1.25rem;line-height: 1.5">-->
+<!--                                                <small class="mr-2">From</small>-->
+<!--                                                £350.00-->
+<!--                                            </h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="card-body px-4 py-2">-->
+<!--                                    <a class="d-block"-->
+<!--                                       style="color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <div class="mb-1 d-flex align-items-center"-->
+<!--                                             style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                            <i class="fa-solid fa-location-dot mr-2"-->
+<!--                                               style="font-size: 0.938rem;color: #67747c !important"></i>-->
+<!--                                            Greater London, United Kingdom-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                    <a class="card-title mb-0"-->
+<!--                                       style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important;text-decoration: none">-->
+<!--                                        Stonehenge, Windsor Castle,-->
+<!--                                        <br>-->
+<!--                                        and Bath from London-->
+<!--                                    </a>-->
+<!--                                    <div class="my-2">-->
+<!--                                        <div class="d-inline-flex align-items-center mb-0"-->
+<!--                                             style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important">-->
+<!--                                            <div class="mr-2" style="color: #b0d12b">-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                            </div>-->
+<!--                                            <span class="text-secondary mt-1"-->
+<!--                                                  style="font-size: 0.875rem">48 Reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-1 d-flex align-items-center"-->
+<!--                                         style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                        <i class="fa-solid fa-clock mr-2"-->
+<!--                                           style="font-size: 0.875rem;color: #67747c !important">-->
+
+<!--                                        </i>-->
+<!--                                        3 hours 45 minutes-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-4 pb-1">-->
+<!--                            <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">-->
+<!--                                <div class="position-relative mb-2">-->
+<!--                                    <a class="d-block gradient-overlay-half-bg-gradient-v5"-->
+<!--                                       style="z-index: 0;color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <img src="https://transvelo.github.io/mytravel-html/assets/img/300x230/img1.jpg"-->
+<!--                                             class="card-img">-->
+<!--                                    </a>-->
+<!--                                    <div class="position-absolute top-0 left-0 pt-5 pl-3">-->
+<!--                                        <span class="badge badge-pill bg-white px-4 py-2"-->
+<!--                                              style="color: #297cbb !important;font-size: 0.875rem;font-weight: 400;border-radius: 10rem">Featured</span>-->
+<!--                                        <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal"-->
+<!--                                              style="color: #de4437 !important;font-weight: 400;border-radius: 10rem;margin-left: 15px">%25</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute top-0 right-0 pt-5 pr-3">-->
+<!--                                        <button type="button" class="btn btn-sm btn-icon text-white rounded-circle">-->
+<!--                                            <i class="fa-regular fa-heart" style="font-size: 20px"></i>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute bottom-0 left-0 right-0">-->
+<!--                                        <div class="px-3 pb-2">-->
+<!--                                            <h2 class="h5 text-white mb-0 "-->
+<!--                                                style="font-weight: 500;font-size: 1.25rem;line-height: 1.5">-->
+<!--                                                <small class="mr-2">From</small>-->
+<!--                                                £350.00-->
+<!--                                            </h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="card-body px-4 py-2">-->
+<!--                                    <a class="d-block"-->
+<!--                                       style="color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <div class="mb-1 d-flex align-items-center"-->
+<!--                                             style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                            <i class="fa-solid fa-location-dot mr-2"-->
+<!--                                               style="font-size: 0.938rem;color: #67747c !important"></i>-->
+<!--                                            Greater London, United Kingdom-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                    <a class="card-title mb-0"-->
+<!--                                       style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important;text-decoration: none">-->
+<!--                                        Stonehenge, Windsor Castle,-->
+<!--                                        <br>-->
+<!--                                        and Bath from London-->
+<!--                                    </a>-->
+<!--                                    <div class="my-2">-->
+<!--                                        <div class="d-inline-flex align-items-center mb-0"-->
+<!--                                             style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important">-->
+<!--                                            <div class="mr-2" style="color: #b0d12b">-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                            </div>-->
+<!--                                            <span class="text-secondary mt-1"-->
+<!--                                                  style="font-size: 0.875rem">48 Reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-1 d-flex align-items-center"-->
+<!--                                         style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                        <i class="fa-solid fa-clock mr-2"-->
+<!--                                           style="font-size: 0.875rem;color: #67747c !important">-->
+
+<!--                                        </i>-->
+<!--                                        3 hours 45 minutes-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-4 pb-1">-->
+<!--                            <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">-->
+<!--                                <div class="position-relative mb-2">-->
+<!--                                    <a class="d-block gradient-overlay-half-bg-gradient-v5"-->
+<!--                                       style="z-index: 0;color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <img src="https://transvelo.github.io/mytravel-html/assets/img/300x230/img1.jpg"-->
+<!--                                             class="card-img">-->
+<!--                                    </a>-->
+<!--                                    <div class="position-absolute top-0 left-0 pt-5 pl-3">-->
+<!--                                        <span class="badge badge-pill bg-white px-4 py-2"-->
+<!--                                              style="color: #297cbb !important;font-size: 0.875rem;font-weight: 400;border-radius: 10rem">Featured</span>-->
+<!--                                        <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal"-->
+<!--                                              style="color: #de4437 !important;font-weight: 400;border-radius: 10rem;margin-left: 15px">%25</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute top-0 right-0 pt-5 pr-3">-->
+<!--                                        <button type="button" class="btn btn-sm btn-icon text-white rounded-circle">-->
+<!--                                            <i class="fa-regular fa-heart" style="font-size: 20px"></i>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute bottom-0 left-0 right-0">-->
+<!--                                        <div class="px-3 pb-2">-->
+<!--                                            <h2 class="h5 text-white mb-0 "-->
+<!--                                                style="font-weight: 500;font-size: 1.25rem;line-height: 1.5">-->
+<!--                                                <small class="mr-2">From</small>-->
+<!--                                                £350.00-->
+<!--                                            </h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="card-body px-4 py-2">-->
+<!--                                    <a class="d-block"-->
+<!--                                       style="color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <div class="mb-1 d-flex align-items-center"-->
+<!--                                             style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                            <i class="fa-solid fa-location-dot mr-2"-->
+<!--                                               style="font-size: 0.938rem;color: #67747c !important"></i>-->
+<!--                                            Greater London, United Kingdom-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                    <a class="card-title mb-0"-->
+<!--                                       style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important;text-decoration: none">-->
+<!--                                        Stonehenge, Windsor Castle,-->
+<!--                                        <br>-->
+<!--                                        and Bath from London-->
+<!--                                    </a>-->
+<!--                                    <div class="my-2">-->
+<!--                                        <div class="d-inline-flex align-items-center mb-0"-->
+<!--                                             style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important">-->
+<!--                                            <div class="mr-2" style="color: #b0d12b">-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                            </div>-->
+<!--                                            <span class="text-secondary mt-1"-->
+<!--                                                  style="font-size: 0.875rem">48 Reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-1 d-flex align-items-center"-->
+<!--                                         style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                        <i class="fa-solid fa-clock mr-2"-->
+<!--                                           style="font-size: 0.875rem;color: #67747c !important">-->
+
+<!--                                        </i>-->
+<!--                                        3 hours 45 minutes-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-4 pb-1">-->
+<!--                            <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">-->
+<!--                                <div class="position-relative mb-2">-->
+<!--                                    <a class="d-block gradient-overlay-half-bg-gradient-v5"-->
+<!--                                       style="z-index: 0;color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <img src="https://transvelo.github.io/mytravel-html/assets/img/300x230/img1.jpg"-->
+<!--                                             class="card-img">-->
+<!--                                    </a>-->
+<!--                                    <div class="position-absolute top-0 left-0 pt-5 pl-3">-->
+<!--                                        <span class="badge badge-pill bg-white px-4 py-2"-->
+<!--                                              style="color: #297cbb !important;font-size: 0.875rem;font-weight: 400;border-radius: 10rem">Featured</span>-->
+<!--                                        <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal"-->
+<!--                                              style="color: #de4437 !important;font-weight: 400;border-radius: 10rem;margin-left: 15px">%25</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute top-0 right-0 pt-5 pr-3">-->
+<!--                                        <button type="button" class="btn btn-sm btn-icon text-white rounded-circle">-->
+<!--                                            <i class="fa-regular fa-heart" style="font-size: 20px"></i>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute bottom-0 left-0 right-0">-->
+<!--                                        <div class="px-3 pb-2">-->
+<!--                                            <h2 class="h5 text-white mb-0 "-->
+<!--                                                style="font-weight: 500;font-size: 1.25rem;line-height: 1.5">-->
+<!--                                                <small class="mr-2">From</small>-->
+<!--                                                £350.00-->
+<!--                                            </h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="card-body px-4 py-2">-->
+<!--                                    <a class="d-block"-->
+<!--                                       style="color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <div class="mb-1 d-flex align-items-center"-->
+<!--                                             style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                            <i class="fa-solid fa-location-dot mr-2"-->
+<!--                                               style="font-size: 0.938rem;color: #67747c !important"></i>-->
+<!--                                            Greater London, United Kingdom-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                    <a class="card-title mb-0"-->
+<!--                                       style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important;text-decoration: none">-->
+<!--                                        Stonehenge, Windsor Castle,-->
+<!--                                        <br>-->
+<!--                                        and Bath from London-->
+<!--                                    </a>-->
+<!--                                    <div class="my-2">-->
+<!--                                        <div class="d-inline-flex align-items-center mb-0"-->
+<!--                                             style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important">-->
+<!--                                            <div class="mr-2" style="color: #b0d12b">-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                            </div>-->
+<!--                                            <span class="text-secondary mt-1"-->
+<!--                                                  style="font-size: 0.875rem">48 Reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-1 d-flex align-items-center"-->
+<!--                                         style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                        <i class="fa-solid fa-clock mr-2"-->
+<!--                                           style="font-size: 0.875rem;color: #67747c !important">-->
+
+<!--                                        </i>-->
+<!--                                        3 hours 45 minutes-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 col-lg-4 col-xl-3 mb-3 mb-md-4 pb-1">-->
+<!--                            <div class="card mb-1 transition-3d-hover shadow-hover-2 tab-card h-100">-->
+<!--                                <div class="position-relative mb-2">-->
+<!--                                    <a class="d-block gradient-overlay-half-bg-gradient-v5"-->
+<!--                                       style="z-index: 0;color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <img src="https://transvelo.github.io/mytravel-html/assets/img/300x230/img1.jpg"-->
+<!--                                             class="card-img">-->
+<!--                                    </a>-->
+<!--                                    <div class="position-absolute top-0 left-0 pt-5 pl-3">-->
+<!--                                        <span class="badge badge-pill bg-white px-4 py-2"-->
+<!--                                              style="color: #297cbb !important;font-size: 0.875rem;font-weight: 400;border-radius: 10rem">Featured</span>-->
+<!--                                        <span class="badge badge-pill bg-white text-danger px-3  py-2 font-size-14 font-weight-normal"-->
+<!--                                              style="color: #de4437 !important;font-weight: 400;border-radius: 10rem;margin-left: 15px">%25</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute top-0 right-0 pt-5 pr-3">-->
+<!--                                        <button type="button" class="btn btn-sm btn-icon text-white rounded-circle">-->
+<!--                                            <i class="fa-regular fa-heart" style="font-size: 20px"></i>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="position-absolute bottom-0 left-0 right-0">-->
+<!--                                        <div class="px-3 pb-2">-->
+<!--                                            <h2 class="h5 text-white mb-0 "-->
+<!--                                                style="font-weight: 500;font-size: 1.25rem;line-height: 1.5">-->
+<!--                                                <small class="mr-2">From</small>-->
+<!--                                                £350.00-->
+<!--                                            </h2>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="card-body px-4 py-2">-->
+<!--                                    <a class="d-block"-->
+<!--                                       style="color: #297cbb;text-decoration: none;background-color: transparent">-->
+<!--                                        <div class="mb-1 d-flex align-items-center"-->
+<!--                                             style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                            <i class="fa-solid fa-location-dot mr-2"-->
+<!--                                               style="font-size: 0.938rem;color: #67747c !important"></i>-->
+<!--                                            Greater London, United Kingdom-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                    <a class="card-title mb-0"-->
+<!--                                       style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important;text-decoration: none">-->
+<!--                                        Stonehenge, Windsor Castle,-->
+<!--                                        <br>-->
+<!--                                        and Bath from London-->
+<!--                                    </a>-->
+<!--                                    <div class="my-2">-->
+<!--                                        <div class="d-inline-flex align-items-center mb-0"-->
+<!--                                             style="font-size: 1.063rem;font-weight: 500;color: #3b444f !important">-->
+<!--                                            <div class="mr-2" style="color: #b0d12b">-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                                <small class="fas fa-star"></small>-->
+<!--                                            </div>-->
+<!--                                            <span class="text-secondary mt-1"-->
+<!--                                                  style="font-size: 0.875rem">48 Reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="mb-1 d-flex align-items-center"-->
+<!--                                         style="font-size: 0.875rem;color: #67747c !important">-->
+<!--                                        <i class="fa-solid fa-clock mr-2"-->
+<!--                                           style="font-size: 0.875rem;color: #67747c !important">-->
+
+<!--                                        </i>-->
+<!--                                        3 hours 45 minutes-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="banner-block banner-v1 bg-img-hero space-3"
+         style="background-image: url('https://transvelo.github.io/mytravel-html/assets/img/1920x500/img1.jpg')">
+        <div class="mx-auto text-center mt-xl-5 mb-xl-2 px-3 ps-md-0" style="max-width: 38.125rem">
+            <h6 class="text-white mb-1" style="font-size: 2.5rem;font-weight: 500">
+                Travel Tips
+            </h6>
+            <p class="text-white mb-4 pb-1 px-md-3 pg-lg-0"
+               style="font-size: 1.200rem;font-weight: 400;line-height: 1.8">
+                Northern Ireland’s is now contingent. Britain is getting a divorce Northern Ireland is being offered a
+                trial separation for Britain there is a one
+            </p>
+            <a class="btn btn-outline-white transition-3d-hover bg-transparent"
+               style="color: white;border-color: #fff;border-width: 2px;border-radius: 0.188rem;min-width: 12.5rem;font-weight: 400">
+                Get Inspired
+            </a>
+        </div>
+    </div>
+    <div class="icon-block-center icon-center icon-center-v1 border-bottom border-color-8"
+         style="border-color: #ebf0f7 !important;border-bottom: 1px solid #e7eaf3 !important">
+        <div class="container text-center space-1">
+            <div class="w-md-80 w-lg-50 text-center mx-md-auto pb-1 mt-3">
+                <h2 class="section-title text-black " style="font-size: 1.875rem;font-weight: 500;color: #3b444f">
+                    Why Choose
+                </h2>
+
+            </div>
+            <div class="mb-2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <i class="fa-solid fa-hand-holding-dollar mb-3"
+                           style="color: #297cbb !important;font-size: 5rem"></i>
+                        <h5 class="mb-2" style="font-size: 1.063rem;color: #3b444f !important;font-weight: 500">
+                            <a style="color: #3b444f !important;">Competitive Pricing</a>
+                        </h5>
+                        <p class="px-xl-2 px-uw-7" style="color: #67747c !important;line-height: 1.8;font-size: 1.1rem">
+                            With 500+ suppliers and the purchasing power of 300 million members, mytravel.com can save
+                            you more!
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <i class="fa-solid fa-award mb-3" style="color: #297cbb !important;font-size: 5rem"></i>
+                        <h5 class="mb-2" style="font-size: 1.063rem;color: #3b444f !important;font-weight: 500">
+                            <a style="color: #3b444f !important;">Competitive Pricing</a>
+                        </h5>
+                        <p class="px-xl-2 px-uw-7" style="color: #67747c !important;line-height: 1.8;font-size: 1.1rem">
+                            Travel worry-free knowing that we're here if you needus, 24 hours a day
+                        </p>
+                    </div>
+                    <div class="col-md-4 " style="margin-top: -6px">
+                        <i class="fa-solid fa-globe " style="color: #297cbb !important;font-size: 5rem"></i>
+                        <h5 class="mb-2 mt-3" style="font-size: 1.063rem;color: #3b444f !important;font-weight: 500">
+                            <a style="color: #3b444f !important;">Worldwide Coverage</a>
+                        </h5>
+                        <p class="px-xl-2 px-uw-7" style="color: #67747c !important;line-height: 1.8;font-size: 1.1rem">
+                            Over 1,200,000 hotels in more than 200 countries and regions & flights to over 5,000 cities
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <div class="deals-carousel-block deals-carousel-v1 border-bottom border-color-8"-->
+<!--         style="border-color: #ebf0f7 !important;border-bottom: 1px solid #e7eaf3 !important">-->
+<!--        <div class="container mt-3">-->
+<!--            <h2 class="section-title text-center mb-5">-->
+<!--                Today's Top Deals-->
+<!--            </h2>-->
+
+<!--            &lt;!&ndash; Carousel &ndash;&gt;-->
+<!--            <div id="dealsCarousel" class="carousel slide" data-bs-ride="carousel">-->
+
+<!--                <div class="carousel-inner">-->
+<!--                    &lt;!&ndash; First carousel item with 3 columns &ndash;&gt;-->
+<!--                    <div class="carousel-item active">-->
+<!--                        <div class="row text-center">-->
+<!--                            <div class="col-md-4">-->
+<!--                                <img src="deal1.jpg" class="img-fluid" alt="Deal 1">-->
+<!--                                <h5 class="mt-3">Earning Asiana Club Miles Just Got Easier!</h5>-->
+<!--                                <p>Book Hotels and Earn Asiana Club Miles!</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-4">-->
+<!--                                <img src="deal2.jpg" class="img-fluid" alt="Deal 2">-->
+<!--                                <h5 class="mt-3">Save big on hotels!</h5>-->
+<!--                                <p>Book and save with Trip.com on your next stay</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-4">-->
+<!--                                <img src="deal3.jpg" class="img-fluid" alt="Deal 3">-->
+<!--                                <h5 class="mt-3">Experience Europe Your Way</h5>-->
+<!--                                <p>With up to 30% Off, experience Europe your way!</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Second carousel item with 3 columns &ndash;&gt;-->
+<!--                    <div class="carousel-item">-->
+<!--                        <div class="row text-center">-->
+<!--                            <div class="col-md-4">-->
+<!--                                <img src="deal4.jpg" class="img-fluid" alt="Deal 4">-->
+<!--                                <h5 class="mt-3">Discover the Best Beaches!</h5>-->
+<!--                                <p>Plan a beach vacation with our exclusive deals.</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-4">-->
+<!--                                <img src="deal5.jpg" class="img-fluid" alt="Deal 5">-->
+<!--                                <h5 class="mt-3">Mountain Escapes Await</h5>-->
+<!--                                <p>Explore beautiful mountains at a discount.</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-4">-->
+<!--                                <img src="deal6.jpg" class="img-fluid" alt="Deal 6">-->
+<!--                                <h5 class="mt-3">City Lights and Culture</h5>-->
+<!--                                <p>Get deals on popular city attractions and more.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Add more carousel items as needed &ndash;&gt;-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Controls with custom styles and event listeners &ndash;&gt;-->
+<!--                <button class="carousel-control-prev" type="button" data-bs-target="#dealsCarousel" data-bs-slide="prev"-->
+<!--                        style="background-color: #297cbb; border-radius: 19%; width: 2.5rem; height: 2.5rem; opacity: 1; color: #297cbb">-->
+<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                    <span class="visually-hidden">Previous</span>-->
+<!--                </button>-->
+<!--                <button class="carousel-control-next" type="button" data-bs-target="#dealsCarousel" data-bs-slide="next"-->
+<!--                        style="background-color: #297cbb; border-radius: 19%; width: 2.5rem; height: 2.5rem; opacity: 1; color: #297cbb">-->
+<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--                    <span class="visually-hidden">Next</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+</main>
+
+<script th:fragment="customScripts" th:src="@{/user/Home/Home.js}">
+
+</script>
+</body>
+</html>

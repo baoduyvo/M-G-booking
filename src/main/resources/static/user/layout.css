@@ -1,0 +1,2793 @@
+#languageDropdown {
+    display: none; /* Hide the dropdown by default */
+}
+.dropdown-item.active {
+    color: #297cbb !important;
+    background-color: transparent !important;
+}
+@media (min-width: 1200px) {
+    .pt-xl-8, .py-xl-8 {
+        padding-top: 3.5rem !important;
+    }
+}
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.tab.active {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+.tab-content {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 20px;
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+.pagination span {
+    margin: 0 10px;
+    font-size: 16px;
+}
+.pagination .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.baggage-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.baggage-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.route {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.route-info {
+    flex: 1;
+}
+
+.route-header {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.route-header::before {
+    content: '\25C0';
+    color: #fbbd08;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.baggage-info {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.baggage-info span {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.carry-on {
+    background-color: #e8eaf6;
+    color: #3949ab;
+}
+
+.added-baggage {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1565c0;
+    border: 2px solid #1565c0;
+    background-color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #1565c0;
+    color: #fff;
+}
+.pagination .disabled:hover {
+    background-color: #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+.edit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.seat-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+.unavailable{
+    background-color: rgb(233, 235, 238);
+}
+/* General Seat Map Styling */
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.seat-row {
+    display: flex;
+    gap: 10px;
+}
+
+.seat-label {
+    width: 30px;
+    text-align: center;
+    padding: 5px;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.seat.available {
+    background-color: green;
+    color: white;
+}
+
+.seat.occupied {
+    background-color: red;
+    color: white;
+}
+
+.seat.unavailable {
+    background-color: gray;
+}
+
+.seat i {
+    color: white;
+}
+
+.seat-container {
+    overflow-y: auto;
+    max-height: 300px;
+}
+.seat{
+    width: 32px;
+    height: 30px;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-top: 1vh;
+}
+.flight-route {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+.edit-button {
+    background-color: #297cbb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.edit-section {
+    display: flex;
+    align-items: center;
+}
+.seat-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    /* border: 1px solid #ccc; */
+    border-radius: 4px;
+}
+.edit-text {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+}
+.seat-icon.available {
+    background-color: rgb(189, 211, 231);
+}
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+.seat-icon.isSelected{
+    background-color: rgb(50, 169, 35);
+}
+.isSelected{
+    background-color: rgb(50, 169, 35) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.seat-icon.legroom {
+    background-color: rgb(89, 144, 194);
+}
+
+.seat-icon.occupied {
+    background-color: #2c4aff;
+}
+
+.seat-selection-container {
+    width: 100%; /* Điều chỉnh kích thước theo nhu cầu */
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+.passenger-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+}
+.passenger-info.selected{
+    border: 1px solid rgb(83, 146, 249);
+}
+
+.seat-row {
+
+    display: flex;
+;
+    justify-content: space-around;
+
+}
+.confirm-button {
+    background-color: #297cbb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: block;
+    width: 24%;
+    margin-right: 6vh;
+}
+.seat.occupied {
+    background-color: rgb(189, 211, 231);
+}
+.total-price {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: 8vh;
+}
+.seat-label {
+    flex: 1; /*  Mỗi label chiếm 1 phần bằng nhau trong flex container */
+    text-align: center;
+    padding: 5px 0;
+}
+.passenger-block {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.passenger-type {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.reservation-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff7f6;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-bar span {
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.reservation-bar .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #e74c3c;
+    margin-right: 5px;
+}
+
+.reservation-bar .timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+.selected-seat.IsSelected{
+    background-color: rgb(41, 78, 133);
+}
+.selected-seat {
+    background-color: transparent;
+    color: white;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    min-width: 36px;
+    /* padding: 5px 10px; */
+    border-radius: 3px;
+    font-weight: bold;
+    margin-right: 10px;
+    border: 1px solid rgb(190, 194, 201);
+}
+.seat-info {
+    display: flex;
+    align-items: center;
+}
+.box-isselected{
+    background-color: rgb(41, 78, 133);
+}
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+.close-btn {
+    background-color: #f44336; /* Red color for close button */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.avatar-upload {
+    text-align: center;
+    position: relative;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    max-width: 200px;
+    margin: 0 auto;
+}
+.dropdown-header{
+    display: flex !important;
+}
+#airport-list-from{
+    list-style: none;
+}
+.search-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+.search-dropdown li:hover {
+    background-color: #f8f8f8;
+}
+/* Dropdown hiển thị gợi ý */
+.search-dropdown {
+    position: absolute;
+    top: 41%;
+    left: 31px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    display: none; /* Ẩn mặc định */
+    z-index: 10;
+    padding: 1rem;
+}
+
+/* Gợi ý gần đây */
+.search-dropdown p {
+    font-size: 14px;
+    color: #67747c;
+    margin-bottom: 0.5rem;
+}
+
+.search-dropdown .recent-search {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.search-dropdown .recent-search div:first-child {
+    font-size: 16px;
+    color: #000;
+}
+#At-dropdown li .popular {
+    background-color: #d9534f;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: auto;
+}
+#At-dropdown li i {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #ffc107;
+}
+.search-dropdown .recent-search div:last-child {
+    font-size: 14px;
+    color: #67747c;
+}
+
+.avatar-preview {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+
+    overflow: hidden;
+    position: relative;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.avatar-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #bbb;
+    font-size: 2rem;
+}
+
+.icon-image:before {
+    content: "\1F5BC"; /* Unicode for an image icon */
+    font-size: 2.5rem;
+    color: #bbb;
+}
+
+#avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.rating-container .fa-star {
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.height-570 {
+    height: 35.625rem;
+}
+.slider {
+    position: relative;
+    width: 800px; /* Chiều rộng slider */
+    height: 400px; /* Chiều cao slider */
+    margin: auto;
+    overflow: hidden; /* Ẩn phần ngoài slider */
+}
+
+/* Vùng chứa tất cả các slide */
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Hiệu ứng chuyển slide */
+    width: 100%;
+}
+
+/* Mỗi slide */
+.slide {
+    min-width: 100%; /* Mỗi slide chiếm 100% chiều rộng */
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng slide */
+    height: auto;
+    object-fit: cover;
+}
+
+/* Nút điều hướng */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px; /* Căn bên trái */
+}
+
+.next {
+    right: 10px; /* Căn bên phải */
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Hiệu ứng hover */
+}
+.caption.active {
+    display: block;
+}
+.caption {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    width: 15vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Nền đen mờ */
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+@keyframes iGNMZa {
+    0%{
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+.jQOnFh {
+    opacity: 1;
+    height: 100%;
+    overflow: hidden auto;
+    display: flex
+;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.ikgtwJ {
+    border-radius: 8px !important;
+    background-color: rgb(248, 247, 249);
+    padding: 48px;
+    width: 80vw;
+    min-width: 940px;
+    max-width: 1258px;
+}
+.gQallF {
+    margin-left: 12px;
+}
+.cyPVoD {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400;
+}
+.cJiLOx {
+    padding: 16px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 1px;
+    border-radius: 0px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 223, 226);
+}
+.eVMow {
+    background-color: transparent;
+    margin: 3% auto;
+    min-width: 20%;
+    max-width: 80%;
+    max-height: 90%;
+}
+.hfzrUP{
+    opacity: 1;
+    touch-action: none;
+    position: fixed;
+    inset: 0px 0px -10%;
+    z-index: -1;
+    display: block;
+    background: rgba(0,0,0,0.3);
+}
+.dbxnYa {
+    position: fixed;
+    inset: 0px;
+    z-index: 1300;
+    opacity: 1;
+    animation: 0.6s ease 0s 1 normal forwards running iGNMZa;
+}
+.kMETju::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    width: 1px;
+    height: 107%;
+    background: rgb(249, 249, 250);
+}
+/* Hiệu ứng fade-in */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+.popup.show{
+    z-index: 10000;
+    display: flex;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng fade-out */
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Hiệu ứng slide-in */
+.slide-in {
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng slide-out */
+.slide-out {
+    animation: slideOut 0.5s ease-in-out;
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.modal-show {
+    display: block !important;
+}
+/* Chỉ báo (dots) */
+.dots {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #aaa;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #fff;
+}
+.js-scrollbar {
+    max-height: 570px !important; /* Giới hạn chiều cao */
+    overflow-y: auto !important; /* Kích hoạt thanh cuộn dọc */
+    scrollbar-width: thin; /* Thanh cuộn nhỏ gọn (Firefox) */
+    scrollbar-color: #297cbb #f0f0f0; /* Màu thanh cuộn và nền (Firefox) */
+}
+
+/* Thanh cuộn trên Chrome, Edge, và Safari */
+.js-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Độ rộng */
+}
+
+.js-scrollbar::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Màu nền */
+}
+
+.js-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #297cbb; /* Màu của thanh cuộn */
+    border-radius: 4px; /* Góc bo tròn */
+    border: 2px solid transparent; /* Để tạo hiệu ứng padding */
+}
+.mCustomScrollbar {
+    -ms-touch-action: pinch-zoom;
+    touch-action: pinch-zoom;
+}
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: none;
+    direction: ltr;
+}
+.mr-n4, .mx-n4 {
+    margin-right: -1.5rem !important;
+}
+.mt-n4, .my-n4 {
+    margin-top: -1.5rem !important;
+}
+.width-50 {
+    width: 3.125rem;
+}
+
+.height-50 {
+    height: 3.125rem;
+}
+.fas.fa-star {
+    color: gray; /* Default star color */
+}
+
+.fas.fa-star.active {
+    color: gold; /* Highlighted star color */
+}
+.rating-container .fa-star.hovered,
+.rating-container .fa-star.selected {
+    color: gold;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #67747c;
+    content: ">" !important;
+}
+.text-white {
+    color: #fff !important;
+}
+/* General Card Styling */
+.flight-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styling */
+.flight-header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+}
+
+.airline-logo {
+    width: 50px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.airline-info {
+    margin-left: 15px;
+}
+
+.airline-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.flight-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #e74c3c;
+    color: white;
+    margin-left: 10px;
+}
+
+.dropdown {
+    margin-left: auto;
+}
+
+.dropdown-toggle {
+    font-size: 14px;
+}
+
+/* Flight Details Styling */
+.flight-details {
+    padding: 20px;
+}
+
+.flight-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.departure, .arrival {
+    text-align: center;
+}
+
+.time {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.location {
+    font-size: 14px;
+    color: #666;
+}
+
+.date {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.arrow {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.duration {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #999;
+}
+
+/* Flight Info Section */
+.flight-info {
+    font-size: 14px;
+    color: #666;
+}
+
+.flight-info small {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Footer (Price and Buttons) */
+.flight-price {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.route {
+    display: flex;
+    align-items: center;
+}
+.note {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.route img {
+    height: 20px; /* Điều chỉnh kích thước logo */
+    margin-right: 10px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.pt-5, .py-5 {
+    padding-top: 2rem !important;
+}
+.currency {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+
+.flight-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.flight-type {
+    font-size: 14px;
+    color: #777;
+}
+
+.btn-cheapest {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.flight-details {
+    display: flex;
+    flex-direction: column;
+}
+.flight-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Canh giữa các phần tử */
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.time-location {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.departure, .arrival {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.plane-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.time {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.departure-time, .arrival-time {
+    margin: 0 10px;
+}
+
+.flight-company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.airline-logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+.date { /* Thêm CSS cho phần hiển thị ngày đi */
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.airline-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.flight-duration {
+    font-size: 14px;
+    color: #555;
+}
+.time-location {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.departure,
+.arrival {
+    font-weight: bold;
+}
+
+.plane-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    color: #555;
+}
+
+.flight-company {
+    display: flex;
+    align-items: center;
+}
+
+.airline-logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.airline-name {
+    font-weight: bold;
+}
+
+.flight-duration {
+    font-size: 14px;
+    color: #555;
+}
+
+.btn-details {
+    background-color: #e60000;
+    /* Màu đỏ Vietjet */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    align-self: center;
+}
+
+.flight-card-footer {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+}
+.border-violet-1 {
+    border-color: #a864a8 !important;
+}
+.custom-social-share a:hover {
+    border-color: #297cbb !important;
+    background-color: #297cbb !important;
+}
+.custom-social-share a {
+    transition: all 0.2s ease-in-out;
+}
+.custom-social-share a:hover i {
+    color: #fff !important;
+}
+.my-carousel-container {
+    position: relative;
+    max-width: 91%;
+    width: 127%;
+    height: 667px;
+    overflow: hidden;
+}
+
+/* The carousel holds all the items */
+.my-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Each carousel item */
+.my-carousel-item {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.my-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Navigation buttons */
+.my-carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Thumbnail section */
+.my-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.my-thumbnails img {
+    width: 177.2px;
+    height: 129px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    border-radius: 3px;
+}
+[class*="gradient-overlay-half"]::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: "";
+    transition: all 0.2s ease-in-out;
+}
+.show{
+    transition: all ease 0.4s !important;
+}
+.btn-outline-primary {
+    color: #297cbb !important;
+    border-color: #297cbb !important;
+}
+@keyframes slideDown {
+    0% {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        max-height: 500px; /* Đủ lớn để chứa nội dung */
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        max-height: 500px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+#collapseLinkExample {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+.ml-n1, .mx-n1 {
+    margin-left: -0.25rem !important;
+}
+#collapseLinkExample.show {
+    animation: slideDown 0.5s ease forwards;
+}
+.slider-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);*/
+}
+
+/* Slide Wrapper */
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Individual Slide */
+.slide {
+    display: flex;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Individual Item */
+.item {
+    width: 33.33%;
+    padding: 10px;
+
+    text-align: center;
+
+}
+
+.item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.item p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+.gradient-overlay-half-bg-gradient-v5::before {
+    background: linear-gradient(to top, #131313 6%, rgba(19, 19, 19, 0.2) 72%, rgba(34, 34, 34, 0) 89%, rgba(44, 44, 44, 0) 100%);
+    z-index: 0;
+}
+.nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+.section-title::after {
+    display: block;
+    width: 2.5rem;
+    height: 0.125rem;
+    background-color: #297cbb;
+    content: " ";
+    margin: 1.5rem auto 0;
+}
+#collapseLinkExample.hide {
+    animation: slideUp 0.5s ease forwards;
+}
+@media (min-width: 768px) {
+    .mr-md-5, .mx-md-5 {
+        margin-right: 2rem !important;
+    }
+}
+.btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: #297cbb !important;
+    border-color: #297cbb !important;
+}
+.ml-7, .mx-7 {
+    margin-left: 3rem !important;
+}
+@media (min-width: 1200px) {
+    .border-xl-left {
+        border-left: 1px solid #e7eaf3 !important;
+    }
+}
+@media (min-width: 768px) {
+    .pl-md-5, .px-md-5 {
+        padding-left: 2rem !important;
+    }
+}
+.border-color-7 {
+    border-color: #e4e4e4 !important;
+}
+@media (min-width: 768px) {
+    .mr-md-1, .mx-md-1 {
+        margin-right: 0.25rem !important;
+    }
+}
+@media (min-width: 768px) {
+    .mt-md-1, .my-md-1 {
+        margin-top: 0.25rem !important;
+    }
+}
+.link-collapse-custom[aria-expanded="false"]::before {
+    background-image: linear-gradient(180deg, transparent 40%, #fff 99%) !important;
+    background-repeat: repeat-x !important;
+    z-index: 1 !important;
+    bottom: 74px !important;
+    height: auto !important;
+}
+.my-thumbnails img:hover {
+    opacity: 0.7;
+}
+
+.my-thumbnails img.selected {
+    border: 2px solid #333;
+}
+.font-size-14 {
+    font-size: 0.875rem;
+}
+.bg-maroon {
+    background-color: #c72f74 !important;
+}
+.border-maroon {
+    border-color: #c72f74 !important;
+}
+.font-weight-normal {
+    font-weight: 400 !important;
+}
+.border-brown {
+    border-color: #f8bd5b !important;
+}
+.bg-brown {
+    background-color: #f8bd5b !important;
+}
+
+.breadcrumb-item {
+    color: #67747c;
+    font-size: 1.2rem;
+    font-family: "Rubik", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.mb-7, .my-7 {
+    margin-bottom: 3rem !important;
+}
+.custombox-open.custombox-overlay {
+    animation: 400ms ease 0s 1 normal none running OpenFade;
+    opacity: 0.48;
+}
+/* Container bao quanh checkbox và label */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa checkbox và label */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333; /* Màu chữ */
+    cursor: pointer;
+}
+
+/* Ẩn checkbox gốc */
+.hotel-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px; /* Bo tròn nhẹ */
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Hiệu ứng khi hover vào checkbox */
+.hotel-checkbox:hover {
+    border-color: #4CAF50;
+}
+
+/* Checkbox khi được chọn */
+.hotel-checkbox:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+/* Dấu tích khi checkbox được chọn */
+.hotel-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.hotel-checkbox {
+    appearance: none; /* Ẩn checkbox mặc định */
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgb(190, 194, 201); /* Viền như yêu cầu */
+    border-radius: 4px; /* Bo góc nhẹ */
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Hover vào checkbox */
+.hotel-checkbox:hover {
+    border-color: #4CAF50; /* Viền đổi sang màu xanh lá */
+}
+/* General Popup Styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-buggage{
+    width: 500px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.popup-header .close-button {
+    font-size: 18px;
+    cursor: pointer;
+    color: #888;
+}
+.baggage-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.baggage-options li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.baggage-options input[type="radio"] {
+    margin-right: 10px;
+}
+.baggage-options .price {
+    font-weight: bold;
+    color: #333;
+}
+.cancel-button {
+    background: #f0f0f0;
+    color: #333;
+}
+.confirm-button {
+    background: #1565c0;
+    color: white;
+}
+.airport-item.highlight {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.popup-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+.popup-footer button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.popup-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Important for positioning close button */
+    text-align: center;
+}
+
+/* Close Button Style */
+.btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn-close:hover {
+    color: #ff4d4d;
+}
+
+/* Input Field Styles */
+.otp-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+.otp-box {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.otp-box:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+.custombox-y-center {
+    -ms-flex-align: center;
+    align-items: center;
+}
+.custombox-x-center {
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.custombox-fadein.custombox-content {
+    opacity: 0;
+}
+
+
+.flight-header {
+    background-color: #f8f9fa;
+}
+
+.flight-tag {
+    font-size: 12px;
+}
+
+.flight-time {
+    font-size: 16px;
+}
+
+.flight-time .time {
+    font-weight: bold;
+}
+/* Kiểu dáng chung cho tab */
+.date-tabs .nav-pills .nav-link {
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin: 0 5px;
+    color: #333;
+    background-color: #f8f9fa;
+    border: none;
+    text-align: center; /* Căn giữa văn bản */
+    min-width: 80px; /* Đặt chiều rộng tối thiểu */
+}
+
+.date-tabs .nav-pills .nav-link .day {
+    font-size: 18px; /* Kích thước chữ ngày */
+    font-weight: bold;
+}
+
+.date-tabs .nav-pills .nav-link .month {
+    font-size: 12px; /* Kích thước chữ tháng */
+}
+
+.date-tabs .nav-pills .nav-link.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.date-tabs .nav-pills .nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.date-tabs .tab-content .price-container {
+    text-align: center; /* Căn giữa giá */
+    font-size: 16px;
+}
+
+.date-tabs .tab-content .price-container .from {
+    font-size: 14px; /* Kích thước chữ "Từ" */
+    color: #6c757d; /* Màu chữ xám */
+}
+.date-tab {
+    background-color: #ffffff !important; /* Màu nền xám nhạt */
+    border: 2px solid #ced4da !important; /* Viền xanh dương */
+    border-radius: 25px !important; /* Bo tròn góc */
+    padding: 10px 51px !important; /* Khoảng cách bên trong */
+    text-align: center !important;
+    font-size: 16px !important;
+    color: black;
+    cursor: pointer !important;
+    margin: 12px  !important;
+    transition: all 0.2s ease !important;
+}
+.date-tab:hover {
+    transform: translateY(-2px); /* Di chuyển lên trên 2px */
+    box-shadow: rgba(4, 7, 10, 0.24) 0px 4px 10px 0px !important;
+    color: black !important;;/* Thêm hiệu ứng đổ bóng */
+}
+
+.date-tab.active {
+    background-color: #e5efff !important;
+    border: 1px solid rgb(32, 103, 218) !important;/* Màu nền xanh dương */
+    color: rgb(32, 103, 218) !important; /* Màu chữ trắng */
+}
+
+.date-tab .day {
+    font-size: 20px;
+    font-weight: bold;
+}
+@media (min-width: 768px) {
+    .col-md-2gdot8 {
+        -ms-flex: 0 0 23.66667%;
+        flex: 0 0 23.66667%;
+        max-width: 23.66667%;
+    }
+}
+.flight-card-header {
+    background-color: #297cbb;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.date-tab .price {
+    font-size: 14px;
+}
+.flight-details > div.hidden {
+    max-height: 0;
+    opacity: 0/* Ẩn div bằng cách đặt max-height là 0 */
+}
+
+.flight-time {
+    justify-content: space-between; /* Căn đều khoảng cách giữa các phần tử */
+}
+
+.arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flight-details > div.show {
+    max-height: 100px; /* Điều chỉnh giá trị này cho phù hợp */
+}
+.arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flight-amenities li {
+    display: flex;
+    align-items: center;
+}
+
+.flight-amenities .fa-solid {
+    margin-right: 5px;
+}
+.custombox-fadein.custombox-content.custombox-open {
+    animation-name: fadeIn;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    backface-visibility: hidden;
+}
+.flex-horizontal-center {
+    display: -ms-flexbox;
+    display: flex
+;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+.list-group-flush:first-child .list-group-item:first-child {
+    border-top: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+    border-top-left-radius: 0.3125rem;
+    border-bottom-left-radius: 0.3125rem;
+    border-top-right-radius: 0;
+}
+@media (min-width: 768px) {
+    .mr-md-8, .mx-md-8 {
+        margin-right: 3.5rem !important;
+    }
+}
+@media (min-width: 992px) {
+    .mr-lg-10, .mx-lg-10 {
+        margin-right: 4.5rem !important;
+    }
+}
+.list-group-item:first-child {
+    border-top-left-radius: 0.3125rem;
+    border-top-right-radius: 0.3125rem;
+}
+.list-group-horizontal .list-group-item {
+    margin-right: -1px;
+    margin-bottom: 0;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.425rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #e7eaf3;
+}
+.list-group-borderless .list-group-item {
+    border: none;
+}
+.list-group-flush .list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+.list-group .list-group-item {
+    font-size: 1rem;
+}
+.list-group-flush .list-group-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+}
+@media (min-width: 992px) {
+    .mr-lg-3, .mx-lg-3 {
+        margin-right: 1rem !important;
+    }
+}
+.width-60 {
+    width: 3.75rem;
+}
+.border-primary {
+    border-color: #297cbb !important;
+}
+.min-width-250 {
+    min-width: 15.625rem;
+}
+@media (min-width: 1200px) {
+    .max-width-960 {
+        min-width: 62rem;
+    }
+}
+.mt-n4, .my-n4 {
+    margin-top: -1.5rem !important;
+}
+.mr-n4, .mx-n4 {
+    margin-right: -1.5rem !important;
+}
+.max-width-960 {
+    max-width: 60rem;
+}
+.u-modal-window {
+    display: none;
+    max-height: 85vh;
+}
+.custombox-content, .custombox-overlay {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.custombox-content {
+    z-index: 9999;
+    display: -ms-flexbox;
+    display: flex
+;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+}
+.custombox-content {
+    overflow-y: auto;
+}
+@keyframes OpenFade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.48;
+    }
+}
+@media (min-width: 768px) {
+    .width-md-50 {
+        width: 50%;
+    }
+}
+.sidenav .card-btn-arrow {
+    color: #3b444f !important;
+}
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0.3125rem;
+
+}
+@keyframes fadeIn {
+    0%{
+        transform: scale(.7);
+        transition-property: all;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+
+.custom-control-label::before, .custom-file-label, .custom-select {
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: 0.0935rem;
+    left: -1.813rem;
+    display: block;
+    width: 1.313rem;
+    height: 1.313rem;
+    content: "";
+    background: no-repeat 50% / 50% 50%;
+}
+.green-lighter {
+    color: #b0d12b;
+}
+.ml-0dot5, .mx-0dot5 {
+    margin-left: 0.143rem !important;
+}
+.mr-0dot5, .mx-0dot5 {
+    margin-right: 0.143rem !important;
+}
+.price-range-display {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3b444f;
+    text-align: center;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+.tab-nav-shop .nav-link {
+    color: #67747c;
+    padding: 0.5rem 0.5rem;
+}
+.tab-nav-shop .nav-link.active {
+    color: #297cbb;
+}
+.u-slick__tab .tab-pane:not(.active) {
+    display: block !important;
+    height: 0 !important;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+[class*="gradient-overlay-half"]::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: "";
+    transition: all 0.2s ease-in-out;
+}
+.min-height-230 {
+    min-height: 14.375rem;
+}
+@media (min-width: 1200px) {
+    .col-xl-2dot3 {
+        -ms-flex: 0 0 19.16667%;
+        flex: 0 0 19.16667%;
+        max-width: 19.16667%;
+    }
+}
+.bootstrap-select .dropdown-toggle:before {
+    content: '';
+    display: inline-block;
+}
+.nav-select-1 .bootstrap-select button {
+    background-color: transparent !important;
+}
+.btn-light:not(label.btn), .btn-light:not(label.btn):not([href]):not(:disabled):not(.disabled), .btn-light:not([href]), .btn-light:not([href]):not([href]):not(:disabled):not(.disabled) {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+.bootstrap-select>.dropdown-toggle {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    text-align: right;
+    white-space: nowrap;
+}
+.bootstrap-select .dropdown-toggle .filter-option {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: inherit;
+    padding-right: inherit;
+    padding-bottom: inherit;
+    padding-left: inherit;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}
+@media (min-width: 768px) {
+    .btn-md {
+        min-width: 11.375rem;
+        height: 3.75rem;
+    }
+}
+@media (min-width: 1200px) {
+    .col-xl-1dot8 {
+        -ms-flex: 0 0 15%;
+        flex: 0 0 15%;
+        max-width: 15%;
+    }
+}
+.bootstrap-select .dropdown-toggle .filter-option-inner {
+    padding-right: inherit;
+}
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+    overflow: hidden;
+}
+.nav-select .bootstrap-select button {
+
+    border: none;
+    font-weight: 500;
+    padding-bottom: 14px;
+}
+.bootstrap-select>select {
+    position: absolute !important;
+    bottom: 0;
+    left: 50%;
+    display: block !important;
+    width: .5px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    border: none;
+}
+
+.border-bottom-1 {
+    border-bottom: 2px solid #c6cdd6 !important;
+}
+.tab-nav-1-inner .nav-link.active {
+    border: 1px solid #297cbb !important;
+    background-color: #297cbb !important;
+    border-radius: 3px;
+}
+.bg-gray-33 {
+    background-color: #ebf0f7 !important;
+}
+.badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+.shadow-hover-2.tab-card:hover {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.border-right {
+    border-right: 1px solid #e7eaf3 !important;
+}
+.border-gray-33 {
+    border-color: #ebf0f7 !important;
+}
+.page-item {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.3125rem;
+}
+.transition-3d-hover:hover, .transition-3d-hover:focus {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+}
+.badge-primary {
+    color: #fff;
+    background-color: #297cbb;
+}
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.3125rem - 1px);
+    border-top-right-radius: calc(0.3125rem - 1px);
+}
+.bg-img-hero {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+.gradient-overlay-half-bg-gradient-v5::before {
+    background: linear-gradient(to top, #131313 6%, rgba(19, 19, 19, 0.2) 72%, rgba(34, 34, 34, 0) 89%, rgba(44, 44, 44, 0) 100%);
+    z-index: 0;
+}
+.gradient-overlay-half-bg-gradient-v5 {
+    z-index: 0;
+}
+.fade:not(.show) {
+    opacity: 0;
+}
+.fade {
+    transition: opacity 0.15s linear;
+}
+.flex-center-between {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.slider-container input[type="range"]:nth-child(1)::-webkit-slider-thumb {
+    z-index: 3;
+}
+
+.custom-control-label::before {
+    position: absolute;
+    top: 0.0935rem;
+    left: -1.813rem;
+    display: block;
+    width: 1.2rem!important;
+    height: 1.2rem!important;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: #ebf0f7 solid 2px;
+}
+
+/* Tùy chỉnh checkbox */
+.airline-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #007bff; /* Màu xanh của Bootstrap */
+}
+.dropdown-menu li.selected {
+    background-color: #007bff !important;
+    color: white !important;
+}
+/* Tùy chỉnh nhãn */
+.form-check-label {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+#returnDateContainer {
+    margin-top: 10px; /* Khoảng cách với phần tử phía trên */
+}
+.search-item i {
+    color: #297cbb;
+}
+.search-item input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    display: none;
+    z-index: 10;
+    max-height: 300px   ;
+    overflow-y: auto;
+    padding: 1rem;
+}
+.dropdown-header span {
+    font-size: 14px;
+    font-weight: bold;
+}
+.airport-item {
+    display: flex
+;
+    flex-direction: column;
+    padding: 21px;
+    border-bottom: transparent;
+}
+.airport-info {
+    font-size: 14px;
+}
+.detail-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.detail-buttons a {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.detail-buttons a:hover{
+    color: white;
+    text-decoration: none;
+}
+.airport-info {
+    display: flex
+;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Spinner styles */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.loading-text {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+.airport-info .airport-name {
+    font-weight: bold;
+    color: #333;
+}
+.airport-info .airport-code {
+    color: #007BFF;
+    font-weight: bold;
+}
+.swap-button {
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.search-item {
+    display: flex
+;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 600px; /* Chiều rộng tối đa */
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 1200px) {
+    .pr-xl-1, .px-xl-1 {
+        padding-right: 0.25rem !important;
+    }
+}
+.nav-choose .nav-link.active {
+    border-color: #297cbb !important;
+    position: relative;
+}
+.pb-6, .py-6 {
+    padding-bottom: 2.5rem !important;
+}
+.pt-6, .py-6 {
+    padding-top: 2.5rem !important;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.date-picker-container {
+    display: flex
+;
+    align-items: center;
+    gap: 20px;
+}
+.date-picker-container::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 50px;
+    background-color: #ced4da;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: absolute;
+    left: 77vh;
+    top: 19vh;
+}
+@media (min-width: 1200px) {
+    .pl-xl-12, .px-xl-12 {
+        padding-left: 5.5rem !important;
+    }
+}
+.date-picker {
+    display: flex
+;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+}
+.date-picker i {
+    color: #297cbb;
+    margin-right: 10px;
+}
+
+.noUi-target {
+    width: 100%; /* Ensure full width */
+}
+
+.noUi-handle {
+    background: #007bff; /* Add a color for the handles */
+}
+
+.noUi-base {
+    border: 1px solid #ccc; /* Optional: add border to the base */
+}
+
+/* Khoảng cách giữa các checkbox */
+.form-check {
+    margin-bottom: 10px;
+}
+
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+.custom-control-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.search-dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+.dropdown-header {
+    display: flex
+;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.813rem;
+}
+.card-btn-arrow {
+    display: inline-block;
+    color: #297cbb;
+    margin-left: 1rem;
+    transition: 0.3s ease-in-out;
+}
+.card-btn {
+    color: #3b444f;
+    text-align: left;
+    white-space: inherit;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+ .dropdown-nav-link {
+    border-bottom: 2px solid #eaeaea;
+}
+.card-collapse {
+    padding: 0;
+    transition: 0.3s ease-in-out;
+}
+.height-60 {
+    height: 3.75rem;
+}
+.dropdown-nav-link {
+    color: #67747c;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+.border-width-2 {
+    border-width: 2px !important;
+}
+.text-gray-1 {
+    color: #67747c !important;
+}
+.border-color-1 {
+    border-color: #eaeaea !important;
+}
+.btn-icon.btn-medium {
+    font-size: 1rem;
+    width: 2.188rem;
+    height: 2.188rem;
+}
+
+.btn-icon {
+    position: relative;
+    line-height: 0;
+    font-size: 1rem;
+    width: 3.125rem;
+    height: 3.125rem;
+    padding: 0;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.btn-outline-secondary {
+    color: #77838f;
+    border-color: #77838f;
+}
+.btn-text-secondary {
+    color: #77838f;
+    background: transparent;
+}
+.form-input input:focus, .form-input textarea:focus {
+    border: 2px solid #051036 !important;
+}
+.-dark:hover{
+    border-color: #051036;
+    background-color: #051036 !important;
+    color: #fff !important;
+}
+.button.-outline-red-1 {
+    border-color:#d93025;
+}
+.form-checkbox__mark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #051036;
+    border-radius: 4px;
+}
+.form-checkbox input {
+    cursor: pointer;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+.form-checkbox {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+}
+.text-red-1 {
+    color: #d93025;
+}
+.button.-outline-blue-1:hover {
+    background-color: #3554d1;
+    border-color: transparent;
+    color: #fff !important;
+}
+.button.-outline-red-1:hover {
+    background-color:  #d93025;
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.text-blue-1{
+    color: #3554d1;
+}
+.button.-outline-blue-1 {
+    border-color: #3554d1;
+}
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.2;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: all .3s cubic-bezier(.165,.84,.44,1);
+}
+.form-input input:focus~label{
+    transform: translateY(-10px);
+}
+.form-input label {
+    position: absolute;
+    top: 0;
+    top: 26px;
+    padding: 0 15px;
+    pointer-events: none;
+    font-size: 14px;
+}
+.form-input, .form-input label {
+    transition: all .2s cubic-bezier(.165,.84,.44,1);
+}
+.transition-3d-hover {
+    transition: all 0.2s ease-in-out;
+}
+.rounded-xs {
+    border-radius: 0.188rem;
+}
+.btn-wide {
+    min-width: 13.75rem;
+}
+/* Dropdown initially hidden */
+#languageDropdown {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show dropdown on hover and apply animation */
+.dropdown:hover #languageDropdown {
+    display: block !important;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hs-has-sub-menu {
+    overflow: hidden;
+    position: relative;
+}
+
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.dr

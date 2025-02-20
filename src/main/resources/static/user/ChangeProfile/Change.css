@@ -1,0 +1,17 @@
+.shadow-soft{
+    box-shadow: 0 3px 6px 0 rgba(140, 152, 164, 0.25) !important;
+}
+.bg-gray {
+    background-color: #ebf0f7 !important;
+}
+.space-2, .space-bottom-2 {
+    padding-bottom: 4rem !important;
+}
+.space-2, .space-top-2 {
+    padding-top: 4rem !important;
+}
+.form-control {
+    border-radius: 0.3125rem !important;
+    font-size: 0.875rem !important;
+    height: calc(1.5em + 1.8rem + 4px) !important;
+}

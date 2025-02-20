@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/SuperAdmin/layout :: mainContent('Airline',~{this::.content-wrapper})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+        <div class="row ">
+            <!-- Form controls -->
+
+
+            <!-- Input Sizing -->
+            <div class="col-md-12">
+                <form th:action="@{/SuperAdmin/Airline/UpdateAirline}" method="post" enctype="multipart/form-data">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Airline</h5>
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Name</label>
+                                <input id="largeInput" th:field="${Airline.name}" class="form-control form-control-lg" type="text" placeholder="Name"/>
+                            </div>
+
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Country</label>
+                                <select class="form-control" th:field="${Airline.idCountry}">
+                                    <option th:each="Countries : ${Country}" th:value="${Countries.id}" th:text="${Countries.name}"></option>
+                                </select>
+                            </div>
+
+                            <div class="mt-2 mb-4">
+                                <label for="largeInput" class="form-label">Image</label>
+                                <input type="file" class="form-control" name="imageForm" id="fileInput" accept="image/*">
+                                <div class="mt-3">
+                                    <img id="previewImage" th:src="'http://localhost:8686/images/flight/'+${Airline.image}" alt="Preview" style="display: block; max-width: 200px; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <input type="hidden" th:field="${Airline.id}">
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <!-- Default Checkboxes and radios & Default checkboxes and radios -->
+
+        </div>
+
+    </div>
+
+
+    <!-- / Content -->
+
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+        <div class="container-xxl">
+            <div
+                    class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                <div class="text-body mb-2 mb-md-0">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    , made with <span class="text-danger"><i class="tf-icons ri-heart-fill"></i></span> by
+                    <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
+                </div>
+                <div class="d-none d-lg-inline-block">
+                    <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                    <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+
+                    <a
+                            href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/documentation/"
+                            target="_blank"
+                            class="footer-link me-4"
+                    >Documentation</a
+                    >
+
+                    <a
+                            href="https://github.com/themeselection/materio-bootstrap-html-admin-template-free/issues"
+                            target="_blank"
+                            class="footer-link"
+                    >Support</a
+                    >
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / Footer -->
+
+    <div class="content-backdrop fade"></div>
+    <script th:fragment="customScripts" th:src="@{/SuperAdmin/Airline/Airline.js}"></script>
+</div>
+
+</body>
+</html>

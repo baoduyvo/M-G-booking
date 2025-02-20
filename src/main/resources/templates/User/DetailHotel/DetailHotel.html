@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layout :: mainContent('Detail Hotel',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block">
+    <div class="border-bottom mb-7">
+        <div class="container-fluid">
+            <nav class="py-3">
+                <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble"
+                    style="padding: 0;background: transparent">
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                        <a>Home</a>
+                    </li>
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                        <a>Hotels</a>
+                    </li>
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                        <a th:text="${Hotel.country}">
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                        <a th:text="${Hotel.city}">Park Avenue Baker Street London</a>
+                    </li>
+
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-xl-9" style="margin-left: 3vh">
+                <div class="d-block d-md-flex flex-center-between align-items-start mb-2">
+                    <div class="mb-3">
+                        <ul class="list-unstyled mb-2 d-md-flex flex-lg-wrap flex-xl-nowrap mb-3">
+                            <li class="border border-brown bg-brown rounded-xs d-flex align-items-center text-lh-1 py-1 px-3 mr-md-2 mb-2 mb-md-0 mb-lg-2 mb-xl-0">
+                                <span class="font-weight-normal text-white font-size-14"
+                                      style="font-size: 17px;font-family: 'Rubik', Helvetica, Arial, sans-serif">Newly renovated</span>
+                            </li>
+                            <li class="border border-maroon bg-maroon rounded-xs d-flex align-items-center text-lh-1 py-1 px-3 mr-md-2 mb-2 mb-md-0 mb-lg-2 mb-xl-0 mb-md-0">
+                                <span class="font-weight-normal font-size-14 text-white"
+                                      style="font-size: 17px;font-family: 'Rubik', Helvetica, Arial, sans-serif">Free Wi-Fi</span>
+                            </li>
+                        </ul>
+                        <div class="d-block d-md-flex flex-horizontal-center mb-2 mb-md-2">
+                            <h4 th:text="${Hotel.name}" class="mb-1"
+                                style="font-weight: 500 !important;font-size: 1.438rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                Park Avenue Baker Street London</h4>
+                            <div class="ml-3 " style="font-size: 0.625rem;letter-spacing: 0.125rem">
+                            <span class="d-block  ml-1">
+                                 <span class="fas fa-star" style="font-size: 15px"
+                                       th:classappend="${avgRating >= 1 ? 'active' : ''}"></span>
+    <span class="fas fa-star" style="font-size: 15px"
+          th:classappend="${avgRating >= 2 ? 'active' : ''}"></span>
+    <span class="fas fa-star" style="font-size: 15px"
+          th:classappend="${avgRating >= 3 ? 'active' : ''}"></span>
+    <span class="fas fa-star" style="font-size: 15px"
+          th:classappend="${avgRating >= 4 ? 'active' : ''}"></span>
+    <span class="fas fa-star" style="font-size: 15px"
+          th:classappend="${avgRating >= 5 ? 'active' : ''}"></span>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="d-block d-md-flex flex-horizontal-center text-gray-1"
+                             style="font-size: 1.1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                            <i class="fa-solid fa-location-dot mr-2" style="font-size: 1.25rem"></i>
+                            <span th:text="${Hotel.city}+ ', ' +${Hotel.country}"></span>
+
+                            <a class="ml-1 d-block d-md-inline"
+                               style="color: #297cbb;text-decoration: none;background-color: transparent"> - View on
+                                map</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid mt-4">
+                    <!-- Slider chính -->
+                    <div class="my-carousel-container">
+                        <div class="my-carousel">
+                            <th:block th:each="image,index : ${Image}">
+                                <div class="my-carousel-item active">
+                                    <img th:src="'http://localhost:8686/images/hotels/'+${image.imageUrl}"
+                                         alt="Image 1">
+                                </div>
+                            </th:block>
+
+
+                        </div>
+                        <!-- Navigation buttons -->
+                        <button class="my-carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
+                        <button class="my-carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+                    </div>
+
+                    <!-- Thumbnails -->
+                    <div class="my-thumbnails">
+                        <th:block th:each="image,index : ${Image}">
+                            <img th:src="'http://localhost:8686/images/hotels/' + ${image.imageUrl}"
+                                 alt="Thumbnail 1"
+                                 th:attr="onclick='goToSlide(' + ${index.index} + ')'"/>
+
+                        </th:block>
+
+                    </div>
+                </div>
+                <div class="border-bottom position-relative">
+                    <h5 id="scroll-description" class="" style="font-size: 1.313rem;color: #3b444f !important;font-weight: 500!important;
+font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                        Description
+                    </h5>
+                    <p style="color: #77838f;line-height: 1.7;margin-top: 0;margin-bottom: 1rem;
+font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 22px;font-weight: 500;text-align: left"
+                       th:text="${Hotel.description}">
+                        The 4-star Park Central Hotel offers comfort and convenience whether you're on business or
+                        holiday in New York (NY). Featuring a complete list of amenities, guests will find their stay at
+                        the property a comfortable one. Service-minded staff will welcome and guide you at the Park
+                        Central Hotel. Air conditioning, heating, desk, alarm clock, iPod docking station can be found
+                        in selected guestrooms. The hotel offers various recreational opportunities. Park Central Hotel
+                        combines warm hospitality with a lovely ambiance to make your stay in New York (NY)
+                        unforgettable.
+                    </p>
+
+
+                </div>
+                <div class="border-bottom position-relative">
+                    <h5 id="scroll-description" class="" style="font-size: 1.313rem;color: #3b444f !important;font-weight: 500!important;
+font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                        Address
+                    </h5>
+                    <p style="color: #77838f;line-height: 1.7;margin-top: 0;margin-bottom: 1rem;
+font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 22px;font-weight: 500;text-align: left"
+                       th:text="${Hotel.address}">
+
+                    </p>
+
+
+                </div>
+                <div class="border-bottom py-4">
+                    <h5 id="scroll-amenities" class="mb-4"
+                        style="font-size: 1.313rem;font-weight: bold;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                        Select your Room
+                    </h5>
+                    <th:block th:each="detailRooms,index : ${DetailRoom}">
+                        <div class="card border-color-7 mb-5 overflow-hidden">
+                            <div class="position-absolute top-0 right-0 mr-md-1 mt-md-1" style="right: 0;top: 0">
+                                <div class="border border-brown bg-brown rounded-xs d-flex align-items-center py-1 px-3 mr-2 mt-2"
+                                     style="line-height: 1">
+                                <span class="font-weight-normal "
+                                      style="color: white;font-size: 1.5rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;">Today's best offer</span>
+                                </div>
+                            </div>
+                            <div class="product-item__outer w-100">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="pt-5 pb-md-5 pl-4 pr-4 pl-md-5 pr-md-2 pr-xl-2">
+                                            <div class="product-item__header mt-2 mt-md-0">
+                                                <div class="position-relative">
+                                                    <img class="img-fluid rounded-sm" style="width: 89%"
+                                                         th:src="'http://localhost:8686/images/rooms/'+${detailRooms.imageUrl}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-5 flex-horizontal-center pl-xl-0">
+                                        <div class="w-100 position-relative m-4 m-md-0">
+                                            <a class="mb-2 d-inline-block">
+                                            <span class="text-dark"
+                                                  style="font-weight: bold;font-size: 1.263rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;"
+                                                  th:text="${detailRooms.type}">Deluxe Twin Room</span>
+                                            </a>
+                                            <div class="mt-1 pt-2">
+                                                <div class="d-flex mb-1">
+                                                    <th:block th:each="amenties,index :${detailRooms.amenitiesLists}">
+                                                        <div class="ml-0">
+                                                            <ul class="list-unstyled mb-0">
+                                                                <li class="media mb-3 text-gray-1">
+                                                                    <small class="mr-2">
+                                                                        <i class="fa-solid fa-wifi"
+                                                                           style="font-size: 1.063rem;color: #297cbb !important;font-style: normal"></i>
+                                                                    </small>
+                                                                    <div class="media-body font-size-1 ml-1"
+                                                                         style="flex: 1;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;margin-top: -2px">
+                                                                        <span th:text="${amenties.name}"></span>
+                                                                    </div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </th:block>
+
+                                                    <!--                                                    <div class="ml-7">-->
+                                                    <!--                                                        <ul class="list-unstyled mb-0">-->
+                                                    <!--                                                            <li class="media mb-3 text-gray-1">-->
+                                                    <!--                                                                <small class="mr-2">-->
+
+                                                    <!--                                                                    <i class="fa-solid fa-bed"-->
+                                                    <!--                                                                       style="font-size: 1.063rem;color: #297cbb !important;font-style: normal"></i>-->
+                                                    <!--                                                                </small>-->
+                                                    <!--                                                                <div class="media-body font-size-1 ml-1"-->
+                                                    <!--                                                                     style="flex: 1;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;margin-top: -2px">-->
+                                                    <!--                                                                    2 single beds-->
+                                                    <!--                                                                </div>-->
+                                                    <!--                                                            </li>-->
+                                                    <!--                                                            <li class="media mb-3 text-gray-1">-->
+                                                    <!--                                                                <small class="mr-2">-->
+
+                                                    <!--                                                                    <i class="fa-solid fa-shower"-->
+                                                    <!--                                                                       style="font-size: 1.063rem;color: #297cbb !important;font-style: normal"></i>-->
+                                                    <!--                                                                </small>-->
+                                                    <!--                                                                <div class="media-body font-size-1 ml-1"-->
+                                                    <!--                                                                     style="flex: 1;font-size: 1rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;margin-top: -2px">-->
+                                                    <!--                                                                    Shower and bathtub-->
+                                                    <!--                                                                </div>-->
+                                                    <!--                                                            </li>-->
+                                                    <!--                                                        </ul>-->
+                                                    <!--                                                    </div>-->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 align-self-center py-4 py-xl-0 border-top "
+                                         style="border-top: 0 !important">
+                                        <div class="flex-center-between border-xl-left py-xl-5 ml-4 ml-xl-0 justify-content-start justify-content-center"
+                                             style="margin-left: 0">
+                                            <div class="text-center my-xl-1">
+                                                <div class="mb-2 pb-1">
+                                                <span class="" style="font-size: 22px;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5;
+color: #3b444f">
+                                                    From
+                                                </span>
+                                                    <span class="ml-1"
+                                                          th:text="'£'+${detailRooms.price}"
+                                                          style="font-weight: 500;font-size: 1.9rem;font-family: 'Rubik', Helvetica, Arial, sans-serif;color: #3b444f">
+
+                                                </span>
+                                                    <span style="font-size: 22px;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-weight: 400;line-height: 1.5;
+color: #3b444f"> / night</span>
+                                                </div>
+                                                <th:block th:if="${search != null}">
+                                                    <!-- Check if 'selectedHotel' is false -->
+                                                    <a th:if="${search.selectedHotel == false}"
+                                                       th:href="@{'/InformationCustomer/' + ${detailRooms.id}}"
+                                                       class="btn btn-outline-primary border-radius-3 border-width-2 px-4 py-2"
+                                                       style="border-radius: 3px !important; font-weight: 500 !important; min-width: 12.5rem; line-height: 1.9">Book Now</a>
+
+                                                    <!-- Check if 'selectedHotel' is true -->
+                                                    <a th:if="${search.selectedHotel == true}"
+                                                       th:href="@{'/SearchHotelFlight/' + ${detailRooms.id}}"
+                                                       class="btn btn-outline-primary border-radius-3 border-width-2 px-4 py-2"
+                                                       style="border-radius: 3px !important; font-weight: 500 !important; min-width: 12.5rem; line-height: 1.9">Book Now</a>
+                                                </th:block>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
+
+                    <h5 id="scroll-amenities" class="mb-4"
+                        style="font-size: 1.313rem;font-weight: bold;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                        Amenities
+                    </h5>
+                    <ul class="list-group list-group-borderless list-group-horizontal list-group-flush no-gutters row">
+                        <th:block th:each="Amenty,index :${Amenities}">
+                            <li class="col-md-4 list-group-item" style="font-size: 1.2rem">
+                                <i class="fa-solid fa-check mr-3"
+                                   style="font-size: 1.063rem;color: #297cbb !important;font-style: normal"></i>
+                                <span th:text="${Amenty.name}"></span>
+                            </li>
+                        </th:block>
+
+
+                    </ul>
+                </div>
+                <div class="border-bottom py-4">
+                    <h5 id="scroll-specifications" class="mb-4" style="font-size: 1.313rem;color: #3b444f !important">
+                        Average Reviews
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="border rounded flex-center-between py-5 border-width-2 justify-content-center">
+                                <div class="text-center">
+                                    <h2 class="mb-2" th:text="${#numbers.formatDecimal(avgRating, 1, 1)}"
+                                        style="line-height: 1.2;font-weight: 500!important;font-size: 3.825rem;color: #297cbb !important">
+                                        4.2<span style="font-size: 1.8rem">/5</span>
+                                    </h2>
+                                    <div class="mb-3"
+                                         style="font-size: 1.863rem;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Very Good
+                                    </div>
+                                    <div class="mb-3"
+                                         style="font-size: 1.2rem;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        From 40 reviews
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-bottom py-4">
+                    <h5 class="mb-4" style="font-size: 1.313rem;color: #3b444f !important">
+                        Showing 16 verified guest comments
+                    </h5>
+                    <th:block th:each="rating,inex : ${RatingList}">
+                        <div class="media flex-column flex-md-row align-items-center align-items-md-start mb-4">
+                            <div class="mr-md-3">
+                                <a class="d-block">
+                                    <img class="mb-3 mb-md-0 rounded-circle" style="width: 85px;height: 85px;object-fit: cover"
+                                         th:src="'http://localhost:8686/images/users/'+${rating.avatar}"/>
+                                </a>
+                            </div>
+                            <div class="media-body  text-md-start">
+                                <div class="mb-4">
+                                    <h6 style="font-weight: 500!important;color: #3b444f !important;font-size: 1rem">
+                                        <a style="color: #3b444f;text-decoration: none;background-color: transparent;font-family: 'Rubik', Helvetica, Arial, sans-serif;
+                                    font-size: 22px" th:text="${rating.name}"></a>
+                                    </h6>
+                                    <div class="font-weight-normal mb-2"
+                                         style="font-size: 1rem;color: #9fa9b8 !important;font-weight: 400 !important" th:text="${rating.getFormattedCreateRating()}">
+
+                                    </div>
+                                    <div class="d-flex align-items-center flex-column flex-md-row mb-2">
+                                        <button type="button"
+                                                class="btn btn-xs btn-primary rounded-xs py-1 px-2 mr-2 mb-2 mb-md-0"
+                                                style="font-size: 1.2rem;background-color: #297cbb;border-color: #297cbb" th:text="${rating.rating}+'  /5'">
+                                            4.6 /5
+                                        </button>
+                                        <span class=""
+                                              style="font-weight: 500!important;font-style: italic!important;color: #3b444f !important;font-size: 21px">The worst hotel ever ”</span>
+                                    </div>
+                                    <p class="mb-0 "
+                                       style="line-height: 1.6;padding-right: 2rem;color: #77838f;font-size: 25px" th:text="${rating.description}">
+                                        Morbi velit eros, sagittis in facilisis non, rhoncus et erat. Nam posuere ultricies
+                                        tortor imperdiet vitae. Curabitur lacinia neque non metus
+                                    </p>
+                                </div>
+                                <div class="review">
+                                    <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 px-md-2 "
+                                         style="padding-right: 2rem !important;">
+                                        <div class="col">
+                                            <div class="font-weight-normal mx-lg-1 my-lg-1 mb-3 mb-md-0"
+                                                 style="font-size: 0.875rem;color: #67747c !important">
+                                                Was This Review...?
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-7 col-xl-4">
+                                            <div class="d-flex justify-content-between my-lg-1">
+                                                <a style="color: #080e7b !important;text-decoration: none;background-color: transparent">
+                                                    <i class="fa-regular fa-thumbs-up mr-1" style="font-size: 0.938rem"></i>
+                                                    <span class="font-weight-normal" style="font-size: 0.875rem">Like</span>
+                                                </a> <a
+                                                    style="color: #5c6770 !important;text-decoration: none;background-color: transparent">
+
+                                                <i class="fa-regular fa-thumbs-down mr-1" style="font-size: 0.938rem"></i>
+                                                <span class="font-weight-normal" style="font-size: 0.875rem">Like</span>
+                                            </a><a style="color: #ff3c4e !important;text-decoration: none;background-color: transparent">
+
+                                                <i class="fa-regular fa-heart mr-1" style="font-size: 0.938rem"></i>
+                                                <span class="font-weight-normal" style="font-size: 0.875rem">Like</span>
+                                            </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+
+                </div>
+                <div class="py-4">
+                    <h5 class="mb-4" style="font-size: 1.313rem;color: #3b444f !important">
+                        Write a Review
+                    </h5>
+                    <form th:action="@{/rating}" method="post">
+                        <div class="row mb-4">
+                            <div class="col-md-4 mb-4 rating-container">
+
+                                <small class="fas fa-star" data-value="1"></small>
+                                <small class="fas fa-star" data-value="2"></small>
+                                <small class="fas fa-star" data-value="3"></small>
+                                <small class="fas fa-star" data-value="4"></small>
+                                <small class="fas fa-star" data-value="5"></small>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="row mb-5 mb-lg-0">
+
+                            <div class="col-sm-12 mb-5">
+                                <div class="js-form-message">
+                                    <div class="input-group">
+                                        <textarea class="form-control" rows="6" cols="77" placeholder="Comment"
+                                                  th:field="${Rating.content}"
+                                                  style="border-radius: 0.3125rem;font-size: 0.875rem;padding: 0.9rem 1rem"></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-center justify-content-lg-start">
+                                <button type="submit" class="btn rounded-xs p-2 transition-3d-hover"
+                                        style="background-color: #045cff !important;color: #fff;height: 3.188rem;width: 11.875rem">
+                                    Submit Review
+                                </button>
+                                <input type="hidden" th:field="${Rating.rating}" id="ViewRating">
+                                <input type="hidden" th:field="${Rating.hotel}">
+                                <input type="hidden" th:if="${Rating.userId!=null}" th:field="${Rating.userId}">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xl-2">
+                <div class="mb-4">
+                    <div class="flex-horizontal-center">
+                        <ul class="ml-n1 list-group list-group-borderless list-group-horizontal custom-social-share">
+                            <li class="list-group-item px-1 py-0">
+                                <a class="border rounded border-width-2 "
+                                   style="height: 2.813rem;width: 2.813rem;display: flex;align-items: center;justify-content: center;text-decoration: none">
+                                    <i class="fa-regular fa-heart" style="font-size: 1.125rem;color: #3b444f;"></i>
+                                </a>
+                            </li>
+                            <li class="list-group-item px-1 py-0">
+                                <a class="border rounded border-width-2 "
+                                   style="height: 2.813rem;width: 2.813rem;display: flex;align-items: center;justify-content: center;text-decoration: none">
+
+                                    <i class="fa-solid fa-share" style="font-size: 1.125rem;color: #3b444f;"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="flex-horizontal-center ml-2">
+                            <div class="badge-primary rounded-xs px-1" style="background-color: #297cbb">
+                                <span class="badge px-2 py-2 mb-0"
+                                      style="font-size: 1.188rem;line-height: 1.5"
+                                      th:text="${#numbers.formatDecimal(avgRating, 1, 1)} + '/5'"> </span>
+                            </div>
+                            <div class="ml-2" style="line-height: 1">
+                                <div class="ml-1">
+                                    <h4 class="text-primary mb-0"
+                                        style="color: #297cbb !important;font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                        Excellent
+                                    </h4>
+                                    <span style="color: #67747c !important;font-size: 0.9rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">(1,186 Reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-unstyled d-md-flex mb-5">
+                    <li class="border border-violet-1 rounded-xs d-flex py-3 px-3 mb-2 mb-md-0"
+                        style="align-items: center;line-height: 1;border-color: #a864a8 !important;background-color: #a864a8 !important">
+                        <span class="font-weight-normal"
+                              style="font-size: 0.875rem;color: #fff !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Lowest price includes</span>
+                    </li>
+                    <li class="border border-violet-1 rounded-xs d-flex py-3 px-3 mb-2 mb-md-0"
+                        style="align-items: center;line-height: 1;border-color: #a864a8 !important;background-color: #fff!important;border-left: none">
+                        <span class="font-weight-normal"
+                              style="font-size: 0.875rem;color: #a864a8 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif">Free breakfast</span>
+                    </li>
+                </ul>
+                <div class="mb-4">
+                    <div class="border border-color-7 rounded mb-5">
+                        <div class="border-bottom">
+                            <div class="p-4">
+                                <span class="mr-2" style="font-size: 1rem">From</span>
+                                <span style="font-size: 1.5rem;color: #18181a !important;font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"
+                                      th:text="'£'+${Hotel.price}">£350.00</span>
+                                <span style="font-size: 0.875rem;color: #18181a !important;font-family: 'Rubik', Helvetica, Arial, sans-serif"> / night</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="border border-color-7 rounded px-4 pt-4 pb-3 mb-5">
+                    <div class="px-2 pt-2">
+                        <a class="d-block border rounded mb-4">
+                            <img class="img-fluid"
+                                 src="https://transvelo.github.io/mytravel-html/assets/img/map-markers/map.jpg">
+                        </a>
+                        <div class="flex-horizontal-center mb-4">
+                            <div class="border-primary border rounded-xs px-3 py-1"
+                                 style="line-height: 1.7;border-color:#297cbb !important; ">
+                                <span style="font-size: 1.313rem;font-weight: 500!important;line-height: 1.5;color: #297cbb !important">4.5</span>
+                            </div>
+                            <div class="ml-2 text-lh-1">
+                                <div class="ml-1">
+                                    <h4 class="text-primary mb-0"
+                                        style="font-size: 1.063rem;font-weight: 500 !important;color: #297cbb !important">
+                                        Exceptional</h4>
+                                    <span class="text-gray-1" style="font-size: 0.875rem">Location rating score</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4" style="display: flex;align-items: center">
+                            <i class="fa-solid fa-location-dot"
+                               style="font-size: 1.563rem;color: #297cbb !important;margin-right: 1rem;padding-right: 0.25rem"></i>
+                            <h6 class="mb-0" style="font-size: 0.875rem;color: #67747c !important">
+                                <a>Better than 99% of properties in London</a>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-card-block product-card-v3 mt-5">
+            <div class="space-1">
+                <div class="w-md-80 w-lg-50 text-center mx-md-auto pb-4">
+                    <h2 class="section-title mb-0"
+                        style="color: #3b444f;font-size: 1.875rem;font-weight: 500 !important">
+                        Hotel Nearby
+                    </h2>
+                </div>
+            </div>
+            <div class="slider-container">
+                <!-- Wrapper for slides -->
+                <div class="slides">
+                    <th:block th:each="hotel, index : ${Hotels}">
+                        <!-- Mở slide mới khi index là bội của 3 -->
+                        <div class="slide" th:if="${index.index % 3 == 0}">
+                            <div class="card transition-3d-hover shadow-hover-2 w-100 mt-2 mr-2"
+                                 style="width: 30% !important;">
+                                <div class="position-relative">
+                                    <a class="d-block gradient-overlay-half-bg-gradient-v5">
+                                        <img class="card-img-top"
+                                             th:src="@{'https://transvelo.github.io/mytravel-html/assets/img/300x230/img9.jpg'}"
+                                             th:alt="${hotel.hotelName}">
+                                    </a>
+                                    <div class="position-absolute bottom-0 left-0 right-0" style="left: 0;right: 0">
+                                        <div class="px-4 pb-3">
+                                            <a class="d-block"
+                                               style="color: #297cbb;text-decoration: none;background-color: transparent">
+                                                <div class="d-flex align-items-center"
+                                                     style="font-size: 19px;color: white!important;font-family: 'Rubik', Helvetica, Arial, sans-serif">
+                                                    <i style="color: white;" class="fa-solid fa-location-dot mr-2"></i>
+                                                    <span th:text="${hotel.city}+ ',  '+${hotel.country}"></span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body px-4 pt-2 pb-3">
+                                    <div class="mb-2">
+                                        <div class="d-inline-flex align-items-center font-size-13 text-lh-1 text-primary letter-spacing-3">
+                                            <div class="green-lighter">
+                                                <small class="fas fa-star" th:classappend="${hotel.rating>=1 ? 'active' : ''}"></small>
+                                                <small class="fas fa-star" th:classappend="${hotel.rating>=2?'active':''}"></small>
+                                                <small class="fas fa-star" th:classappend="${hotel.rating>=3 ? 'active' : ''}"></small>
+                                                <small class="fas fa-star" th:classappend="${hotel.rating>=4 ? 'active':''}"></small>
+                                                <small class="fas fa-star" th:classappend="${hotel.rating>=5?'active':''}"></small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="card-title"
+                                       style="font-size: 1.363rem;font-weight: 500!important;color: #3b444f !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;text-decoration: none"
+                                       th:text="${hotel.hotelName}">
+                                    </a>
+                                    <div class="mt-2 mb-3">
+                <span class="badge badge-pill badge-primary py-1 px-2 font-weight-normal"
+                      style="font-size: 1.2rem;border-radius: 3px;background-color: #297cbb"
+                      th:text="${hotel.rating + '/5'}">
+                </span>
+                                        <span class="ml-2" style="font-size:0.875rem;color: #67747c !important"
+                                              th:text="'(' + ${hotel.rating} + ' reviews)'">
+                </span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <span class="mr-1"
+                                              style="font-size: 1.3rem;color: #67747c !important">From</span>
+                                        <span style="font-weight: 500!important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 23px"
+                                              th:text="'£123'">
+                </span>
+                                        <span style="color: #67747c !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 17px"> / night</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Nội dung mỗi item khách sạn -->
+
+                        <!-- Đóng slide khi index tiếp theo cũng là bội của 3 -->
+                        <th:block th:if="${index.index % 3 == 2 || index.index == Hotels.size() - 1}">
+                            <!-- Đóng slide -->
+                        </th:block>
+                    </th:block>
+
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="nav-btn prev" id="prev">&lt;</button>
+                <button class="nav-btn next" id="next">&gt;</button>
+            </div>
+        </div>
+    </div>
+    <div class="custombox-overlay custombox-fadein custombox-open"
+         style="background-color: rgb(0,0,0);z-index: 0;display: none"></div>
+    <div class="custombox-content custombox-x-center custombox-y-center custombox-fadein custombox-fadein"
+         style="animation-duration: 300ms;animation-delay: 150ms;display: none;z-index: 0;">
+        <div id="ontargetModal" class="js-modal-window u-modal-window u-modal-window-custom container"
+             data-modal-type="ontarget" data-open-effect="fadeIn" data-close-effect="fadeOut" data-speed="500"
+             style="max-width: 1320px">
+            <div class="card rounded border-0 mx-3 mx-md-4 mx-xl-0 mb-4 mb-md-0">
+                <div class="row no-gutters position-relative">
+                    <button id="closeBtn" type="button" class="border-0 width-50 height-50 mt-n4 mr-n4 rounded-circle" style="background-color: #297cbb !important;z-index: 2;cursor: pointer;display: flex;align-items: center;justify-content: center;
+position: absolute;top: 0;right: 0">
+
+                        <i class="fa-solid fa-xmark text-white font-size-14"></i>
+                    </button>
+                    <div class="col-xl-3 mb-4 mb-xl-0 order-1 order-xl-0">
+                        <div class="border-bottom">
+                            <div class="px-4 py-4">
+                                <div class="" id="typeRoom" style="font-weight: 500 !important;font-size: 1.188rem">Deluxe Gold King
+                                    Room
+                                </div>
+                                <div class="mt-2">
+                                    <span class="mr-1" style="font-size: 0.975rem;color: #67747c !important">From</span>
+                                    <span id="pricePopup" class=""
+                                          style="font-weight: 500!important;font-size: 1.7rem;font-family: 'Rubik', Helvetica, Arial, sans-serif">£350.00</span>
+                                    <span class="" style="font-size: 0.975rem;color: #67747c !important"> / night</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pl-4 pt-4 h-100 ">
+                            <div class="mb-3"
+                                 style="font-weight: 500;font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1.2rem">
+                                Amentities
+                            </div>
+                            <div class=" height-570 mCustomScrollbar _mCS_1 mCS-autoHide"
+                                 style="position: relative;overflow: visible">
+                                <div id="mCSB_1"
+                                     class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside js-scrollbar"
+                                     tabindex="0" style="max-height: none">
+                                    <div id="mCSB_1_container" class="mCSB_container"
+                                         style="position: relative;top: 0px;left: 0px;" dir="ltr">
+                                        <ul class="d-block list-unstyled" id="Amenities">
+                                            <li class="mb-3">
+                                                <i class="fa-solid fa-wifi"
+                                                   style="margin-right: 1rem;color: #297cbb !important;font-size: 1.5rem"></i>
+                                                Wifi
+                                                <i></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9">
+                        <div class="slider">
+                            <!-- Các slide -->
+                            <div class="slides" id="slides">
+                                <div class="slide" id="slide">
+                                    <img src="https://via.placeholder.com/800x400?text=Slide+1" alt="Slide 1">
+                                    <div class="caption">
+                                        <span>Swimming Pool</span>
+                                    </div>
+                                </div>
+                                <div class="slide" id="slide">
+                                    <img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2">
+                                    <div class="caption">
+                                        <span>Luxury Room</span>
+                                    </div>
+                                </div>
+                                <div class="slide" id="slide">
+                                    <img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3">
+                                    <div class="caption">
+                                        <span>Beautiful View</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nút điều hướng -->
+                            <button class="prev" id="prevprev1">❮</button>
+                            <button class="next" id="nextnext1">❯</button>
+
+                            <!-- Chỉ báo (dots) -->
+                            <div class="dots">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:fragment="customScripts" th:src="@{/user/DetailHotel/DetailHotel.js}">
+
+    </script>
+</main>
+
+</body>
+</html>

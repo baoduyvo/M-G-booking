@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutHomeLogin :: mainContent('About Us',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block">
+  <div class="bg-img-hero text-center mb-1" style="background-image: url('https://transvelo.github.io/mytravel-html/assets/img/1920x400/img3.jpg')">
+      <div class="container space-top-3 py-6 py-xl-0">
+          <div class="row justify-content-center py-xl-4">
+              <div class="py-xl-10 py-5">
+                  <h1 class="mb-0" style="font-size: 2.5rem;font-weight: 500;color: #fff">About Us</h1>
+                  <nav>
+                      <ol class="breadcrumb breadcrumb-no-gutter justify-content-center mb-0">
+                          <li class="breadcrumb-item" style="font-size: 0.875rem;color: #67747c">
+                              <a class="text-white" style="text-decoration: none">Home</a>
+                          </li>
+                          <li class="breadcrumb-item custom-breadcrumb-item active" style="font-size: 0.875rem;color: white">
+                              About
+                          </li>
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="slider border-bottom border-color-3">
+        <div class="container space-1">
+            <div class="w-md-80 w-lg-70 text-center mx-md-auto mb-5 mt-3">
+                <h2 class="section-title text-black mb-0" style="font-size: 1.875rem;font-weight: 500 !important;color: #3b444f;line-height: 1.5">
+                    We’re truely dedicated to make your travel experience as much simple and fun as possible!
+                </h2>
+            </div>
+            <section class="w-lg-80 mx-auto mb-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="text-center text-md-start" style="font-size: 1.313rem;font-weight: 500!important;">Our Story</h2>
+                        <p class="text-gray-1" style="line-height: 1.7;font-size: 1rem">
+                            Bringing you a modern, comfortable, and connected travel experience is one of our highest priorities and that’s why we continuously try to improve your experience when you book anything with us.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-center text-md-start" style="font-size: 1.313rem;font-weight: 500!important;">Our mission</h2>
+                        <p class="text-gray-1" style="line-height: 1.7;font-size: 1rem">
+                            We really appreciate and welcome any of suggstions you might have for us, so feel free drop us line anytime.Air conditioning, heating, desk, alarm clock, iPod docking station can be found in selected guestrooms.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <div class="sliderbanner border-bottom">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="https://transvelo.github.io/mytravel-html/assets/img/slider/img3.jpg" alt="Slide 1"  style="height: 400%">
+                    </div>
+                    <div class="slide">
+                        <img src="https://transvelo.github.io/mytravel-html/assets/img/slider/img4.jpg" alt="Slide 2" style="height: 400%">
+                    </div>
+                    <div class="slide">
+                        <img src="https://transvelo.github.io/mytravel-html/assets/img/slider/img3.jpg" alt="Slide 3"  style="height: 400%">
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="prevBtn">Previous</button>
+                    <button id="nextBtn">Next</button>
+                </div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center space-1">
+        <div class="w-md-80 w-lg-50 text-center mx-md-auto pb-1">
+            <h2 class="section-title text-black " style="font-size: 1.875rem;font-weight: 500 !important;">Why Choose</h2>
+        </div>
+        <div class="mb-8">
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fa-solid fa-hand-holding-dollar mb-3" style="font-size: 5rem;color: #297cbb !important"></i>
+                    <h5 class="text-dark mb-2" style="font-size: 1.063rem;font-weight: 500 !important;">
+                        <a style="text-decoration: none;color: #3b444f !important;">Competitive Pricing</a>
+                    </h5>
+                    <p class="text-gray-1 px-xl-2 px-uw-7" style="font-size: 18px;line-height: 1.7">
+                        With 500+ suppliers and the purchasing power of 300 million members, mytravel.com can save you more!
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa-solid fa-medal mb-3" style="font-size: 5rem;color: #297cbb !important"></i>
+                    <h5 class="text-dark mb-2 text-center" style="font-weight: 500 !important;font-size: 1.063rem;">
+                        <a style="text-decoration: none;color: #3b444f !important;">Award-Winning Service</a>
+                    </h5>
+                    <p class="text-gray-1 px-xl-2 px-uw-7">Travel worry-free knowing that we're here if you needus, 24 hours a day</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa-solid fa-globe mb-3" style="font-size: 5rem;color: #297cbb !important"></i>
+
+                    <h5 class="text-dark mb-2 text-center" style="font-weight: 500 !important;font-size: 1.063rem;">
+                        <a style="text-decoration: none;color: #3b444f !important;">Worldwide Coverage</a>
+                    </h5>
+                    <p class="text-gray-1 px-xl-2 px-uw-7">Over 1,200,000 hotels in more than 200 countries and regions & flights to over 5,000 cities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gradient-overlay-half-bg-grayish-blue bg-img-hero space-3 space-top-lg-4 space-bottom-lg-3" style="background-image: url('https://transvelo.github.io/mytravel-html/assets/img/1920x500/img5.jpg')">
+        <div class="text-center mt-xl-2">
+            <h5 class="text-white mb-4" style="color: #fff !important;font-weight: 500 !important;font-size: 2.563rem">Travelling Highlights</h5>
+            <h6 class="text-white mb-3 mb-lg-5" style="font-size: 1.313rem;font-weight: 500 !important;opacity: .7">Your New Travelling Idea</h6>
+        </div>
+    </div>
+    <div class="team border-bottom border-color-3">
+        <div class="container space-top-1">
+            <div class="w-md-80 w-lg-70 text-center mx-md-auto mb-5 mt-3">
+                <h2 class="section-title text-black font-bold mb-0" style="font-size: 1.875rem">
+                    Deticated Team
+                </h2>
+            </div>
+            <div class="row text-center pb-2">
+                <div class="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
+                    <div class="pb-3">
+                        <figure class="d-inline-block u-avatar-image rounded-circle overflow-hidden">
+                            <div class="u-avatar-image-overlay">
+                                <ul class="u-avatar-image-social list-unstyled m-0 w-100 h-100">
+                                    <li>
+                                        <a class="btn btn-icon btn-medium btn-soft-white btn-bg-transparent transition-3d-hover rounded-circle">
+                                            <i class="fa-brands fa-facebook btn-icon__inner" style="color: white;font-size: 17px;position: relative;z-index: 1000"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-icon btn-medium btn-soft-white btn-bg-transparent transition-3d-hover rounded-circle">
+                                            <i class="fa-brands fa-twitter btn-icon__inner" style="color: white;font-size: 17px;position: relative;z-index: 1000"></i>
+
+                                        </a>
+                                    </li>   <li>
+                                        <a class="btn btn-icon btn-medium btn-soft-white btn-bg-transparent transition-3d-hover rounded-circle">
+
+                                            <i class="fa-brands fa-instagram btn-icon__inner" style="color: white;font-size: 17px;position: relative;z-index: 1000"></i>
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="https://transvelo.github.io/mytravel-html/assets/img/200x200/img1.jpg">
+                        </figure>
+                    </div>
+                    <h6 class="" style="font-size: 1.063rem;font-weight: 500 !important;color: #484848 !important">David Robets</h6>
+                    <span class="" style="color: #5392f9">Founder & Director</span>
+                </div>
+                <div class="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
+                    <div class="pb-3">
+                        <figure class="d-inline-block u-avatar-image rounded-circle overflow-hidden">
+                            <div class="u-avatar-image-overlay">
+                                <ul class="u-avatar-image-social list-unstyled m-0 w-100 h-100">
+                                    <li>
+                                        <a class="btn btn-icon btn-medium btn-soft-white btn-bg-transparent transition-3d-hover rounded-circle">
+                                            <i class="fa-brands fa-facebook btn-icon__inner" style="color: white;font-size: 17px;position: relative;z-index: 1000"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-icon btn-medium btn-soft-white btn-bg-transparent transition-3d-hover rounded-circle">
+                                            <i class="fa-brands fa-twitter btn-icon__inner" style="color: white;font-size: 17px;position: relative;z-index: 1000"></i>
+
+                                        </a>
+                                    </li>   <li>
+                                        <a class="btn btn-icon btn-medium btn-soft-white btn-bg-transparent transition-3d-hover rounded-circle">
+
+                                            <i class="fa-brands fa-instagram btn-icon__inner" style="color: white;font-size: 17px;position: relative;z-index: 1000"></i>
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img src="https://transvelo.github.io/mytravel-html/assets/img/200x200/img1.jpg">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:fragment="customScripts">
+        const slides = document.querySelector('.slides');
+        const slide = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const pagination = document.getElementById('pagination');
+
+        let currentIndex = 0; // Chỉ số slide hiện tại
+
+        // Tạo nút pagination dựa trên số lượng slide
+        function createPagination() {
+            slide.forEach((_, index) => {
+                const button = document.createElement('button');
+                if (index === 0) button.classList.add('active'); // Kích hoạt nút đầu tiên
+                button.addEventListener('click', () => showSlide(index));
+                pagination.appendChild(button);
+            });
+        }
+
+        // Cập nhật trạng thái nút pagination
+        function updatePagination() {
+            const buttons = pagination.querySelectorAll('button');
+            buttons.forEach((button, index) => {
+                if (index === currentIndex) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Hàm hiển thị slide
+        function showSlide(index) {
+            if (index < 0) {
+                currentIndex = slide.length - 1; // Chuyển về slide cuối
+            } else if (index >= slide.length) {
+                currentIndex = 0; // Chuyển về slide đầu
+            } else {
+                currentIndex = index;
+            }
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updatePagination();
+        }
+
+        // Sự kiện cho nút Previous và Next
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentIndex + 1);
+        });
+
+        // Khởi tạo pagination
+        createPagination();
+
+        // Tùy chọn: Auto chuyển slide
+        setInterval(() => {
+            showSlide(currentIndex + 1);
+        }, 5000);
+
+    </script>
+</main>
+
+
+</body>
+</html>

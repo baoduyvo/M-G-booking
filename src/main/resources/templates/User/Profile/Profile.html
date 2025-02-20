@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/User/layout/layoutLogin :: mainContent('Profile',~{this::#content})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="content" class="relative block" style="background-color: #ebf0f7 !important;padding-top: 4rem">
+    <div class="container">
+        <form th:action="@{/Profile}" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-lg-8 col-xl-9">
+                    <div class="mb-5 shadow-soft"
+                         style="background-color: white;border-radius: 0.25rem!important;box-shadow: 0 3px 6px 0 rgba(140, 152, 164, 0.25) !important">
+                        <div class="py-3 px-4 px-xl-12 border-bottom">
+                            <h2 class="text-center" style="font-family: 'Rubik', Helvetica, Arial, sans-serif">Profile
+                                Account</h2>
+                        </div>
+                        <div class="pt-4 pb-5 px-5 border-bottom">
+                            <h5 id="scroll-description" class="text-dark mb-4"
+                                style="font-size: 1.313rem;font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;text-align: left">
+                                Information Account
+                            </h5>
+
+                            <div class="row">
+                                <div class="col-sm-6 mb-4">
+                                    <div class="js-form-message">
+                                        <label class="form-label"
+                                               style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1.2rem;font-weight: 400;line-height: 1.5;color: #3b444f">
+                                            Full Name
+                                        </label>
+                                        <input type="text" class="form-control" name="firstName"
+                                               placeholder="First Name"
+                                               style="padding: 0.9rem 1rem;height: calc(1.5em + 1.8rem + 4px);border: 3px solid #ebf0f7;color: #3b444f"
+                                               th:field="${Account.fullName}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mb-4">
+                                    <div class="js-form-message">
+                                        <label class="form-label"
+                                               style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1.2rem;font-weight: 400;line-height: 1.5;color: #3b444f">
+                                            Username
+                                        </label>
+                                        <input type="text" class="form-control" name="firstName" placeholder="Last Name"
+                                               th:field="${Account.username}"
+                                               style="padding: 0.9rem 1rem;height: calc(1.5em + 1.8rem + 4px);border: 3px solid #ebf0f7;color: #3b444f">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mb-4">
+                                    <div class="js-form-message">
+                                        <label class="form-label"
+                                               style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1.2rem;font-weight: 400;line-height: 1.5;color: #3b444f">
+                                            Email
+                                        </label>
+                                        <input type="text" class="form-control" name="firstName" placeholder="Email"
+                                               th:field="${Account.email}"
+                                               style="padding: 0.9rem 1rem;height: calc(1.5em + 1.8rem + 4px);border: 3px solid #ebf0f7;color: #3b444f">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 mb-4">
+                                    <div class="js-form-message">
+                                        <label class="form-label"
+                                               style="font-family: 'Rubik', Helvetica, Arial, sans-serif;font-size: 1.2rem;font-weight: 400;line-height: 1.5;color: #3b444f">
+                                            Phone
+                                        </label>
+                                        <input type="tel" class="form-control" name="firstName" placeholder="Phone"
+                                               th:field="${Account.phone}"
+                                               style="padding: 0.9rem 1rem;height: calc(1.5em + 1.8rem + 4px);border: 3px solid #ebf0f7;color: #3b444f">
+                                    </div>
+                                </div>
+                               <input type="hidden" th:field="${Account.cityId}">
+                               <input type="hidden" th:field="${Account.countryId}">
+                                <div class="col-12">
+                                    <div class="js-form-message mb-6">
+                                        <label class="form-label">
+                                            Address
+                                        </label>
+                                        <div class="input-group">
+                                            <textarea class="form-control" rows="4" th:field="${Account.address}"
+                                                      style="border: 2px solid #ebf0f7"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="w-100"></div>
+
+
+
+                        </div>
+<!--                        <div class="pt-4 pb-5 px-5">-->
+
+<!--                            <h5 id="scroll-description" class="text-dark mb-4"-->
+<!--                                style="font-size: 1.313rem;font-weight: 500 !important;font-family: 'Rubik', Helvetica, Arial, sans-serif;text-align: left">-->
+<!--                                Security Information-->
+<!--                            </h5>-->
+<!--                            <div class="row">-->
+<!--                                &lt;!&ndash; Image Upload: Front Side &ndash;&gt;-->
+<!--                                <div class="col-sm-6 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif; font-size: 1.2rem; font-weight: 400; line-height: 1.5; color: #3b444f;">-->
+<!--                                            Front Number Card:-->
+<!--                                        </label>-->
+<!--                                        <div class="image-upload" id="frontUpload" style="cursor: pointer;">-->
+<!--                                            <div class="image-preview" id="frontPreview">-->
+<!--                                                <img id="frontImage" th:if="${Account.front_security_code!=null}"  th:src="'http://localhost:8686/images/SecurityCode/'+${Account.front_security_code}" alt="Front Side Preview"  />-->
+<!--                                                <img id="frontImage" th:if="${Account.front_security_code==null}" src="https://2702.mevivu.net/public/assets/images/default-image.png" alt="Front Side Preview"  />-->
+
+<!--                                            </div>-->
+<!--                                            <input type="file" th:field="${Account.front_security_file}" id="frontInput" accept="image/*" style="display: none;" />-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash; Image Upload: Back Side &ndash;&gt;-->
+<!--                                <div class="col-sm-6 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label" style="font-family: 'Rubik', Helvetica, Arial, sans-serif; font-size: 1.2rem; font-weight: 400; line-height: 1.5; color: #3b444f;">-->
+<!--                                            Back Number Card:-->
+<!--                                        </label>-->
+<!--                                        <div class="image-upload" id="backUpload" style="cursor: pointer;">-->
+<!--                                            <div class="image-preview" id="backPreview">-->
+<!--                                                <img id="backImage" th:if="${Account.back_security_code!=null}" th:src="'http://localhost:8686/images/SecurityCode/'+${Account.back_security_code}" alt="Back Side Preview" />-->
+<!--                                                <img id="backImage" th:if="${Account.back_security_code==null}" src="https://2702.mevivu.net/public/assets/images/default-image.png" alt="Back Side Preview" />-->
+
+<!--                                            </div>-->
+<!--                                            <input type="file" id="backInput" th:field="${Account.back_security_file}" accept="image/*" style="display: none;" />-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash; Value Code &ndash;&gt;-->
+<!--                                <div class="col-sm-6 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label">Value Code</label>-->
+<!--                                        <input type="text" class="form-control" placeholder="Value Code" th:field="${Account.valueCode}" style="border: 3px solid #ebf0f7; padding: 0.9rem 1rem;">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash; Birthday &ndash;&gt;-->
+<!--                                <div class="col-sm-6 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label">Birthday</label>-->
+<!--                                        <input type="date" class="form-control" placeholder="Birthday" th:value="${Account.dob}" style="border: 3px solid #ebf0f7; padding: 0.9rem 1rem;">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash; Start Date &ndash;&gt;-->
+<!--                                <div class="col-sm-6 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label">Start</label>-->
+<!--                                        <input type="date" id="StartDateInput" class="form-control" placeholder="Start Date" th:value="${Account.startAt}" style="border: 3px solid #ebf0f7; padding: 0.9rem 1rem;">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash; End Date &ndash;&gt;-->
+<!--                                <div class="col-sm-6 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label">End</label>-->
+<!--                                        <input type="date" class="form-control" placeholder="End Date" th:value="${Account.endAt}" style="border: 3px solid #ebf0f7; padding: 0.9rem 1rem;">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash; Location &ndash;&gt;-->
+<!--                                <div class="col-sm-12 mb-4">-->
+<!--                                    <div class="js-form-message">-->
+<!--                                        <label class="form-label">Location</label>-->
+<!--                                        <textarea class="form-control" rows="4" th:field="${Account.location}" style="border: 2px solid #ebf0f7;"></textarea>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+
+<!--                        </div>-->
+
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-xl-3">
+                    <div class="card mb-3">
+                        <div class="card-header">Avatar</div>
+                        <div class="card-body p-2">
+                            <div class="avatar-upload" id="avatarUpload">
+                                <div class="avatar-preview">
+                                    <img id="avatarImage" th:if="${Account.avatar!=null}"
+                                         th:src="${Account.avatar != null ? 'http://localhost:8686/images/users/'+Account.avatar : 'https://2702.mevivu.net/public/assets/images/default-image.png'}"> <img id="avatarImage" th:if="${Account.avatar==null}"
+                                         src="https://2702.mevivu.net/public/assets/images/default-image.png">
+                                    <div id="placeholder" class="avatar-placeholder">
+                                        <i class="icon-image"></i>
+                                    </div>
+
+                                </div>
+                                <input type="file" id="avatarInput" th:field="${Account.avatarFile}" accept="image/*" style="display: none;"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header">Post</div>
+                        <div class="card-body p-2">
+                            <div class="w-100 d-flex align-items-center h-100 gap-2">
+                                <button type="submit" class="btn btn-primary flex-column gap-1 text-wrap p-2 flex-grow-1">Save</button>
+                                <input type="hidden" th:field="${Account.accountType}">
+                                <input type="hidden" th:field="${Account.id}">
+                                <input type="hidden" th:field="${Account.level_id}">
+                                <input type="hidden" th:field="${Account.password}">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</main>
+
+</body>
+<script th:fragment="customScripts" th:src="@{/user/Profile/Profile.js}"></script>
+</html>

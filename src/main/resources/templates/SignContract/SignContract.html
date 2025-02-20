@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chữ Ký Điện Tử</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .contract-section {
+            margin-bottom: 20px;
+        }
+
+        .contract-section p {
+            margin-left: 20px;
+        }
+
+        .signature-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .signature-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+
+        .button-container button:focus {
+            outline: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body> <div class="container">
+    <h1>HỢP ĐỒNG ĐĂNG KÝ KHÁCH SẠN</h1>
+
+    <!-- Contract Information -->
+    <div class="contract-section">
+        <h2>CÔNG TY</h2>
+        <p><strong>Tên Công Ty:</strong> [Tên Công Ty]</p>
+        <p><strong>Địa chỉ:</strong> [Địa chỉ công ty]</p>
+        <p><strong>Số điện thoại:</strong> [Số điện thoại]</p>
+        <p><strong>Email:</strong> [Email công ty]</p>
+        <p><strong>Website:</strong> [Website công ty]</p>
+    </div>
+
+    <div class="contract-section">
+        <h2>KHÁCH HÀNG</h2>
+        <p><strong>Tên khách hàng:</strong> [Tên khách hàng]</p>
+        <p><strong>Địa chỉ:</strong> [Địa chỉ khách hàng]</p>
+        <p><strong>Số điện thoại:</strong> [Số điện thoại khách hàng]</p>
+        <p><strong>Email:</strong> [Email khách hàng]</p>
+    </div>
+
+    <div class="contract-section">
+        <h2>THÔNG TIN HỢP ĐỒNG</h2>
+        <p><strong>Ngày ký hợp đồng:</strong> [Ngày ký]</p>
+        <p><strong>Số hợp đồng:</strong> [Số hợp đồng]</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>Điều Khoản Hợp Đồng</h3>
+        <p><strong>1. Điều kiện thanh toán:</strong> Khách hàng phải thanh toán 50% số tiền hợp đồng trước khi ký kết, và phần còn lại phải thanh toán đầy đủ trước ngày 15/12/2024. Thanh toán có thể được thực hiện qua chuyển khoản ngân hàng hoặc thẻ tín dụng.</p>
+        <p><strong>2. Điều kiện hủy hợp đồng:</strong> Khách hàng có thể hủy hợp đồng miễn phí nếu thông báo ít nhất 7 ngày trước ngày bắt đầu hợp đồng. Nếu hủy sau thời gian này, khách hàng sẽ phải chịu phí hủy hợp đồng là 30% giá trị hợp đồng</p>
+        <p><strong>3. Điều kiện vi phạm hợp đồng:</strong> Nếu bất kỳ bên nào vi phạm các điều khoản hợp đồng, bên bị vi phạm có quyền đơn phương chấm dứt hợp đồng mà không cần thông báo trước. Phí vi phạm sẽ được tính theo tỷ lệ phần trăm của tổng giá trị hợp đồng.</p>
+        <p><strong>4. Điều kiện bảo mật thông tin:</strong> Các bên cam kết bảo mật mọi thông tin liên quan đến hợp đồng, bao gồm thông tin cá nhân và tài chính. Mọi hành vi tiết lộ thông tin mà không có sự đồng ý của các bên sẽ bị xử lý theo quy định của pháp luật.</p>
+        <p><strong>5. Điều kiện về quyền sở hữu tài sản:</strong> Tất cả các tài sản vật chất hoặc kỹ thuật liên quan đến hợp đồng, bao gồm thiết bị và phần mềm, sẽ thuộc quyền sở hữu của khách sạn hoặc bên cung cấp dịch vụ cho đến khi hợp đồng kết thúc và tất cả nghĩa vụ thanh toán đã được thực hiện đầy đủ.</p>
+        <p><strong>6. Điều kiện giải quyết tranh chấp:</strong> Mọi tranh chấp phát sinh từ hợp đồng sẽ được giải quyết thông qua thương lượng giữa các bên. Nếu không thể đạt được thỏa thuận, tranh chấp sẽ được giải quyết tại tòa án có thẩm quyền tại địa phương của bên khởi kiện.</p>
+        <p><strong>7. Điều kiện thay đổi hợp đồng:</strong> Bất kỳ thay đổi nào đối với hợp đồng này phải được thỏa thuận bằng văn bản và được ký kết bởi cả hai bên. Các thay đổi sẽ có hiệu lực kể từ ngày ký.</p>
+
+    </div>
+
+    <div class="signature-section">
+        <h3 class="signature-title">Chữ Ký Điện Tử của khách hàng</h3>
+        <canvas id="canvas" width="500" height="200"></canvas>
+
+        <div class="button-container">
+            <button id="clear">Xóa Chữ Ký</button>
+            <button id="save">Lưu Chữ Ký</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 [Tên Công Ty] - Tất cả quyền lợi được bảo vệ.</p>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let isDrawing = false;
+
+    // Xử lý bắt đầu vẽ
+    function startDrawing(e) {
+        isDrawing = true;
+        draw(e);
+    }
+
+    // Xử lý dừng vẽ
+    function stopDrawing() {
+        isDrawing = false;
+        ctx.beginPath(); // Bắt đầu lại một path mới sau khi dừng vẽ
+    }
+
+    // Xử lý vẽ khi di chuyển chuột
+    function draw(e) {
+        if (!isDrawing) return;
+
+        // Lấy tọa độ của chuột trên canvas
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = 'black';
+
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.beginPath();  // Bắt đầu vẽ lại từ điểm mới
+        ctx.moveTo(x, y); // Di chuyển đến điểm hiện tại của chuột
+    }
+
+    // Thêm sự kiện cho các hành động
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mousemove', draw);
+
+    // Thêm nút "Xóa Chữ Ký"
+    document.getElementById('clear').addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // Thêm nút "Lưu Chữ Ký"
+    document.getElementById('save').addEventListener('click', () => {
+        const dataURL = canvas.toDataURL();
+        alert('Chữ ký đã được lưu!');
+        // Bạn có thể gửi chữ ký tới server ở đây.
+        console.log(dataURL);  // Hoặc gửi lên server để lưu
+    });
+</script>
+</body>
+</html>

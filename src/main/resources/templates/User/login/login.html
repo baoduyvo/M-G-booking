@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/User/layout/layout :: mainContent('Login',~{this::.Login-Page})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<section class="Login-Page layout-pt-lg layout-pb-lg bg-blue-2" style="background-color: #e5f0fd;padding-bottom: 120px;padding-top: 120px">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+                <div class="bg-white shadow-lg rounded-3 bg-white" style="padding-left: 50px;padding-right: 50px;padding-top: 50px;padding-bottom: 50px">
+                    <form th:action="@{/account/process-login}" method="post" class="row " style="margin-top: -10px;margin-bottom: -10px">
+                        <div class="col-12">
+                            <h1 class="" style="font-size: 22px;font-weight: 500">Welcome back</h1>
+                            <p  style="margin-top: 10px;font-size: 19px;color: #697488;font-family: 'Jost',sans-serif">
+                                Don't have an account yet?
+                                <a th:href="@{/register}" class="text-decoration-none" style="color: #3554d1">Sign up for free</a>
+                            </p>
+                        </div>
+                        <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                            <div class="position-relative d-flex form-input" style="transition: all .2s cubic-bezier(.165,.84,.44,1)">
+                                <input th:field="${login.email}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;transition: all .2s cubic-bezier(.165,.84,.44,1)">
+                                <label class="lh-1" style="font-size: 14px;color: #697488">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                            <div class="position-relative d-flex form-input" style="transition: all .2s cubic-bezier(.165,.84,.44,1)">
+                                <input type="password" th:field="${login.password}" class="outline-none w-100 bg-transparent" style="border: 1px solid #ddd;border-radius: 4px;padding: 25px 15px 0;min-height: 70px;transition: all .2s cubic-bezier(.165,.84,.44,1)">
+                                <label class="lh-1" style="font-size: 14px;color: #697488">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                           <a th:href="@{/ForgotPassword}" class="text-decoration-underline cursor-pointer" style="font-size: 17px;color: #3554d1;font-weight: 500;cursor: pointer">Forgot your password?</a>
+                        </div>
+                        <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                            <button type="submit" class="cursor-pointer text-white w-100 button -dark" style="background-color: #3554d1;padding-top: 20px;padding-bottom: 20px">Sign In
+                                <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 15px"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="row" style="margin-top: -10px;margin-bottom: -10px;padding-top: 30px">
+
+
+                        <div class="col-12" style="padding-top: 10px;padding-bottom: 10px">
+                            <div class="text-center" style="padding-left: 30px;padding-right: 30px">
+                                By creating an account, you agree to our Terms of Service and Privacy Statement.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
